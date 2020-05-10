@@ -102,7 +102,7 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
                     <%-- <aui:button href="${meetingPopUp}" useDialog="true" value="Get Meeting" />	 --%>				
                     <!-- <aui:button type="button" name="GeteetingItem" id="GeteetingItem" value=""	onclick="getMeeting();" /> -->
                     <%-- <aui:button href="${meetingPopUp}" value="Get Meeting" /> --%>
-                    <input type="button" value="Get Meeting" onclick="getMeetingData()" /><br>
+                    <input type="button" class="btn btn-secondary" value="Get Meeting" onclick="getMeetingData()" />
                 </div>
                 <div class="col-sm"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
                     <input type="text" class="form-control" id="meetingId" name="meetingId"></div>
@@ -171,7 +171,7 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
 
     <div class="row">
         <div class="col-sm"><div class="form-group">
-            <button class="btn btn-primary type="button">Submit</button>
+            <button class="btn btn-primary" type="button">Submit</button>
         </div></div>
     </div>
 
