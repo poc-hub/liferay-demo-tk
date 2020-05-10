@@ -4,8 +4,11 @@
 <portlet:actionURL name="DCRAction" var="submitDCR" />
 
 
-<portlet:renderURL var="meetingPopUp" windowState="<%=LiferayWindowState.POP_UP.toString()%>">
+<%-- <portlet:renderURL var="meetingPopUp" windowState="<%=LiferayWindowState.POP_UP.toString()%>">
 	<portlet:param name="mvcPath" value="/meetingPopUp.jsp"/>
+</portlet:renderURL> --%>
+<portlet:renderURL var="meetingPopUp">
+    <portlet:param name="mvcPath" value="/meetingPopUp.jsp"></portlet:param>
 </portlet:renderURL>
 
 <liferay-ui:success key="success" message="Your Action Completed Successfully..."/>
@@ -63,15 +66,30 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
 						<aui:option value="Patner">Patner</aui:option>
 						<aui:option value="Internal">Internal</aui:option>
 					</aui:select>
-<aui:button href="${meetingPopUp}" useDialog="true" value="Get Meeting Item" />					
+<%-- <aui:button href="${meetingPopUp}" useDialog="true" value="Get Meeting Item" />	 --%>				
 <!-- <aui:button type="button" name="GeteetingItem" id="GeteetingItem" value=""	onclick="getMeeting();" /> -->
+<%-- <aui:button href="${meetingPopUp}" value="Get Meeting Item" /> --%>
+<input type="button" value="Get Meeting Item" onclick="getMeetingData()" /><br>
 
-<aui:input type="text" label="MeetID" name="MeetID" id="MeetID" value="ABCD" readonly="readonly"/>
-<aui:input type="text" label="Floor" name="Floor" id="Floor" />
+<!-- <aui:input type="text" label="MeetID" name="MeetID" id="MeetID" value="ABCD" readonly="readonly"/> -->
+<label for="usr">Meeting Id</label>
+<input type="text" class="form-control" id="meetingId" name="meetingId">
+<label for="usr">Floor</label>
+<input type="text" class="form-control" id="Floor" name="Floor">
+<label for="usr">Item Details</label>
+<input type="text" class="form-control" id="ItemDetails" name="ItemDetails">
+<label for="usr">Action</label>
+<input type="text" class="form-control" id="Action" name="Action">
+<label for="usr">Expected DueDate</label>
+<input type="text" class="form-control" id="ExpectedDueDate" name="ExpectedDueDate">
+<label for="usr">Personin Charge</label>
+<input type="text" class="form-control" id="PersoninCharge" name="PersoninCharge">
+
+<!-- <aui:input type="text" label="Floor" name="Floor" id="Floor" />
 <aui:input type="text" label="Item Details" name="ItemDetails" id="ItemDetails" />
 <aui:input type="text" label="Action" name="Action" id="Action" />
 <aui:input type="date" label="Expected Due Date" name="ExpectedDueDate" id="ExpectedDueDate" />
-<aui:input type="text" label="Person in Charge" name="PersoninCharge" id="PersoninCharge " />
+<aui:input type="text" label="Person in Charge" name="PersoninCharge" id="PersoninCharge " /> -->
 <aui:input type="textarea" label="Original Desgin" name="OriginalDesgin" id="OriginalDesgin" />
 <aui:input type="textarea" label="Change Desgin" name="ChangeDesgin" id="ChangeDesgin" />
 <aui:select label="Design Cost Type" name="DesignCostType" id="DesignCostType">
@@ -99,20 +117,15 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
 <div class="form-group">
 							<button class="btn btn-primary type="button">Submit</button>
 						</div>
-
-
-
 </form>
 
-<%-- <portlet:actionURL var="uplaodURL" name="uploadDocument"></portlet:actionURL>
-<portlet:actionURL var="downloadURL" name="downloadFiles"></portlet:actionURL>
-
-<b>Please Upload a Document</b> 
-
-<form action="${uplaodURL}" method="post" enctype="multipart/form-data">
-<input type="file" name="uploadedFile">
-<input type="Submit" name="Submit">
-</form>
-
-<a href="${downloadURL}">Download Files</a> --%>
-
+<script type="text/javascript">
+    var popup;
+    function getMeetingData() {
+   	 // alert("getMeetingData");
+           var organizationWindow = window.open('<portlet:renderURL windowState="<%= LiferayWindowState.POP_UP.toString() %>"><portlet:param name="mvcPath" value="/meetingPopUp.jsp"/><portlet:param name="redirect" value="#"/></portlet:renderURL>',
+                   'title',
+                  'directories=no, height=600, location=no, menubar=no, resizable=yes,scrollbars=yes, status=no, toolbar=no, width=1280');
+                  organizationWindow.focus();
+       }
+</script>
