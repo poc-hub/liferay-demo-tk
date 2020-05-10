@@ -1,0 +1,10 @@
+Bundle-Name: lenovo-service-api
+Bundle-SymbolicName: com.lenovo.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.lenovo.exception,\
+	com.lenovo.model,\
+	com.lenovo.service,\
+	com.lenovo.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../lenovo-service-service/service.xml

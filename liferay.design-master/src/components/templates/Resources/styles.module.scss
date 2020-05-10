@@ -1,0 +1,56 @@
+@import 'theme/variables.scss';
+
+.banner {
+	margin: 0 auto;
+	max-width: 80rem;
+	width: 100%;
+	padding: 6rem 1rem 10rem;
+	position: relative;
+	font-family: $fontFamilySecondary;
+	.bannerContent {
+		max-width: 44rem;
+		h1 {
+			font-size: $fontSizeDisplay;
+			color: $white;
+			font-weight: $fontWeightHeavy;
+			box-shadow: $elevation1;
+			margin: 0;
+			font-family: $fontFamilyPrimary;
+		}
+		@media only screen and (max-width: 1040px) {
+			max-width: 100%;
+			padding: 0 2rem;
+			h1 div {
+				position: relative;
+				top: 0;
+				left: 0;
+				margin-bottom: 2rem;
+			}
+		}
+	}
+}
+
+.markdownContainer {
+	margin-bottom: auto;
+	padding: 4rem 3rem 6rem;
+	font-family: $fontFamilySecondary;
+	background: white;
+	a {
+		color: inherit;
+		text-decoration: underline;
+		&:hover {
+			color: $primary;
+		}
+	}
+	.wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+
+		img {
+			width: 100%;
+		}
+	}
+	@media screen and (max-width: $screenMedium) {
+		padding: $spacingSmall;
+	}
+}

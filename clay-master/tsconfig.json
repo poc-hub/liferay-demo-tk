@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"noEmit": true,
+		"strict": true,
+		"jsx": "react",
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"removeComments": true,
+		"allowJs": true,
+		"baseUrl": ".",
+		"paths": {
+			"@clayui/*": ["node_modules/@clayui/*/src"],
+			"*": ["custom-types/*", "node_modules/*", "packages/*"]
+		}
+	},
+	"include": ["packages/**/*"],
+	"exclude": [
+		"node_modules",
+		"packages/**/lib",
+		"packages/generator-clay-component"
+	]
+}

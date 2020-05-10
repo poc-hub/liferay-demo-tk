@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.student.service">
+	<namespace>StudentInformation</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+
+		
+		<entity  name="Student"  table="STUDENT"  remote-service="true" local-service="true" >
+		
+		<!-- PK fields -->
+
+		<column name="studentId" 	db-name="STUDENTID"	primary="true" type="long" />
+
+		
+		<!-- student fields -->
+
+		<column name="studentName" 		db-name="STUDENTNAME" 		type="String" 	/>
+		<column name="studentNickName"	db-name="STUDENTNICKNAME"	type="String" 	/>
+		<column name="studentMobNo" 	db-name="STUDENTMOBNO" 		type="long" 	/>
+		<column name="studentGender"	db-name="STUDENTGENDER" 	type="boolean" 	/>
+		<column name="studentAge" 		db-name="STUDENTAGE" 		type="int" 		/>
+		<column name="studentDOB" 		db-name="STUDENTDOB"		type="Date" 	/>
+		
+		
+		<!-- Audit fields -->
+
+		<column name="companyId" 	db-name="COMPANYID" 	type="long" 	/>
+		<column name="userId" 		db-name="USERID"		type="long" 	/>
+		<column name="userName" 	db-name="USERNAME"		type="String" 	/>
+		<column name="createDate" 	db-name="CREATEDATE"	type="Date" 	/>
+		<column name="modifiedDate" db-name="MODIFIEDDATE"	type="Date" 	/>
+		
+		<!-- Group instance -->
+
+		<column name="groupId" 		db-name="GROUPID"		type="long" 	/>
+		
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="studentName" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="studentName" return-type="Collection">
+			<finder-column name="studentName" />
+		</finder>
+		
+		
+		<finder name="studentMobNo" return-type="Student">
+			<finder-column name="studentMobNo" />
+		</finder>
+		
+		</entity>
+
+</service-builder>

@@ -1,0 +1,50 @@
+@import '~theme/variables';
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+@-moz-document url-prefix() {
+	:root {
+	scrollbar-width: none;}
+}
+
+.fancyFooter {
+	width: 100%;
+	height: 50vh;
+	bottom: 0;
+	position: fixed;
+	z-index: -1;
+	svg {
+		object-fit: cover;
+		position: absolute;
+		bottom: 0;
+		.stroke {
+			stroke-width: 6;
+		}
+		.primaryStroke {
+			stroke: $primary;
+		}
+		.whiteStroke {
+			stroke: $white;
+		}
+		.darkStroke {
+			stroke: $black;
+		}
+		defs {
+			clipPath {
+				path {
+					fill: $white;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $screenSmall) {
+	.fancyFooter {
+		svg {
+			height: 80vh;
+		}
+	}
+}

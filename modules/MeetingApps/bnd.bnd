@@ -1,0 +1,4 @@
+Bundle-Name: MeetingApps
+Bundle-SymbolicName: com.tcs.meeting
+Bundle-Version: 1.0.0
+Export-Package: com.tcs.meeting.constants

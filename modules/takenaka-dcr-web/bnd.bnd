@@ -1,0 +1,4 @@
+Bundle-Name: takenaka-dcr-web
+Bundle-SymbolicName: com.takenaka
+Bundle-Version: 1.0.0
+Export-Package: com.takenaka.constants

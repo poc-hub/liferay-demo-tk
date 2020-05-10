@@ -1,0 +1,232 @@
+---
+# Active Designers
+- id: Abel Hancock
+  title: Product Designer
+  active: true
+  icon: fa_code
+  startDate: 2017-09-18
+  office: Diamond Bar
+- id: Andrea Censi
+  title: Product Designer
+  active: true
+  icon: fa_headphones_alt
+  startDate: 2018-05-14
+  office: Concorezzo
+- id: Christopher Jeong
+  title: Senior Product Designer
+  active: true
+  icon: fa_glasses
+  startDate: 2017-10-16
+  office: Diamond Bar
+- id: David Aragonés
+  title: Senior Product Designer
+  active: true
+  icon: fa_universal_access
+  startDate: 2016-08-22
+  office: Madrid
+- id: Emiliano Cicero
+  title: Product Designer
+  active: true
+  icon: fa_bezier_curve
+  startDate: 2016-08-10
+  office: Madrid
+- id: Emily Young
+  title: Manager, Communication Design
+  active: true
+  icon: fa_stroopwafel
+  startDate: 2008-08-01
+  office: Diamond Bar
+- id: Felipe Pires
+  title: Senior Product Designer
+  active: true
+  icon: fa_dumbbell
+  startDate: 2015-09-01
+  office: Recife
+- id: James Lyons
+  title: Product Designer
+  active: true
+  icon: fa_drum
+  startDate: 2018-09-10
+  office: Diamond Bar
+- id: Jessica Lee
+  title: Communication Designer
+  active: true
+  icon: fa_pen_nib
+  startDate: 2017-07-10
+  office: Diamond Bar
+- id: Jon Wood
+  title: Product Designer
+  active: true
+  icon: fa_keyboard
+  startDate: 2019-04-15
+  office: Diamond Bar
+- id: Juan Antón
+  title: Senior Product Designer
+  active: true
+  icon: fa_palette
+  startDate: 2016-08-18
+  office: Madrid
+- id: Juan Hidalgo
+  title: Director, Design
+  active: true
+  icon: fa_heart
+  startDate: 2016-10-17
+  office: Diamond Bar
+- id: Julia Chan
+  title: Communication Designer
+  active: true
+  icon: fa_coffee
+  startDate: 2017-01-09
+  office: Diamond Bar
+- id: Laura García
+  title: Associate Product Designer
+  active: true
+  icon: fa_spa
+  startDate: 2019-10-12T07:00:00Z
+  office: Madrid
+- id: Markus Hammer
+  title: Senior Communication Designer
+  active: true
+  icon: fa_gavel
+  startDate: 2016-09-15
+  office: Eschborn
+- id: Marleny Francisco
+  title: Communication Designer
+  active: true
+  icon: fa_headphones_alt
+  startDate: 2019-08-12T07:00:00Z
+  office: Madrid
+- id: Miriam Manso
+  title: Associate Product Designer
+  active: true
+  icon: fa_pointe_shoe
+  startDate: 2018-10-15
+  office: Madrid
+- id: Naoki Hisamoto
+  title: Communication Designer
+  active: true
+  icon: fa_check_double
+  startDate: 2017-04-18
+  office: Diamond Bar
+- id: Nate Cavanaugh
+  title: Always one of us
+  active: true
+  icon: fa_heart
+  startDate: 2006-11-27
+  office: Diamond Bar
+- id: Patrick Pentz
+  title: Product Designer
+  active: true
+  icon: fa_camera
+  startDate: 2017-08-07
+  office: Diamond Bar
+- id: Paul Hanaoka
+  title: Manager, Product Design NA
+  active: true
+  icon: fa_terminal
+  startDate: 2014-08-25
+  office: Diamond Bar
+  website: https://paul.hanaoka.co
+  dribbble: '@plhnk'
+  instagram: '@plhnk'
+  twitter: '@plhnk'
+  unsplash: '@paul_'
+  medium: '@plhnk'
+- id: Rachel Yuan
+  title: Senior Communication Designer
+  active: true
+  icon: fa_chess_queen
+  startDate: 2013-10-07
+  office: Diamond Bar
+- id: Ryan Connolly
+  title: Principal Designer
+  active: true
+  icon: fa_pen
+  startDate: 2017-04-24
+  office: Diamond Bar
+- id: Sharon Kim
+  title: Communication Designer
+  active: true
+  icon: fa_pen_fancy
+  startDate: 2014-07-21
+  office: Diamond Bar
+- id: Susana Vázquez
+  title: Product Designer
+  active: true
+  icon: fa_archway
+  startDate: 2017-10-18
+  office: Madrid
+- id: Victor Valle
+  title: Manager, Product Design EMEA
+  active: true
+  icon: fa_fingerprint
+  startDate: 2016-08-18
+  office: Madrid
+- id: Vitor Fernandes
+  title: Manager, Product Design
+  active: true
+  icon: fa_rocket
+  startDate: 2018-03-12
+  office: Diamond Bar
+
+# Inactive Designers
+- id: Cassandra Balbas
+  title: UX Design Intern
+  active: false
+  icon: fa_drum
+  startDate: 2018-01-03
+  office: Diamond Bar
+- id: Jadson Dantas
+  title: Product Designer
+  active: false
+  icon: fa_music
+  startDate: 2018-01-03
+  office: Recife
+- id: Rafael Fernandes
+  title: Product Designer
+  active: false
+  icon: fa_music
+  startDate: 2018-01-03
+  office: Recife
+- id: Bryan Ho
+  title: Associate Communication Design Manager
+  active: false
+  icon: fa_music
+  startDate: 2018-01-03
+  office: Diamond Bar
+- id: Duuriimaa Bargaid
+  title: Associate Product Designer
+  active: false
+  icon: fa_drum
+  startDate: 2018-02-08
+  office: Madrid
+- id: András Himer
+  title: Product Designer
+  active: false
+  icon: fa_heart
+  startDate: 2018-05-07
+  office: Budapest
+- id: David Kim
+  title: Product Designer
+  active: false
+  icon: fa_pastafarianism
+  startDate: 2018-09-17
+  office: Diamond Bar
+- id: Karolina Kolodziej
+  title: Associate Product Designer
+  active: false
+  icon: fa_map_marked_alt
+  startDate: 2019-05-06
+  office: Concorezzo
+- id: Nathália Moura
+  title: Product Designer
+  active: false
+  icon: fa_map_marked_alt
+  startDate: 2016-11-07
+  office: Recife
+
+# Friends of Design :)
+- id: Angelo Youn
+  active: false
+- id: Ryan Garant
+  active: false

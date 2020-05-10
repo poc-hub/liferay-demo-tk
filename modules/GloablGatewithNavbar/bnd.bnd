@@ -1,0 +1,4 @@
+Bundle-Name: GloablGatewithNavbar
+Bundle-SymbolicName: GloablGatewithNavbar
+Bundle-Version: 1.0.0
+Export-Package: GloablGatewithNavbar.constants

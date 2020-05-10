@@ -1,0 +1,1 @@
+create index IX_C4B7DB41 on Lenovo_Product (PRODUCTNAME[$COLUMN_LENGTH:75$]);

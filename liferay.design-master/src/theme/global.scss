@@ -1,0 +1,101 @@
+// @import '~theme/reset';
+@import '~theme/variables';
+
+// disable annoying warnings about colors not being part of material design palette
+$md-colors-warn-md: false;
+
+@import '~react-md/src/scss/react-md';
+
+// Liferay.Design Theme (overrides)
+$md-font-family: $fontFamilyPrimary;
+$md-font-regular: $fontWeightRegular;
+
+$md-primary-color: $primary;
+$md-secondary-color: $secondary;
+
+$md-light-theme: false;
+$md-typography-extended: false;
+
+@include react-md-everything;
+
+html {
+	height: initial;
+}
+
+body {
+	height: 100%;
+}
+
+html,
+body {
+	background-attachment: fixed;
+	background-color: $black;
+	background-image: url(/images/diamond-bar-topography.png);
+	background-repeat: no-repeat repeat;
+	background-size: 100%;
+	font-size: 16px;
+	font-family: $fontFamilyPrimary;
+	margin: 0;
+	overflow-x: hidden;
+	::selection {
+		background: #05f;
+		color: #fff;
+	}
+	::-moz-selection {
+		background: #05f;
+		color: #fff;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin-bottom: 1em;
+	&:hover .nice-anchor {
+		opacity: 1;
+		transition: opacity .2s ease-in-out;
+	}
+}
+
+h1 {
+	line-height: 1.2;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	max-width: initial;
+	object-fit: cover;
+}
+
+.logo-usage {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 3rem 0;
+
+	p {
+		font-size: 1.2em;
+		font-weight: bold;
+		margin: 0 4ch 0 0;
+	}
+
+	> a {
+		max-width: 230px;
+		width: 33%;
+	}
+}
+
+.nice-anchor {
+	float: left;
+	margin-left: -$spacingBase;
+	padding-right: $spacingSmall;
+	opacity: 0;
+	transition: opacity .2s ease-in-out;
+}

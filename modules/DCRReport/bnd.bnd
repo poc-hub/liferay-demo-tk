@@ -1,0 +1,4 @@
+Bundle-Name: DCRReport
+Bundle-SymbolicName: com.tcs.DCR
+Bundle-Version: 1.0.0
+Export-Package: com.tcs.DCR.constants

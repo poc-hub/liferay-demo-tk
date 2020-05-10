@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.lenovo">
+	<namespace>Lenovo</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity local-service="true" name="Product" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="productId" primary="true" type="long" />
+
+		<column name="productName"  db-name="PRODUCTNAME" type="String" />
+		<column name="productDesc"  db-name="PRODUCTDESC" type="String" />
+		
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="productName" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="productName" return-type="Product">
+			<finder-column name="productName" />
+		</finder>
+
+		<!-- References -->
+
+		
+	</entity>
+</service-builder>

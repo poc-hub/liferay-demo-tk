@@ -1,0 +1,270 @@
+---
+title: 'Digital'
+description: 'Using colors in digital applications'
+publish: true
+---
+
+import { Grid } from 'reakit'
+import { ColorSwatch } from 'components/molecules'
+
+## Main
+
+We aim to use color intentionally &mdash; this means being generous with whitespace, and not relying on colors to convey superficial meanings. To be most effective, color should be employed sparingly. We demonstrate this by limiting our primary palette to 3 colors &mdash; blue, dark blue, and black.
+
+<br />
+<br />
+<br />
+
+<Grid
+	templateColumns="repeat( auto-fit, minmax(200px, 1fr) )"
+	autoRows="auto"
+	gap="3.3rem 3rem"
+>
+	<ColorSwatch
+		hex="0b63ce"
+		rgb="11, 99, 206"
+		hsl="213, 90%, 43%"
+		name="brandPrimary"
+		title="Liferay Primary Blue"
+	/>
+	<ColorSwatch
+		hex="134194"
+		rgb="19, 65, 148"
+		hsl="219, 77%, 33%"
+		name="brandSecondary"
+		title="Secondary"
+	/>
+	<ColorSwatch
+		hex="09101d"
+		rgb="9, 16, 29"
+		hsl="219, 53%, 7%"
+		name="black"
+		title="Liferay Black"
+	/>
+</Grid>
+
+<br />
+<br />
+<br />
+
+## Functional
+
+Color does have meaning in certain contexts &mdash; in very specific use-cases, we employ color as one factor in imparting meaning. Note that we do not use color alone, it is an enhancement. For more on this, please see Lexicon's guides on [using color in a functional way](https://lexicondesign.io/core-components/alerts.html).
+
+<br />
+<br />
+<br />
+
+<Grid
+	templateColumns="repeat( auto-fit, minmax(200px, 1fr) )"
+	autoRows="auto"
+	gap="3.3rem 3rem"
+>
+	<ColorSwatch
+		hex="DA1414"
+		rgb="218, 20, 20"
+		hsl="0, 83%, 47%"
+		name="error"
+		title="Error"
+	/>
+	<ColorSwatch
+		hex="287D3C"
+		rgb="40, 125, 60"
+		hsl="134, 52%, 32%"
+		name="success"
+		title="Success"
+	/>
+	<ColorSwatch
+		hex="B95000"
+		rgb="185, 80, 0"
+		hsl="26, 100%, 36%"
+		name="warning"
+		title="Warning"
+	/>
+	<ColorSwatch
+		hex="2E5AAC"
+		rgb="46, 90, 172"
+		hsl="219, 58%, 43%"
+		name="info"
+		title="Info"
+	/>
+	<ColorSwatch
+		hex="0B5FFF"
+		rgb="11, 95, 255"
+		hsl="219, 100%, 52%"
+		name="action"
+		title="Action Blue"
+	/>
+</Grid>
+
+### Charts
+
+When utilizing colors in any chart, please leverage [Lexicon's Chart Color Palette](https://lexicondesign.io/core-components/charts/chart-color-palette.html) &mdash; it has been specifically designed to provide data identification, improve legibility, and ensure accessibility for color blindness.
+
+<br />
+<br />
+<br />
+
+## Neutral
+
+In efforts to minimize the number of colors in any given design, we employ a range of neutral swatches to be used in things like shadows, lines, and other elements where color isn't required.
+
+<br />
+<br />
+<br />
+
+<Grid
+	templateColumns="repeat( auto-fit, minmax(200px, 1fr) )"
+	autoRows="auto"
+	gap="3.3rem 3rem"
+>
+	<ColorSwatch
+		hex="2C3A4B"
+		rgb="44, 58, 75"
+		hsl="213, 27%, 23%"
+		name="neutral1"
+		title="Neutral 1"
+	/>
+	<ColorSwatch
+		hex="394452"
+		rgb="57, 68, 82"
+		hsl="213, 18%, 27%"
+		name="neutral2"
+		title="Neutral 2"
+	/>
+	<ColorSwatch
+		hex="545D69"
+		rgb="84, 93, 105"
+		hsl="213, 11%, 37%"
+		name="neutral3"
+		title="Neutral 3"
+	/>
+	<ColorSwatch
+		hex="6D7580"
+		rgb="109, 117, 128"
+		hsl="213, 8%, 46%"
+		name="neutral4"
+		title="Neutral 4"
+	/>
+	<ColorSwatch
+		hex="858C94"
+		rgb="133, 140, 148"
+		hsl="213, 6%, 55%"
+		name="neutral5"
+		title="Neutral 5"
+	/>
+	<ColorSwatch
+		hex="A5ABB3"
+		rgb="165, 171, 179"
+		hsl="213, 9%, 67%"
+		name="neutral6"
+		title="Neutral 6"
+	/>
+	<ColorSwatch
+		hex="DADEE3"
+		rgb="218, 222, 227"
+		hsl="213, 14%, 78%"
+		name="neutral7"
+		title="Neutral 7"
+	/>
+	<ColorSwatch
+		hex="EBEEF2"
+		rgb="235, 238, 242"
+		hsl="213, 22%, 94%"
+		name="neutral8"
+		title="Neutral 8"
+	/>
+	<ColorSwatch
+		hex="F4F6F9"
+		rgb="244, 246, 249"
+		hsl="213, 29%, 97%"
+		name="neutral9"
+		title="Neutral 9"
+	/>
+</Grid>
+
+<br />
+<br />
+<br />
+
+## Accent
+
+It is occasionally necessary to use accent colors to help differentiate items or create a mood &mdash; we use this range of colors to do that.
+
+<br />
+<br />
+<br />
+
+<Grid
+	templateColumns="repeat( auto-fit, minmax(200px, 1fr) )"
+	autoRows="auto"
+	gap="3.3rem 3rem"
+>
+	<ColorSwatch
+		hex="1AA0E8"
+		rgb="22, 140, 202"
+		hsl="201, 80%, 44%"
+		name="accent1"
+		title="Accent 1"
+	/>
+	<ColorSwatch
+		hex="E06E31"
+		rgb="224, 110, 49"
+		hsl="21, 74%, 54%"
+		name="accent2"
+		title="Accent 2"
+	/>
+	<ColorSwatch
+		hex="D33A2F"
+		rgb="211, 58, 47"
+		hsl="4, 65%, 51%"
+		name="accent3"
+		title="Accent 3"
+	/>
+	<ColorSwatch
+		hex="42BFC2"
+		rgb="66, 191, 194"
+		hsl="181, 51%, 51%"
+		name="accent4"
+		title="Accent 4"
+	/>
+	<ColorSwatch
+		hex="E55E75"
+		rgb="229, 94, 117"
+		hsl="350, 72%, 63%"
+		name="accent5"
+		title="Accent 5"
+	/>
+	<ColorSwatch
+		hex="19AB4F"
+		rgb="25, 171, 79"
+		hsl="142, 74%, 38%"
+		name="accent6"
+		title="Accent 6"
+	/>
+	<ColorSwatch
+		hex="503690"
+		rgb="80, 54, 144"
+		hsl="257, 45%, 39%"
+		name="accent7"
+		title="Accent 7"
+	/>
+	<ColorSwatch
+		hex="FDCC4A"
+		rgb="253, 204, 74"
+		hsl="44, 98%, 64%"
+		name="accent8"
+		title="Accent 8"
+	/>
+	<ColorSwatch
+		hex="47C6F5"
+		rgb="68, 190, 235"
+		hsl="196, 81%, 59%"
+		name="accent9"
+		title="Accent 9"
+	/>
+</Grid>
+
+<br />
+<br />
+<br />

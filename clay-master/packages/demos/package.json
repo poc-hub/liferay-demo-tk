@@ -1,0 +1,28 @@
+{
+	"name": "demos",
+	"private": true,
+	"description": "Extended demos for Clay Components",
+	"engines": {
+		"node": ">=0.12.0",
+		"npm": ">=3.0.0"
+	},
+	"dependencies": {
+		"@clayui/button": "^3.3.0",
+		"@clayui/form": "^3.7.0",
+		"@clayui/list": "^3.2.2",
+		"@clayui/management-toolbar": "^3.1.0",
+		"@clayui/multi-select": "^3.5.2",
+		"@clayui/nav": "^3.1.0",
+		"@clayui/pagination": "^3.1.2",
+		"@clayui/pagination-bar": "^3.1.2",
+		"@clayui/panel": "^3.1.0",
+		"classnames": "^2.2.6",
+		"react-dnd": "^10.0.2",
+		"react-dnd-html5-backend": "^10.0.2",
+		"recharts": "1.8.5"
+	},
+	"devDependencies": {
+		"@types/recharts": "1.8.5"
+	},
+	"version": "0.2.2"
+}

@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClayPagination renders 1`] = `
+<div>
+  <ul
+    class="pagination pagination-root pagination-lg"
+  >
+    <li
+      class="page-item"
+    >
+      <button
+        aria-label="Previous"
+        class="page-link"
+        data-testid="prevArrow"
+        type="button"
+      >
+        <svg
+          class="lexicon-icon lexicon-icon-angle-left"
+          role="presentation"
+        >
+          <use
+            xlink:href="path/to/spritemap#angle-left"
+          />
+        </svg>
+      </button>
+    </li>
+    <li
+      class="page-item"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        1
+      </button>
+    </li>
+    <li
+      class="dropdown page-item"
+    >
+      <button
+        class="dropdown-toggle page-link btn btn-unstyled"
+        style=""
+        type="button"
+      >
+        ...
+      </button>
+    </li>
+    <li
+      class="page-item"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        10
+      </button>
+    </li>
+    <li
+      class="page-item"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        11
+      </button>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        12
+      </button>
+    </li>
+    <li
+      class="page-item"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        13
+      </button>
+    </li>
+    <li
+      class="page-item"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        14
+      </button>
+    </li>
+    <li
+      class="dropdown page-item"
+    >
+      <button
+        class="dropdown-toggle page-link btn btn-unstyled"
+        style=""
+        type="button"
+      >
+        ...
+      </button>
+    </li>
+    <li
+      class="page-item"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        25
+      </button>
+    </li>
+    <li
+      class="page-item"
+    >
+      <button
+        aria-label="Next"
+        class="page-link"
+        data-testid="nextArrow"
+        type="button"
+      >
+        <svg
+          class="lexicon-icon lexicon-icon-angle-right"
+          role="presentation"
+        >
+          <use
+            xlink:href="path/to/spritemap#angle-right"
+          />
+        </svg>
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`ClayPagination renders with only one page 1`] = `
+<div>
+  <ul
+    class="pagination pagination-root"
+  >
+    <li
+      class="page-item disabled"
+    >
+      <button
+        aria-label="Previous"
+        class="page-link"
+        data-testid="prevArrow"
+        disabled=""
+        type="button"
+      >
+        <svg
+          class="lexicon-icon lexicon-icon-angle-left"
+          role="presentation"
+        >
+          <use
+            xlink:href="path/to/spritemap#angle-left"
+          />
+        </svg>
+      </button>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <button
+        class="page-link"
+        type="button"
+      >
+        1
+      </button>
+    </li>
+    <li
+      class="page-item disabled"
+    >
+      <button
+        aria-label="Next"
+        class="page-link"
+        data-testid="nextArrow"
+        disabled=""
+        type="button"
+      >
+        <svg
+          class="lexicon-icon lexicon-icon-angle-right"
+          role="presentation"
+        >
+          <use
+            xlink:href="path/to/spritemap#angle-right"
+          />
+        </svg>
+      </button>
+    </li>
+  </ul>
+</div>
+`;

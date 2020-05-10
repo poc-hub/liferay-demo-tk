@@ -1,0 +1,79 @@
+import { Link, SiteName } from 'components/atoms'
+import { Accordion, SiteCredits } from 'components/molecules'
+import { map, orderBy } from 'lodash'
+import React from 'react'
+import { Grid } from 'reakit'
+import styles from './styles.module.scss'
+
+const SidebarContent = ({ path, tree }) => {
+	const unorderedTree = map(tree, node => {
+		const className = `
+		${styles.leafLink}
+		${node.slug === path ? styles.active : ''
+		} ${node.firstLevel ? styles.firstLevelNode : ''}`
+
+		if (node.hasOwnProperty('children')) {
+			return (
+				<Accordion
+					className={className}
+					key={node.order}
+					open={path.toLowerCase().includes(node.title.toLowerCase().replace(/ /g,"-"))}
+					title={node.title}
+					parentLink={node.slug}
+				>
+					<SidebarContent path={path} tree={node.children} />
+				</Accordion>
+			)
+		}
+
+		return (
+			<Link className={className} key={node.order} to={node.slug}>
+				{node.title}
+			</Link>
+		)
+	})
+
+	return orderBy(unorderedTree, 'key', 'asc')
+}
+
+export default function SidebarWrapper({
+	path,
+	tree,
+	isMobile,
+	showSidebar,
+	section,
+	lexicon,
+}) {
+
+	const className = `
+		${styles.sidebar} 
+		${isMobile && showSidebar ? styles.onScreen : '' } 
+		${isMobile && !showSidebar ? styles.offScreen : ''} 
+		${lexicon ? styles.lexicon : styles.sidebar}
+		${section === "Handbook" ? styles.handbook : ''}
+	`
+
+	return (
+		<Grid
+			templateColumns="1fr"
+			templateRows={`${isMobile ? '8rem' : '12rem auto 8rem'}`}
+			className={className}
+		>
+			{!isMobile && (
+				<Grid.Item className={styles.section}>
+					<SiteName section={section} dark />
+				</Grid.Item>
+			)}
+
+			<Grid.Item className={styles.sidebarContentWrapper}>
+				<SidebarContent path={path} tree={tree} />
+			</Grid.Item>
+
+			{!isMobile && (
+				<Grid.Item className={styles.credits}>
+					<SiteCredits />
+				</Grid.Item>
+			)}
+		</Grid>
+	)
+}

@@ -1,0 +1,10 @@
+Bundle-Name: takenaka-service-api
+Bundle-SymbolicName: com.takenaka.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.takenaka.exception,\
+	com.takenaka.model,\
+	com.takenaka.service,\
+	com.takenaka.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../takenaka-service-service/service.xml

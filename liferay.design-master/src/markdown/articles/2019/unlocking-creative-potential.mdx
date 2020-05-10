@@ -1,0 +1,227 @@
+---
+author: 'Paul Hanaoka'
+date: '2019-11-24'
+title: 'Unlocking Creative Potential'
+featuredImage: '/images/articles/2019-evp/intro-post-hero-alt.png'
+publish: true
+---
+
+import { FormNewsletter } from 'components/molecules'
+import { Flex, Image, Heading, Text, Link } from 'components/atoms'
+import { Grid } from 'reakit'
+
+<Text color="grey" type="p" size="large" margin="large">
+	Helping a nonprofit scale, to serve at-risk communities more effectively, by design.
+</Text>
+
+_As the end of the year approaches, we often take this time to participate in our company's volunteering program. This year was no exception! Over the next few weeks, we'll be sharing a 5-part series documenting our first-ever team effort._
+
+_If you have any ideas for a catchy program name, please do [let us know](https://twitter.com/liferaydesign)!_
+
+_Some ideas we've been throwing around:_
+
+-   _Design for Life(ray)_
+-   _Liferay Design for Good_
+-   _Design Center for Kids Who Want To Read Good_
+-   _Liferay Designs it Forward_
+
+_...your suggestions are most welcome._
+
+## Liferay EVP
+
+As a company, our mission is to:
+
+> make technology useful, helping people to reach their full potential to serve others
+>
+> <cite>
+> 	<a href="https://www.liferay.com/company/our-story">Liferay.com/our-story</a>
+> </cite>
+
+The primary way we do that is by making software — but, like many trendy companies, we also have an employee volunteering program _(Liferay EVP — yes, we are great at naming)_.
+
+In the past, many designers have participated in things like disaster relief, homeless shelters, and other community initiatives.
+
+This year, we put our heads together and thought it would be great if there was a nonprofit organization that could use some help with things that **we have some level of professional expertise in**.
+
+## About the Organization
+
+Underground Writing serves at-risk communities in Skagit County, Washington by providing a creative workshops exposing people to the power that reading and writing can have to improve their lives and communities.
+
+> We are a literature-based creative writing program serving migrant, incarcerated, recovery, and other at-risk communities in northern Washington through literacy and personal transformation.
+>
+> <cite>From undergroundwriting.com/our-story</cite>
+
+Their founder, Matt Malyon _(rhymes with 'Stallion')_ was working with an organization that one of our designers had previously volunteered with. At the time, he had been working on UW as a side project, but was considering moving to work on it full time — which he did at the beginning of 2019.
+
+_An exciting aspect about working with Underground Writing, aside from an ability to directly impact underserved people, is that it was our first **all-remote** volunteering project!_
+
+## About the Work
+
+_After an initial discovery call, we learned that there were 4 areas that we could focus on:_
+
+<Image
+	src="/images/articles/2019-evp/intro-tech-stack.png"
+	rounded
+	size="small"
+	align="right"
+	margin="2rem 0 0 2rem"
+	caption='Drake says "Dropbox is so 2017"'
+/>
+
+### Tech Stack
+
+UW is currently using a few different SaaS products (Zoho, Dropbox, probably others) — they were on free or small pricing tiers, but after our brief analysis we discovered that they had yet to leverage their official status as a nonprofit [for various discounts](https://katieallred.com/nonprofit-discounts/).
+
+A few of us have experience setting up [Google's various offerings for nonprofits](https://www.google.com/nonprofits/), which was somethign that the UW team was very excited for.
+
+Additionally, we uncovered a few other areas where operations could be streamlined by adding or subtracting technology.
+
+<div style="float:right; width:180px;">
+	<Image
+		src="/images/articles/2019-evp/intro-logo.png"
+		rounded
+		align="right"
+		margin="2rem 0 2rem 2rem"
+		caption="The Underground Writing logo"
+	/>
+</div>
+
+### Branding
+
+They have a logo they really love, but that was really the extend of their documented brand. We aimed to provide more documentation around their brand to start &mdash; opportunities included providing additional brand guidelines around messaging, color palettes, iconography, and other sub-brands.
+
+There are still more opportunities which we'll touch on in later posts, but we definitely had to prioritize and deliver a MVB _(Minimum Viable Brand — its a thing, trust us, don't google it)_.
+
+### Website
+
+[Undergroundwriting.org](https://undergroundwriting.org) was originally a Squarespace site that Matt put together. It was quite limited and he wasn't able to prioritize a custom site, so we built him one in Webflow.
+
+<Image
+	src="/images/articles/2019-evp/intro-website.jpg"
+	margin="2rem 0"
+	caption="Undergroundwriting.org before we began the project."
+	size="large"
+/>
+
+It was a tall task, there were a number of integrations and features we had to account for — Donorbox, Mailchimp, a storefront, a podcast, and probably others. We definitely had our work cut out for us there, but our team rose to the challenge.
+
+### Service Design
+
+We saw a huge opportunity to connect their workshops, students, teachers, and administrators via a unified technology stack.
+
+For example, it would be hugely beneficial if they could obviate the need for filling out spreadsheets and uploading them to Dropbox by leveraging a Google Forms to Sheets and Docs app.
+
+## Meet the Team
+
+<div style="width:102%;margin-left:-1%;">
+	<Grid templateColumns="3rem 1fr 3rem 1fr" autoRows="auto" gap="1rem">
+		<Grid.Item>
+			<Image src="images/headshots/connolly-ryan.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Link to="/team/connolly-ryan">
+				<Heading level={3}>Ryan Connolly</Heading>
+			</Link>
+			<Text>
+				In addition to dentistry, branding is one of Ryan’s passions. He has been
+				prevented from practicing the former by numerous medical boards,
+				thankfully he has diverted his energy to the latter. His agency background
+				really shines when he gets his hands on a raw, new brand.
+			</Text>
+		</Grid.Item>
+		<Grid.Item>
+			<Image src="images/headshots/hancock-abel.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Link to="/team/hancock-abel">
+				<Heading level={3}>Abel Hancock</Heading>
+			</Link>
+			<Text>
+				Liferay.com’s designer extraordinaire, Abel brings a wealth of web design
+				experience. He’s also done his fair share of Webflow sites.
+			</Text>
+		</Grid.Item>
+		<Grid.Item>
+			<Image src="images/headshots/jeong-christopher.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Link to="/team/jeong-chris">
+				<Heading level={3}>Chris Jeong</Heading>
+			</Link>
+			<Text>
+				Our resident researcher, Chris loves breaking down complex workflows into
+				manageable chunks and knocking them out.
+			</Text>
+		</Grid.Item>
+		<Grid.Item>
+			<Image src="images/headshots/kim-david.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Link to="/team/kim-david">
+				<Heading level={3}>David Kim</Heading>
+			</Link>
+			<Text>
+				Despite being in the middle of moving from West LA to the Inland Empire,
+				David helped out with the scheduling process.
+			</Text>
+		</Grid.Item>
+		<Grid.Item>
+			<Image src="images/headshots/levy-yotam.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Heading level={3}>Yotam Levy</Heading>
+			<Text>
+				He calls himself a “blacksmith, but for words”. We’re still trying to
+				figure out if there’s a more marketable way to say this, but he’s been too
+				busy helping polish the brand messaging and website copy.
+			</Text>
+		</Grid.Item>
+		<Grid.Item>
+			<Image src="images/headshots/lyons-james.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Link to="/team/lyons-james">
+				<Heading level={3}>James Lyons</Heading>
+			</Link>
+			<Text>
+				James is one of our resident tool guys, he also likes to sit for hours
+				watching Gmail migrations move at a snail’s pace.
+			</Text>
+		</Grid.Item>
+		<Grid.Item>
+			<Image src="images/headshots/pentz-patrick.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Link to="/team/pentz-patrick">
+				<Heading level={3}>Patrick Pentz</Heading>
+			</Link>
+			<Text>
+				PJ is our persona whisperer, he’s learned from the best, and worked with
+				Chris to design human-centric, automated processes.
+			</Text>
+		</Grid.Item>
+		<Grid.Item>
+			<Image src="images/headshots/wood-jon.jpg" circle margin=".5rem 0" />
+		</Grid.Item>
+		<Grid.Item>
+			<Link to="/team/wood-jon">
+				<Heading level={3}>Jon Wood</Heading>
+			</Link>
+			<Text>
+				In addition to bringing his technical skills to the website design and
+				development, Jon and his wife hosted the team at their home for a few days
+				and provided some very fancy espresso drinks.
+			</Text>
+		</Grid.Item>
+	</Grid>
+</div>
+
+## Coming Up...
+
+In Part 2, James will share how we revitalized Underground Writing's IT infrastructure. It's gonna be great!
+
+## Smash that Like button!
+
+Kidding &mdash; we haven't finished gamifying the site yet &mdash; but we do have a newsletter you can sign up for to receive the latest when it drops.
+
+<FormNewsletter />

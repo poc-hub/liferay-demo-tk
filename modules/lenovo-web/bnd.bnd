@@ -1,0 +1,4 @@
+Bundle-Name: lenovo-web
+Bundle-SymbolicName: com.lenovo
+Bundle-Version: 1.0.0
+Export-Package: com.lenovo.constants

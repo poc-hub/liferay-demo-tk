@@ -1,0 +1,23 @@
+@import '~theme/variables';
+@import '~theme/blueprints';
+
+.theme {
+	font-family: $fontFamilySecondary;
+	a {
+		font-weight: $fontWeightBlack;
+	}
+
+	//blueprints homepage
+	.vertical {
+		@include small-caps;
+		color: $neutral7;
+		font-size: $fontSizeXSmall;
+		margin-top: $spacingMedium * 4;
+		transform: rotate(-90deg) translateX(-$spacingMedium - $spacingSmall);
+		white-space: nowrap;
+	}
+
+	// documentation side
+
+	// no styles yet
+}

@@ -1,0 +1,21 @@
+---
+draft: true #required boolean (true or false)
+
+#Event Card Fields
+title: 'Design Systems Meetup' #required
+featuredImage: '/images/events/design-at-scale-madrid-2019.jpg' #required
+office: 'Diamond Bar' #required
+
+#Event Details
+date: '2019-01-26T19:30' #required (yyyy-mm-ddThh:mm) *use military time
+endDateTime: '2019-01-26T21:30'
+
+summary: 'Emiliano Cicero and Danny Saltaren shared their knowledge on how to build a component library in Figma, and on processes, tools and learnings respectively.'
+
+heroImage: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1649&q=80'
+bodyImage: 'https://images.unsplash.com/photo-1491947153227-33d59da6c448?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2900&q=80'
+
+ctaURL: 'example.com'
+---
+
+markdown content

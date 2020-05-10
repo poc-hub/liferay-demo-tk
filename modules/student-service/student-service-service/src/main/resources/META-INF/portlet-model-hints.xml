@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.student.service.model.Student">
+		<field name="studentId" type="long" />
+		<field name="studentName" type="String" />
+		<field name="studentNickName" type="String" />
+		<field name="studentMobNo" type="long" />
+		<field name="studentGender" type="boolean" />
+		<field name="studentAge" type="int" />
+		<field name="studentDOB" type="Date" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="groupId" type="long" />
+	</model>
+</model-hints>

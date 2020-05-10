@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.takenaka">
+	<author>Sanjay.Panchal</author>
+	<namespace>takenaka</namespace>
+	
+	<!--Table PROJGAIYO 	 -->
+	
+	<entity local-service="true" name="projgaiyo" table="PROJGAIYO"  remote-service="true" uuid="true">
+		<column name="groupId" 			db-name="GROUP_ID" primary="true" type="long" />
+		<column name="projNm" 			db-name="PROJ_NM" 			type="String" />
+		<column name="projNmKana" 		db-name="PROJ_NM_KANA" 		type="String" />
+		<column name="kenchikuNusiCd" 	db-name="KENCHIKU_NUSI_CD" 	type="String" />
+		<column name="kenchikuNusiNm" 	db-name="KENCHIKU_NUSI_NM" 	type="String" />
+		<column name="kenchikuChiCd" 	db-name="KENCHIKU_CHI_CD" 	type="String" />
+		<column name="kenchikuChiNm" 	db-name="KENCHIKU_CHI_NM" 	type="String" />
+		<column name="tatemonoYoto1" 	db-name="TATEMONO_YOTO1" 	type="String" />
+		<column name="tatemonoYoto2" 	db-name="TATEMONO_YOTO2" 	type="String" />
+		<column name="tatemonoYoto3" 	db-name="TATEMONO_YOTO3" 	type="String" />
+		<column name="kaisuB" 			db-name="KAISU_B" 			type="Double" />
+		<column name="kaisuF" 			db-name="KAISU_F" 			type="Double" />
+		<column name="kaisuP" 			db-name="KAISU_P" 			type="Double" />
+		<column name="kozoShubetu1" 	db-name="KOZO_SHUBETU1" 	type="String" />
+		<column name="kozoShubetu2" 	db-name="KOZO_SHUBETU2" 	type="String" />
+		<column name="kozoShubetu3" 	db-name="KOZO_SHUBETU3" 	type="String" />
+		<column name="nobeyukaMenseki" 	db-name="NOBEYUKA_MENSEKI" 	type="Double" />
+		<column name="kenchikuMenseki" 	db-name="KENCHIKU_MENSEKI" 	type="Double" />
+		<column name="chakkoBi" 		db-name="CHAKKO_BI" 		type="String" />
+		<column name="shunkoBi" 		db-name="SHUNKO_BI" 		type="String" />
+		<column name="sekkeiKb" 		db-name="SEKKEI_KB" 		type="String" />
+		<column name="sekoKb" 			db-name="SEKO_KB" 			type="String" />
+		<column name="sagyoshoChiku" 	db-name="SAGYOSHO_CHIKU" 	type="String" />
+		<column name="updDate" 			db-name="UPD_DATE" 			type="String" />
+		<column name="updTime" 			db-name="UPD_TIME" 			type="String" />
+	</entity>
+	
+	<!--Table PROJTABLE 	 -->
+	
+	<entity local-service="true" name="ProjTable" table="PROJTABLE"  remote-service="true" >
+		<column name="recId" 				db-name="REC_ID" primary="true" 	type="long" />
+		<column name="groupId" 				db-name="GROUP_ID" 					type="long" />
+		<column name="groupFlag" 			db-name="GROUP_FLAG" 				type="String" />
+		<column name="yosoKojiCd" 			db-name="YOSO_KOJI_CD" 				type="String" />
+		<column name="sekkeiCd" 			db-name="SEKKEI_CD" 				type="String" />
+		<column name="sekkeiCdYy" 			db-name="SEKKEI_CD_YY" 				type="String" />
+		<column name="mitumoriNendo" 		db-name="MITUMORI_NENDO" 			type="String" />
+		<column name="mitumoriCd" 			db-name="MITUMORI_CD" 				type="String" />
+		<column name="kojiCd" 				db-name="KOJI_CD" 					type="String" />
+		<column name="mitumoriSeiriNo" 		db-name="MITUMORI_SEIRI_NO" 		type="String" />
+		<column name="shukanSekkeiCd" 		db-name="SHUKAN_SEKKEI_CD" 			type="String" />
+		<column name="sekkeiTogoSaki" 		db-name="SEKKEI_TOGO_SAKI" 			type="String" />
+		<column name="sekkeiBunkatuMoto" 	db-name="SEKKEI_BUNKATU_MOTO" 		type="String" />
+		<column name="jutakuSekkeiTaisho" 	db-name="JUTAKU_SEKKEI_TAISHO" 		type="String" />
+		<column name="honsitenRid" 			db-name="HONSITEN_RID" 				type="String" />
+		<column name="honsitenGid" 			db-name="HONSITEN_GID" 				type="String" />
+		
+		<column name="orgYkoji" 			db-name="ORG_YKOJI" 				type="String" />
+		<column name="orgJKOJI" 			db-name="ORG_JKOJI" 				type="String" />
+		<column name="orgMdd" 				db-name="ORG_MDD" 					type="String" />
+		<column name="orgPdd" 				db-name="ORG_PDD" 					type="String" />
+		<column name="orgEsmas" 			db-name="ORG_ESMAS" 				type="String" />
+		<column name="orgPrist" 			db-name="ORG_PRIST" 				type="String" />
+		
+		<column name="procSekkei" 			db-name="PROC_SEKKEI" 				type="String" />
+		<column name="procMitumori" 		db-name="PROC_MITUMORI" 			type="String" />
+		<column name="procSekkeiOen" 		db-name="PROC_SEKKEI_OEN" 			type="String" />
+		<column name="procSekkeiTogo" 		db-name="PROC_SEKKEI_TOGO" 			type="String" />
+		<column name="procSekkeiBunkatu" 	db-name="PROC_SEKKEI_BUNKATU" 		type="String" />
+		<column name="procSekkeiJutaku" 	db-name="PROC_SEKKEI_JUTAKU" 		type="String" />
+		<column name="taketuChusiToketuKb" 	db-name="TAKETU_CHUSI_TOKETU_KB" 	type="String" />
+		<column name="kanryoChusiStatus" 	db-name="KANRYO_CHUSI_STATUS" 		type="String" />
+		<column name="mitumoriKeijoShubetu" db-name="MITUMORI_KEIJO_SHUBETU" 	type="String" />
+		<column name="torikesiKb" 			db-name="TORIKESI_KB" 				type="String" />
+		<column name="kessanNendo" 			db-name="KESSAN_NENDO" 				type="String" />
+		<column name="updDate" 				db-name="UPD_DATE" 					type="String" />
+		<column name="updTime" 				db-name="UPD_TIME" 					type="String" />
+	</entity>
+	
+	<!--Table TRIGGER_MEETING 	 -->
+	
+	<entity local-service="true" name="TriggerMeeting" table="TRIGGER_MEETING"  remote-service="true" >
+		<column name="meetingSeqno" 	db-name="MEETING_SEQNO" primary="true" type="long" />
+		<column name="groupId" 			db-name="GROUP_ID" 			type="long" />
+		
+		<column name="meetingId" 		db-name="MEETING_ID" 		type="String" />
+		
+		<column name="meetingTitle" 	db-name="MEETING_TITLE" 	type="String" />
+		<column name="issuer" 			db-name="ISSUER" 			type="String" />
+		<column name="meetingType" 		db-name="MEETINGTYPE" 		type="String" />
+		<column name="meetDate" 		db-name="MEET_DATE" 		type="Date" />
+		<column name="participant" 		db-name="PARTICIPANT" 		type="String" />
+		<column name="meetingPlace" 	db-name="MEETING_PLACE" 	type="String" />
+		<column name="meetingSummary" 	db-name="MEETING_SUMMARY" 	type="String" />
+		
+		<column name="createdBy" 		db-name="CREATED_BY" 		type="String" />
+		<column name="createdOn" 		db-name="CREATED_ON" 		type="Date" />
+		<column name="modifiedBy" 		db-name="MODIFIED_BY" 		type="String" />
+		<column name="modifiedOn" 		db-name="MODIFIED_ON" 		type="Date" />
+		<column name="isActive" 		db-name="IS_ACTIVE" 		type="boolean" />
+		
+		
+		<finder name="findByMeetingId" return-type="TriggerMeeting">
+			<finder-column name="meetingId" />
+		</finder>
+		
+		
+	</entity>
+	
+	<!--Table Trigger_Meeting_Details 	 -->
+	
+	<entity local-service="true" name="TriggerMeetingDetails" table="Trigger_Meeting_Details"  remote-service="true" >
+		<column name="meetingdetailSeqno" 	db-name="MEETINGDETAIL_SEQNO" primary="true" type="long" />
+		<column name="meetingSeqno" 		db-name="MEETING_SEQNO" 	type="long" />
+		<column name="category" 			db-name="CATEGORY" 			type="String" />
+		<column name="floor" 				db-name="FLOOR" 			type="String" />
+		<column name="item" 				db-name="ITEM" 				type="String" />
+		<column name="actions" 				db-name="ACTIONS" 			type="String" />
+		
+		<column name="RESPONSE_DUEDATE" 	db-name="RESPONSE_DUEDATE" 	type="Date" />
+		<column name="personInCharge" 		db-name="PERSON_IN_CHARGE" 	type="String" />
+		
+		<column name="createdBy" 			db-name="CREATED_BY" 		type="String" />
+		<column name="createdOn" 			db-name="CREATED_ON" 		type="Date" />
+		<column name="modifiedBy" 			db-name="MODIFIED_BY" 		type="String" />
+		<column name="modifiedOn" 			db-name="MODIFIED_ON" 		type="Date" />
+		<column name="isActive" 			db-name="IS_ACTIVE" 		type="boolean" />
+		
+		<finder name="findByMeetingSeqno" return-type="TriggerMeetingDetails">
+			<finder-column name="meetingSeqno" />
+		</finder>
+		
+		<finder name="findByMeetingSeqnoList" return-type="Collection">
+			<finder-column name="meetingSeqno" />
+		</finder>
+		
+		
+	</entity>
+	
+	
+	
+	 <!--Table New Requiment "DESIGN_CHANGE_DETAILS" 	 -->
+
+	<entity local-service="true" name="DesignChangeDetails" table="DESIGN_CHANGE_DETAILS"  remote-service="true" >
+		
+		<column name="dcrChangeSeqno" 		db-name="DCR_CHANGE_SEQNO" primary="true" type="long" />
+		
+		<column name="designchangeSubseqno" db-name="DESIGNCHANGE_SUBSEQNO" 	type="long" />
+		<column name="groupId" 				db-name="GROUP_ID" 			type="long" />
+		
+		<column name="revisionNo" 			db-name="REVISION_NO" 		type="int" />
+		<column name="meetingId" 			db-name="MEETING_ID" 		type="String" />
+		<column name="issuer" 				db-name="ISSUER" 			type="String" />
+		<column name="changeType" 			db-name="CHANGETYPE" 		type="String" />
+		<column name="changeRequestby" 		db-name="CHANGEREQUESTBY" 	type="String" />
+		<column name="rfcId" 				db-name="RFC_ID" 			type="String" />
+		<column name="rfcOthers" 			db-name="RFC_OTHERS" 		type="String" />
+		<column name="rangeOfDisclosure" 	db-name="RANGE_OF_DISCLOSURE" type="String" />
+		<column name="floor" 				db-name="FLOOR" 			type="String" />
+		<column name="item" 				db-name="ITEM" 				type="String" />
+		
+		<column name="originaldesginDetail" db-name="ORIGINALDESGIN_DETAIL" type="String" />
+		<column name="changeDetail" 		db-name="CHANGE_DETAIL" 		type="String" />
+		<column name="action" 				db-name="ACTION" 			    type="String" />
+		
+		<column name="estdesignCosttype" 			db-name="ESTDESIGN_COSTTYPE" 		type="String" />
+		<column name="estdesignCost" 				db-name="ESTDESIGN_COST" 			type="long" />
+		<column name="estconstructionCosttype" 		db-name="ESTCONSTRUCTION_COSTTYPE" 	type="String" />
+		<column name="estconstructionCost" 			db-name="ESTCONSTRUCTION_COST" 		type="long" />
+		<column name="expenseAjustmentDivision" 	db-name="EXPENSE_AJUSTMENT_DIVISION" type="String" />
+		
+		
+		<column name="attachmentId1" 	db-name="ATTACHMENT_ID_1" 	type="long" />
+		<column name="attachmentId2" 	db-name="ATTACHMENT_ID_2" 	type="long" />
+		<column name="attachmentId3" 	db-name="ATTACHMENT_ID_3" 	type="long" />
+		<column name="attachmentId4" 	db-name="ATTACHMENT_ID_4" 	type="long" />
+		
+		<column name="attachment1" 		db-name="ATTACHMENT1" 		type="String" />
+		<column name="attachment2" 		db-name="ATTACHMENT2" 		type="String" />
+		<column name="attachment3" 		db-name="ATTACHMENT3" 		type="String" />
+		<column name="attachment4" 		db-name="ATTACHMENT4" 		type="String" />
+		<column name="responsePeriod" 			db-name="RESPONSE_PERIOD" 			type="String" />
+		<column name="personInCharge" 			db-name="PERSON_IN_CHARGE" 			type="String" />
+		<column name="approvalNo" 				db-name="APPROVAL_NO" 				type="long" />
+		<column name="approvalStatus" 			db-name="APPROVAL_STATUS" 			type="String" />
+		<column name="approvalDate" 			db-name="APPROVAL_DATE" 			type="Date" />
+		<column name="clientApprovalStatus" 	db-name="CLIENT_APPROVAL_STATUS" 	type="String" />
+		<column name="clientApprovalDate" 		db-name="CLIENT_APPROVAL_DATE" 		type="Date" />
+		<column name="constructionStatus" 		db-name="CONSTRUCTION_STATUS" 		type="String" />
+		<column name="constructionDate" 		db-name="CONSTRUCTION_DATE" 		type="Date" />
+
+		<column name="createdBy" 				db-name="CREATED_BY" 						type="String" />
+		<column name="createdOn" 				db-name="CREATED_ON" 						type="Date" />
+		<column name="modifiedBy" 				db-name="MODIFIED_BY" 						type="String" />
+		<column name="modifiedOn" 				db-name="MODIFIED_ON" 						type="Date" />
+		<column name="isActive" 				db-name="IS_ACTIVE" 						type="boolean" />
+		
+		
+	</entity> 
+	
+	
+	
+	
+	
+	<!--end   -->
+	
+	
+	 <!--Table "DESIGN_CHANGE_DETAILS" 	 -->
+	<!--
+	<entity local-service="true" name="DesignChangeDetails" table="DESIGN_CHANGE_DETAILS"  remote-service="true" >
+		
+		<column name="dcrSubitemSeqno" 		db-name="DCR_SUBITEM_SEQNO" primary="true" type="long" />
+		<column name="dcrItemSeqno" 		db-name="DCR_ITEM_SEQNO" 	type="long" />
+		<column name="dcrSubitemSerialno" 	db-name="DCR_SUBITEM_SERIALNO" 	type="long" />
+		
+		<column name="subitem" 			db-name="SUBITEM" 			type="String" />
+		<column name="changeDesc" 		db-name="CHANGE_DESC" 		type="String" />
+		<column name="designCost" 		db-name="DESIGN_COST" 		type="long" />
+		<column name="constructionCost" db-name="CONSTRUCTION_COST" type="long" />
+		<column name="scheduleImpact" 	db-name="SCHEDULE_IMPACT" 	type="String" />
+		
+		<column name="attachmentId1" 	db-name="ATTACHMENT_ID_1" 	type="long" />
+		<column name="attachmentId2" 	db-name="ATTACHMENT_ID_2" 	type="long" />
+		<column name="attachmentId3" 	db-name="ATTACHMENT_ID_3" 	type="long" />
+		<column name="attachmentId4" 	db-name="ATTACHMENT_ID_4" 	type="long" />
+		
+		<column name="attachment1" 		db-name="ATTACHMENT1" 		type="String" />
+		<column name="attachment2" 		db-name="ATTACHMENT2" 		type="String" />
+		<column name="attachment3" 		db-name="ATTACHMENT3" 		type="String" />
+		<column name="attachment4" 		db-name="ATTACHMENT4" 		type="String" />
+		
+		<column name="subitemApprovalStatus" 	db-name="SUBITEM_APPROVAL_STATUS" 	type="String" />
+		<column name="createdBy" 				db-name="CREATED_BY" 						type="String" />
+		<column name="createdOn" 				db-name="CREATED_ON" 						type="Date" />
+		<column name="modifiedBy" 				db-name="MODIFIED_BY" 						type="String" />
+		<column name="modifiedOn" 				db-name="MODIFIED_ON" 						type="Date" />
+		<column name="isActive" 				db-name="IS_ACTIVE" 						type="boolean" />
+		
+	</entity> -->
+	 
+	
+	<!--Table DESIGN_CHANGE_ITEMS 	 -->
+<!-- 	
+	<entity local-service="true" name="DesignChangeItems" table="DESIGN_CHANGE_ITEMS"  remote-service="true" >
+		<column name="dcrItemSeqno" 		db-name="DCR_ITEM_SEQNO" primary="true" type="long" />
+		<column name="dcrSeqno" 			db-name="DCR_SEQNO" 			type="long" />
+		
+		<column name="dcrItemSerialno" 		db-name="DCR_ITEM_SERIALNO" 	type="long" />
+		<column name="floor" 				db-name="FLOOR" 				type="String" />
+		<column name="item" 				db-name="ITEM" 					type="String" />
+		<column name="action" 				db-name="ACTION" 				type="String" />
+		
+		<column name="responseDuedate" 		db-name="RESPONSE_DUEDATE" 		type="Date" />
+		<column name="personInCharge" 		db-name="PERSON_IN_CHARGE" 		type="String" />
+		<column name="itemSpprovalStatus" 	db-name="ITEM_APPROVAL_STATUS" 	type="String" />
+		
+		<column name="approverId" 			db-name="APPROVER_ID" 		type="String" />
+		<column name="createdBy" 			db-name="CREATED_BY" 		type="String" />
+		<column name="createdOn" 			db-name="CREATED_ON" 		type="Date" />
+		<column name="modifiedBy" 			db-name="MODIFIED_BY" 		type="String" />
+		<column name="modifiedOn" 			db-name="MODIFIED_ON"		type="Date" />
+		<column name="isActive" 			db-name="IS_ACTIVE" 		type="boolean" />
+	</entity> -->
+	
+	<!--Table DESIGN_CHANGE_HEAD 	 -->
+<!-- 	
+	<entity local-service="true" name="DesignChangeHead" table="DESIGN_CHANGE_HEAD"  remote-service="true" >
+	
+		<column name="dcrSeqno" 		db-name="DCR_SEQNO" primary="true" type="long" />
+		
+		<column name="dcrId" 			db-name="DCR_ID" 			type="String" />
+		<column name="dcrRevno" 		db-name="DCR_REVNO" 		type="long" />
+		<column name="recId" 			db-name="REC_ID" 			type="long" />
+		<column name="meetingSeqno" 	db-name="MEETING_SEQNO" 	type="long" />
+		
+		<column name="changeType" 		db-name="CHANGETYPE" 		type="String" />
+		<column name="changeRequestby" 	db-name="CHANGEREQUESTBY" 	type="String" />
+		<column name="rfcId" 			db-name="RFC_ID" 			type="String" />
+		<column name="rfcOthers" 		db-name="RFC_OTHERS" 		type="String" />
+		<column name="attachmentId" 	db-name="ATTACHMENT_Id" 	type="long" />
+		<column name="attachment" 		db-name="ATTACHMENT" 		type="String" />
+		<column name="deptId" 			db-name="DEPT_ID" 			type="String" />
+		<column name="overallDesignCostFinal" 			db-name="OVERALL_DESIGN_COST_FINAL" 		type="int" />
+		<column name="overallConstructionCostFinal" 	db-name="OVERALL_CONSTRUCTION_COST_FINAL" 	type="int" />
+		<column name="impactSchedule" 			db-name="IMPACT_SCHEDULE" 			type="String" />
+		<column name="impactCost" 				db-name="IMPACT_COST" 				type="String" />
+		<column name="approvalStatus" 			db-name="APPROVAL_STATUS" 			type="String" />
+		<column name="approvalDate" 			db-name="APPROVAL_DATE" 			type="Date" />
+		<column name="clientApprovalStatus" 	db-name="CLIENT_APPROVAL_STATUS" 	type="String" />
+		<column name="clientApprovalDate" 		db-name="CLIENT_APPROVAL_DATE" 		type="Date" />
+		<column name="constructionStatus" 		db-name="CONSTRUCTION_STATUS" 		type="String" />
+		<column name="constructionDate" 		db-name="CONSTRUCTION_DATE" 		type="Date" />
+
+		<column name="createdBy" 		db-name="CREATED_BY" 				type="String" />
+		<column name="createdOn" 		db-name="CREATED_ON" 				type="Date" />
+		<column name="modifiedBy" 		db-name="MODIFIED_BY" 				type="String" />
+		<column name="modifiedOn" 		db-name="MODIFIED_ON"				type="Date" />
+		<column name="isActive" 		db-name="IS_ACTIVE" 				type="boolean" />
+
+	</entity> -->
+	
+	<!--Table DESIGN_CHANGEWORK_FLOW 	 -->
+<!-- 	
+	<entity local-service="true" name="DesignChangeWorkflow" table="DESIGN_CHANGEWORK_FLOW"  remote-service="true" >
+	
+		<column name="DcrWfSeqno" 		db-name="DCR_WF_SEQNO" primary="true"  type="long"  />
+		
+		<column name="dcrItemSeqno" 	db-name="DCR_ITEM_SEQNO"   type="long"  />
+		
+		<column name="precission" 		db-name="PRECISSION" 		type="String" />
+		<column name="actorRole" 		db-name="ACTOR_ROLE" 		type="String" />
+		<column name="actorId" 			db-name="ACTOR_ID" 			type="String" />
+		<column name="subactorId" 		db-name="SubActor_ID" 		type="String" />
+		<column name="actionStartat" 	db-name="ACTION_STARTAT" 	type="Date" />
+		<column name="actionedOn" 		db-name="ACTIONED_ON" 		type="Date" />
+		<column name="action" 			db-name="ACTION" 			type="String" />
+		<column name="remarks" 			db-name="REMARKS" 			type="String" />
+		<column name="createdBy" 		db-name="CREATED_BY" 		type="String" />
+		<column name="createdOn" 		db-name="CREATED_ON" 		type="Date" />
+		<column name="modifiedBy" 		db-name="MODIFIED_BY" 		type="String" />
+		<column name="modifiedOn" 		db-name="MODIFIED_ON" 		type="Date" />
+		<column name="isActive" 		db-name="IS_ACTIVE" 		type="boolean" />
+	</entity>
+	
+	 -->
+	<!--Table MASTER_WORKFLOW 	 -->
+	
+	<!-- <entity local-service="true" name="MasterWorkflow" table="MASTER_WORKFLOW"  remote-service="true" >
+		<column name="workflowId" 		db-name="WORKFLOW_ID" primary="true" type="long" />
+		<column name="departmentName" 	db-name="DEPARTMENT_NAME" 	type="String" />
+		<column name="approverId" 		db-name="APPROVER_ID" 		type="String" />
+		<column name="createdBy" 		db-name="CREATED_BY" 		type="String" />
+		<column name="createdOn" 		db-name="CREATED_ON" 		type="Date" />
+		<column name="modifiedBy" 		db-name="MODIFIED_BY" 		type="String" />
+		<column name="modifiedOn" 		db-name="MODIFIED_ON"		type="Date" />
+		<column name="isActive" 		db-name="IS_ACTIVE" 		type="boolean" />
+	</entity> -->
+	
+	<!--Table "DICTIONARY" 	 -->
+	
+<!-- 	<entity local-service="true" name="Dictionary" table="DICTIONARY"  remote-service="true" >
+		<column name="dictionarySeqnoId" 		db-name="DICTIONARY_SEQNO_ID" primary="true" type="long" />
+		<column name="type" 					db-name="TYPE" 			type="String" />
+		<column name="dictKey" 					db-name="DICT_KEY" 		type="String" />
+		<column name="dictValueEn" 				db-name="DICT_VALUE_EN" type="String" />
+		<column name="dictValueJp" 				db-name="DICT_VALUE_JP" type="String" />
+		<column name="sortOrder" 				db-name="SORT_ORDER" 	type="Short" />
+	</entity> -->
+
+</service-builder>

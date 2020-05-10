@@ -1,0 +1,33 @@
+{
+	"name": "@clayui/charts",
+	"version": "3.1.0",
+	"description": "React.js wrapper for D3 and billboard.js",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"ts:main": "src/index.tsx",
+	"scripts": {
+		"build:types": "cross-env NODE_ENV=production tsc --project ./tsconfig.declarations.json",
+		"build": "cross-env NODE_ENV=production babel src --root-mode upward --out-dir lib --extensions .ts,.tsx",
+		"copySvg": "ncp src/svg lib/svg",
+		"prepublishOnly": "yarn sass && yarn build && yarn build:types && yarn copySvg",
+		"sass": "node-sass src/scss/main.scss -o lib/css --source-map true",
+		"test": "jest --config ../../jest.config.js"
+	},
+	"keywords": [
+		"clay",
+		"react"
+	],
+	"dependencies": {
+		"billboard.js": "^1.8.0",
+		"classnames": "^2.2.6",
+		"d3": "^5.9.2"
+	},
+	"peerDependencies": {
+		"@clayui/css": "3.x",
+		"react": "^16.8.1",
+		"react-dom": "^16.8.1"
+	},
+	"browserslist": [
+		"extends browserslist-config-clay"
+	]
+}

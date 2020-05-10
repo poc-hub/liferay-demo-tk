@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.takenaka.model.DesignChangeDetails">
+		<field name="dcrChangeSeqno" type="long" />
+		<field name="designchangeSubseqno" type="long" />
+		<field name="groupId" type="long" />
+		<field name="revisionNo" type="int" />
+		<field name="meetingId" type="String" />
+		<field name="issuer" type="String" />
+		<field name="changeType" type="String" />
+		<field name="changeRequestby" type="String" />
+		<field name="rfcId" type="String" />
+		<field name="rfcOthers" type="String" />
+		<field name="rangeOfDisclosure" type="String" />
+		<field name="floor" type="String" />
+		<field name="item" type="String" />
+		<field name="originaldesginDetail" type="String" />
+		<field name="changeDetail" type="String" />
+		<field name="action" type="String" />
+		<field name="estdesignCosttype" type="String" />
+		<field name="estdesignCost" type="long" />
+		<field name="estconstructionCosttype" type="String" />
+		<field name="estconstructionCost" type="long" />
+		<field name="expenseAjustmentDivision" type="String" />
+		<field name="attachmentId1" type="long" />
+		<field name="attachmentId2" type="long" />
+		<field name="attachmentId3" type="long" />
+		<field name="attachmentId4" type="long" />
+		<field name="attachment1" type="String" />
+		<field name="attachment2" type="String" />
+		<field name="attachment3" type="String" />
+		<field name="attachment4" type="String" />
+		<field name="responsePeriod" type="String" />
+		<field name="personInCharge" type="String" />
+		<field name="approvalNo" type="long" />
+		<field name="approvalStatus" type="String" />
+		<field name="approvalDate" type="Date" />
+		<field name="clientApprovalStatus" type="String" />
+		<field name="clientApprovalDate" type="Date" />
+		<field name="constructionStatus" type="String" />
+		<field name="constructionDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="createdOn" type="Date" />
+		<field name="modifiedBy" type="String" />
+		<field name="modifiedOn" type="Date" />
+		<field name="isActive" type="boolean" />
+	</model>
+	<model name="com.takenaka.model.projgaiyo">
+		<field name="uuid" type="String" />
+		<field name="groupId" type="long" />
+		<field name="projNm" type="String" />
+		<field name="projNmKana" type="String" />
+		<field name="kenchikuNusiCd" type="String" />
+		<field name="kenchikuNusiNm" type="String" />
+		<field name="kenchikuChiCd" type="String" />
+		<field name="kenchikuChiNm" type="String" />
+		<field name="tatemonoYoto1" type="String" />
+		<field name="tatemonoYoto2" type="String" />
+		<field name="tatemonoYoto3" type="String" />
+		<field name="kaisuB" type="Double" />
+		<field name="kaisuF" type="Double" />
+		<field name="kaisuP" type="Double" />
+		<field name="kozoShubetu1" type="String" />
+		<field name="kozoShubetu2" type="String" />
+		<field name="kozoShubetu3" type="String" />
+		<field name="nobeyukaMenseki" type="Double" />
+		<field name="kenchikuMenseki" type="Double" />
+		<field name="chakkoBi" type="String" />
+		<field name="shunkoBi" type="String" />
+		<field name="sekkeiKb" type="String" />
+		<field name="sekoKb" type="String" />
+		<field name="sagyoshoChiku" type="String" />
+		<field name="updDate" type="String" />
+		<field name="updTime" type="String" />
+	</model>
+	<model name="com.takenaka.model.ProjTable">
+		<field name="recId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="groupFlag" type="String" />
+		<field name="yosoKojiCd" type="String" />
+		<field name="sekkeiCd" type="String" />
+		<field name="sekkeiCdYy" type="String" />
+		<field name="mitumoriNendo" type="String" />
+		<field name="mitumoriCd" type="String" />
+		<field name="kojiCd" type="String" />
+		<field name="mitumoriSeiriNo" type="String" />
+		<field name="shukanSekkeiCd" type="String" />
+		<field name="sekkeiTogoSaki" type="String" />
+		<field name="sekkeiBunkatuMoto" type="String" />
+		<field name="jutakuSekkeiTaisho" type="String" />
+		<field name="honsitenRid" type="String" />
+		<field name="honsitenGid" type="String" />
+		<field name="orgYkoji" type="String" />
+		<field name="orgJKOJI" type="String" />
+		<field name="orgMdd" type="String" />
+		<field name="orgPdd" type="String" />
+		<field name="orgEsmas" type="String" />
+		<field name="orgPrist" type="String" />
+		<field name="procSekkei" type="String" />
+		<field name="procMitumori" type="String" />
+		<field name="procSekkeiOen" type="String" />
+		<field name="procSekkeiTogo" type="String" />
+		<field name="procSekkeiBunkatu" type="String" />
+		<field name="procSekkeiJutaku" type="String" />
+		<field name="taketuChusiToketuKb" type="String" />
+		<field name="kanryoChusiStatus" type="String" />
+		<field name="mitumoriKeijoShubetu" type="String" />
+		<field name="torikesiKb" type="String" />
+		<field name="kessanNendo" type="String" />
+		<field name="updDate" type="String" />
+		<field name="updTime" type="String" />
+	</model>
+	<model name="com.takenaka.model.TriggerMeeting">
+		<field name="meetingSeqno" type="long" />
+		<field name="groupId" type="long" />
+		<field name="meetingId" type="String" />
+		<field name="meetingTitle" type="String" />
+		<field name="issuer" type="String" />
+		<field name="meetingType" type="String" />
+		<field name="meetDate" type="Date" />
+		<field name="participant" type="String" />
+		<field name="meetingPlace" type="String" />
+		<field name="meetingSummary" type="String" />
+		<field name="createdBy" type="String" />
+		<field name="createdOn" type="Date" />
+		<field name="modifiedBy" type="String" />
+		<field name="modifiedOn" type="Date" />
+		<field name="isActive" type="boolean" />
+	</model>
+	<model name="com.takenaka.model.TriggerMeetingDetails">
+		<field name="meetingdetailSeqno" type="long" />
+		<field name="meetingSeqno" type="long" />
+		<field name="category" type="String" />
+		<field name="floor" type="String" />
+		<field name="item" type="String" />
+		<field name="actions" type="String" />
+		<field name="RESPONSE_DUEDATE" type="Date" />
+		<field name="personInCharge" type="String" />
+		<field name="createdBy" type="String" />
+		<field name="createdOn" type="Date" />
+		<field name="modifiedBy" type="String" />
+		<field name="modifiedOn" type="Date" />
+		<field name="isActive" type="boolean" />
+	</model>
+</model-hints>
