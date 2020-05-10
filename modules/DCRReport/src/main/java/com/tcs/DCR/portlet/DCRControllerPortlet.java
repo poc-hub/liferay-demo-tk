@@ -1,20 +1,5 @@
 package com.tcs.DCR.portlet;
 
-import com.tcs.DCR.constants.DCRControllerPortletKeys;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.document.library.kernel.model.DLFileEntry;
 import com.liferay.document.library.kernel.model.DLFolder;
@@ -22,33 +7,43 @@ import com.liferay.document.library.kernel.model.DLFolderConstants;
 import com.liferay.document.library.kernel.service.DLAppServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.json.JSONArray;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.repository.model.FileEntry;
 import com.liferay.portal.kernel.repository.model.Folder;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.ServiceContextFactory;
+import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.upload.FileItem;
 import com.liferay.portal.kernel.upload.UploadPortletRequest;
-
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.takenaka.model.DesignChangeDetails;
-import com.takenaka.model.TriggerMeeting;
-import com.takenaka.model.TriggerMeetingDetails;
 import com.takenaka.service.DesignChangeDetailsLocalServiceUtil;
-import com.takenaka.service.TriggerMeetingDetailsLocalServiceUtil;
-import com.takenaka.service.TriggerMeetingLocalServiceUtil;
+import com.tcs.DCR.constants.DCRControllerPortletKeys;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
 import javax.portlet.ProcessAction;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -446,5 +441,81 @@ public class DCRControllerPortlet extends MVCPortlet {
 	 * 
 	 * }
 	 */
+	
+	
+	
+	public void arrayOfJSONUserData(ResourceRequest resourceRequest,
+			ResourceResponse resourceResponse,List<DesignChangeDetails> designChangeDetailsList) throws IOException,
+			PortletException {
+			JSONArray allUsersJsonArray = JSONFactoryUtil.createJSONArray();
+			try {
+			JSONArray jsonUserArray = null;
+
+
+			for (DesignChangeDetails designChangeDetails : designChangeDetailsList) {
+			jsonUserArray = JSONFactoryUtil.createJSONArray();
+			jsonUserArray.put(designChangeDetails.getDcrChangeSeqno());
+			jsonUserArray.put(designChangeDetails.getChangeRequestby());
+			jsonUserArray.put(designChangeDetails.getDcrChangeSeqno());
+			jsonUserArray.put(designChangeDetails.getItem());
+			jsonUserArray.put(designChangeDetails.getAction());
+			jsonUserArray.put(designChangeDetails.getFloor());
+			jsonUserArray.put(designChangeDetails.getEstdesignCost());
+			jsonUserArray.put(designChangeDetails.getEstconstructionCost());
+			jsonUserArray.put(designChangeDetails.getExpenseAjustmentDivision());
+
+			String pattern = "dd-MMM-yyyy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			String date = simpleDateFormat.format(designChangeDetails.getCreatedOn());
+			jsonUserArray.put(date);
+			jsonUserArray.put(designChangeDetails.getApprovalStatus());
+			jsonUserArray.put(designChangeDetails);
+			allUsersJsonArray.put(jsonUserArray);
+			}
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+
+			JSONObject tableData = JSONFactoryUtil.createJSONObject();
+			tableData.put("data", allUsersJsonArray);
+			ServletResponseUtil.write(PortalUtil.getHttpServletResponse(resourceResponse),
+			tableData.toString());
+			}
+
+			@Override
+			public void serveResource(ResourceRequest resourceRequest,ResourceResponse resourceResponse)throws IOException , PortletException{
+			String query = ParamUtil.getString(resourceRequest,"query");
+			String requestType = ParamUtil.getString(resourceRequest,"requestType");
+			HttpServletRequest serveletRequest = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(resourceRequest));
+
+			if(null == query || "".equals(query)){
+				query = serveletRequest.getParameter("query");
+			}
+
+			if(null == requestType || "".equals(requestType)){
+				requestType = serveletRequest.getParameter("requestType");
+			}
+
+			if(null != requestType && "search".equals(requestType)){
+				try{
+					List<DesignChangeDetails> designChangeDetailsList = DesignChangeDetailsLocalServiceUtil.getDesignChangeDetailsByFilter("1","","","","","","",null,null);
+					arrayOfJSONUserData(resourceRequest,resourceResponse,designChangeDetailsList);
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+
+			}
+			else{
+				try{
+					List<DesignChangeDetails> designChangeDetailsList = DesignChangeDetailsLocalServiceUtil.getDesignChangeDetailses(-1,-1);
+					arrayOfJSONUserData(resourceRequest,resourceResponse,designChangeDetailsList);
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+			}
+	
 
 }
