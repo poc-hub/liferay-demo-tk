@@ -4,22 +4,9 @@
 <%@page import="com.takenaka.model.TriggerMeeting"%>
 <%@page import="com.takenaka.service.*"%>
 <%@page import="java.text.*"%>
-   
-   <%
- TriggerMeeting MeetinInfo =(TriggerMeeting)request.getAttribute("MeetingInfo");
-List<TriggerMeetingDetails> MeetingDetails = (List<TriggerMeetingDetails>)request.getAttribute("MeetingDetails");
 
-String formatDate=null;
-if(MeetinInfo.getMeetDate()!=null){
-	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd-yyyy");
-    String formatedDate = df.format(MeetinInfo.getMeetDate());
-    formatDate = sdf2.format(df.parse(formatedDate));
-}
-else{
-	formatDate="";
-}
-%>
+
+
 
 <style>
 body {
@@ -79,11 +66,49 @@ body {
 .add_btn {
 	float: right;
 }
+.mandatory:after{
+content: " *";
+color: red;
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
 </style>
+
+
+   
+   <%
+ TriggerMeeting MeetinInfo =(TriggerMeeting)request.getAttribute("MeetingInfo");
+List<TriggerMeetingDetails> MeetingDetails = (List<TriggerMeetingDetails>)request.getAttribute("MeetingDetails");
+
+String formatDate=null;
+if(MeetinInfo.getMeetDate()!=null){
+	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd-yyyy");
+    String formatedDate = df.format(MeetinInfo.getMeetDate());
+    formatDate = sdf2.format(df.parse(formatedDate));
+}
+else{
+	formatDate="";
+}
+%>
+
+
 
 <div class="container">
 
-	<div class="stepwizard col-md-offset-3">
+<!-- 	<div class="stepwizard col-md-offset-3">
 		<div class="stepwizard-row setup-panel">
 			<div class="stepwizard-step">
 				<a href="#step-1" type="button" class="btn btn-primary">
@@ -99,7 +124,25 @@ body {
 				<p></p>
 			</div>
 		</div>
+	</div> -->
+	
+	
+	<div class="stepwizard col-md-offset-3">
+		<div class="stepwizard-row setup-panel">
+			<div class="stepwizard-step">
+				<a href="#step-1" type="button" class="btn btn-primary">
+				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
+				<p></p>
+			</div>
+			<div class="stepwizard-step">
+				<a href="#step-2" type="button" class="btn btn-default"
+					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
+				<p></p>
+			</div>
+		</div>
 	</div>
+	
+	
 
 	<form name="meetingIndexForm">
 		<div class="row setup-content" id="step-1">
@@ -241,7 +284,24 @@ body {
 							<tr>
 								<td><label><liferay-ui:message key="from-createmeeting-category" /></label> <select
 									id="category" name="Category" readonly>
-										<option value="DCR"><%=tm.getCategory() %></option>
+										<%-- <option value="DCR"><%=tm.getCategory() %></option> --%>
+										
+								<%
+								if(tm.getCategory().equalsIgnoreCase("from-createmeeting-dcr")){
+									%>
+									<option value="from-createmeeting-dcr"><label><liferay-ui:message key="from-createmeeting-dcr" /></label></option>
+									
+									<%-- <label><liferay-ui:message key="from-internal" /></label><%=MeetinInfo.getMeetingType() %></option> --%>
+								<%}else{%>
+								
+									<%-- <option value="DCR"><%=tm.getCategory() %></option> --%>
+									
+									<option value="from-createmeeting-other"><label><liferay-ui:message key="from-createmeeting-other" /></label></option>
+									
+									<%-- <label><liferay-ui:message key="from-external" /></label><%=MeetinInfo.getMeetingType() %></option> --%>
+								<%}%>
+										
+										
 										<!-- <option value="Other">Other</option> -->
 								</select></td>
 								<td><label><liferay-ui:message key="from-createmeeting-floor" /></label> <input type="text" id="floor"

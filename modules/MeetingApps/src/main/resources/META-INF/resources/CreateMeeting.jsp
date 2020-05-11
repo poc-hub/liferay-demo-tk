@@ -58,6 +58,7 @@ body {
 .add_btn {
 	float: right;
 }
+ 
 </style>
 
 <portlet:actionURL name="meetingAction" var="submitMeeting" />
@@ -86,7 +87,7 @@ body {
 		</div>
 	</div>
 
-	<form name="meetingIndexForm" action="${submitMeeting}" method="POST">
+	<form name="meetingIndexForm" action="${submitMeeting}" method="POST" id="newForm()">
 		<div class="row setup-content" id="step-1">
 			<div class="container">
 				<div class="row">
@@ -109,9 +110,9 @@ body {
 
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-issuer" /></label>
+							<label class="mandatory"><liferay-ui:message key="from-createmeeting-issuer" /></label>
 							<input type="text"
-								class="form-control" id="issuer" name="Issuer" >
+								class="form-control" id="issuer" name="Issuer" required>
 						</div>
 					</div>
 				</div>
@@ -291,7 +292,7 @@ body {
 					<p id="test"></p>
 					<div class="col-sm">
 						<button type="button" class="btn btn-primary add_btn"
-							style="float: right;" onclick="addRow()"><label><liferay-ui:message key="from-createmeeting-additems" /></label></button></div>
+							style="float: right;" onclick="addRow()"></button></div>
 							
 					</div>
 				</div>
@@ -335,6 +336,41 @@ body {
  
  
  <%@ include file="/init.jsp"%>
+ 
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<aui:script>
+function dateChange(){
+	console.log("inside method");
+	var val=document.getElementById("meetingDate").value;
+	var value = new Date(Date.parse(val,"MMM dd yyyy"));
+    console.log("INside aui");
+    var valuer=new Date();
+    if(value < valuer) {
+    	//document.getElementById("meetingDate").value("");
+    	
+        alert("Meeting Date should be today or ahead");
+        $("#meetingDate").val("");
+        document.getElementById("validationspan").innerHTML("Please fill date field");
+         }
+}
+function newFunction() {
+            document.getElementById("newForm").reset();
+         }
+
+function checkInput() {
+	console.log("Inside dateval");
+	var val=document.getElementById("meetingDate").value;
+	console.log(val);
+	if(val=="") {
+		alert("Please fill date field")
+		document.getElementById("validationspan").innerHTML("Please fill date field");
+	}
+}
+
+</aui:script>
+ 
 
 <style>
 body {
@@ -394,6 +430,24 @@ body {
 .add_btn {
 	float: right;
 }
+.mandatory:after{
+content: " *";
+color: red;
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
 </style>
 
 <portlet:actionURL name="meetingAction" var="submitMeeting" />
@@ -421,7 +475,7 @@ body {
 		</div>
 	</div>
 
-	<form name="meetingIndexForm" action="${submitMeeting}" method="POST">
+	<form name="meetingIndexForm" action="${submitMeeting}" method="POST" id="newForm">
 		<div class="row setup-content" id="step-1">
 			<div class="container">
 				<div class="row">
@@ -443,15 +497,15 @@ body {
 
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-issuer" /></label> <input type="text"
-								class="form-control" id="issuer" name="Issuer">
+							<label class="mandatory"><liferay-ui:message key="from-createmeeting-issuer" /></label> <input type="text"
+								class="form-control" id="issuer" name="Issuer" required>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-meetingtype" /></label> <select
+							<label class="mandatory"><liferay-ui:message key="from-createmeeting-meetingtype" /></label> <select
 								class="custom-select" id="meetingType" name="MeetingType">
 								<option selected>Choose...</option>
 								<option value="from-internal"><label><liferay-ui:message key="from-internal" /></label></option>
@@ -462,32 +516,33 @@ body {
 
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-meetingdate" /></label> <input type="date"
-								class="form-control" id="meetingDate" name="MeetingDate">
+							<label class="mandatory"><liferay-ui:message key="from-createmeeting-meetingdate" /></label> <input type="date"
+								class="form-control" id="meetingDate" name="MeetingDate" onchange="dateChange()">
+								<span class="validationspan"></span>
 						</div>
 					</div>
 
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-meetingplace" /></label><input type="text"
-								class="form-control" id="meetingPlace" name="MeetingPlace">
+							<label class="mandatory"><liferay-ui:message key="from-createmeeting-meetingplace" /></label><input type="text"
+								class="form-control" id="meetingPlace" name="MeetingPlace" required>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-meetingtitle" /></label> <input type="text"
-								class="form-control" id="meetingTitle" name="MeetingTitle">
+							<label class="mandatory"><liferay-ui:message key="from-createmeeting-meetingtitle" /></label> <input type="text"
+								class="form-control" id="meetingTitle" name="MeetingTitle" required>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-meetingparticipants" /></label> <input type="text"
-								class="form-control" id="meetingParticipants"
-								name="MeetingParticipants">
+							<label class="mandatory"><liferay-ui:message key="from-createmeeting-meetingparticipants" /></label> <input type="text"
+								style="height:75px" class="form-control" id="meetingParticipants"
+								name="MeetingParticipants" required>
 						</div>
 					</div>
 				</div>
@@ -496,11 +551,12 @@ body {
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingsummary" /></label><input type="text"
-								class="form-control" id="meetingSummary" name="MeetingSummary">
+								style="height:150px" class="form-control" id="meetingSummary" name="MeetingSummary">
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				
+				<!-- added by <div class="row">
 					<div class="col-sm">
 						<div class="form-group">
 							<button class="btn btn-primary type=" button" onclick="#">Draft</button>
@@ -522,7 +578,28 @@ body {
 								type="button">Next</button>
 						</div>
 					</div>
+				</div> -->
+				<div class="row">
+					
+					<div class="col-sm-4">
+						<div class="form-group">
+							<button type="reset" style="width:60%; color:black;background-color:#F0F0F0;" class="btn btn-default" type=" button" onclick="newFunction()"><label><liferay-ui:message key="from-createmeeting-reset" /></label></button>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<button style="width:60%; color:black;background-color:#F0F0F0;" class="btn btn-default" type="button"><label><liferay-ui:message key="from-createmeeting-cancel" /></label></button>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<button style="width:60%; color:black;background-color:#F0F0F0;" class="btn btn-default nextBtn btn-lg pull-right"
+								type="button" onclick="checkInput()">Next</button>
+						</div>
+					</div>
 				</div>
+				
+				
 			</div>
 		</div>
 
@@ -535,22 +612,22 @@ body {
 
 						<tbody>
 							<tr>
-								<td><label><liferay-ui:message key="from-createmeeting-category" /></label> <select
+								<td><label class="mandatory"><liferay-ui:message key="from-createmeeting-category" /></label> <select
 									id="category" name="Category">
 										<option value="from-createmeeting-dcr"><label><liferay-ui:message key="from-createmeeting-dcr" /></label></option>
 										<option value="from-createmeeting-other"><label><liferay-ui:message key="from-createmeeting-other" /></label></option>
 								</select></td>
-								<td><label><liferay-ui:message key="from-createmeeting-floor" /></label>  <input type="text" id="floor"
-									name="Floor"></td>
-								<td><label><liferay-ui:message key="from-createmeeting-items" /></label> <input type="text" id="items"
-									name="Items"></td>
-								<td><label><liferay-ui:message key="from-createmeeting-action" /></label> <input type="text" id="action"
-									name="Action"></td>
-								<td><label><liferay-ui:message key="from-createmeeting-duedate" /></label> <input type="date"
-									value="" id="expectedDueDate" name="ExpectedDueDate"></td>
+								<td><label class="mandatory"><liferay-ui:message key="from-createmeeting-floor" /></label>  <input type="text" id="floor"
+									name="Floor" required></td>
+								<td><label class="mandatory"><liferay-ui:message key="from-createmeeting-items" /></label> <input type="text" id="items"
+									name="Items" required></td>
+								<td><label class="mandatory"><liferay-ui:message key="from-createmeeting-action" /></label> <input type="text" id="action"
+									name="Action" required></td>
+								<td><label class="mandatory"><liferay-ui:message key="from-createmeeting-duedate" /></label> <input type="date"
+									value="" id="expectedDueDate" name="ExpectedDueDate" required></td>
 								<td><label><liferay-ui:message key="from-createmeeting-personIncharge" /></label> <input type="text"
 									id="persionInCharge" name="PersionInCharge"></td>
-									<td><input type="button" value="Remove"></td>
+									<td><button type="button"class="btn"><i class="fa fa-minus" aria-hidden="true"></i></button></td>
 
 							</tr>
 						</tbody>
@@ -561,18 +638,18 @@ body {
 					</table>
 					<p id="test"></p>
 					<div class="col-sm">
-						<button type="button" class="btn btn-primary add_btn"
-							style="float: right;" onclick="addRow()">Add More</button></div>
+					<!-- <liferay-ui:message key="from-createmeeting-additems" /> -->
+						<button type="button"
+							style="float: right;" onclick="addRow()" class="btn"><i class="fa fa-plus" aria-hidden="true"></i><label></label></button></div>
 							
 					</div>
 				</div>
-
 				<div class="row">
-					<div class="col-sm">
+					<!-- <div class="col-sm">
 						<div class="form-group">
 							<button class="btn btn-primary type="button" onclick="#">Draft</button>
 						</div>
-					</div>
+					</div> -->
 					<div class="col-sm">
 						<div class="form-group">
 							<button class="btn btn-primary type="button" onclick="#">Reset</button>
@@ -589,7 +666,31 @@ body {
 						</div>
 					</div>
 				</div>
-
+					
+				<!-- <div class="row">
+					
+					<div class="col-sm-4">
+						<div class="form-group">
+							<button style="width:60%; color:black;background-color:#F0F0F0; 
+							margin: 50px 50px 50px 50px;" class="btn btn-default" type=" button" onclick="newFunction()"><label><liferay-ui:message key="from-createmeeting-reset" /></label></button>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<button style="width:60%; color:black;background-color:#F0F0F0; 
+							margin: 50px 50px 50px 50px;" class="btn btn-default" type="button"><label><liferay-ui:message key="from-createmeeting-cancel" /></label></button>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<button style="width:60%; color:black;background-color:#F0F0F0; 
+							margin: 50px 50px 50px 50px;" class="btn btn-default" type="button">save</button>
+							<label><liferay-ui:message key="from-createmeeting-save" /></label>
+							
+						</div>
+					</div>
+				</div> -->
+				
 			</div>
 	</form>
 </div>

@@ -3,10 +3,16 @@
 <%@page import="com.takenaka.model.TriggerMeeting"%>
 <%@page import="com.takenaka.service.*"%>
 <%@page import="java.text.*"%>
+
+<script type="text/javascript" src="<%request.getContextPath();%>/js/main.js"></script>
 <!-- <p>
 	<b><liferay-ui:message key="meetingcontroller.caption" /></b>
 </p> -->
 <!-- <portlet:actionURL name="SearchAction" var="searchVar" /> -->
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <aui:script>
 function save(){
@@ -56,9 +62,119 @@ function save(){
    
     });
 }
+$('#mtng_indx_tabl').DataTable();
+  $('#mtng_indx_tabl_filter').hide();
+var valuer;
+function valStartDate(){
+	console.log("Insiade start");
+    AUI().use('aui-base','aui-io-request', function(A){
+       
+        var MeetingFromDate=A.one("#<portlet:namespace/>meetingFromDate").get('value');
+        console.log(MeetingFromDate);
+        valuer = new Date(Date.parse(MeetingFromDate,"MMM dd yyyy"));
+        console.log(new Date());
+        console.log(valuer);
+        });
+        
+        
+        AUI().use('aui-form-validator',
+  function(A) {
+  var DEFAULTS_FORM_VALIDATOR = A.config.FormValidator;
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.RULES,
+                                    {
+                                    customRuleForEndDate:function (val, fieldNode, ruleValue) {
+                                  		value = new Date(Date.parse(val,"MMM dd yyyy"));
+                                  		if(value > new Date()) {
+                                  			return false;
+                                  		}
+                                  		else {
+                                  			return true;
+                                  		}
+                                       }, 
+                                    },
+                                    true
+                        );
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.STRINGS,
+                                    {
+                                                customRuleForEndDate:"Meeting date should be today or day before",
+                                    },
+                                    true
+                        );
+    var rules = {
+      <portlet:namespace/>Meeting_From_Date: {
+      	customRuleForEndDate: true
+      },
+    };
 
+    var fieldStrings = {};
+    new A.FormValidator(
+      {
+        boundingBox: '#<portlet:namespace/>dateForm',
+        fieldStrings: fieldStrings,
+        rules: rules,
+        showAllMessages: true
+      }
+    );
+  }
+);
+        
+}
+
+
+function valEndDate() {
+	console.log("Insiade end");
+AUI().use('aui-form-validator',
+  function(A) {
+  var DEFAULTS_FORM_VALIDATOR = A.config.FormValidator;
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.RULES,
+                                    {
+                                    customRuleForEndDate:function (val, fieldNode, ruleValue) {
+                                  		value = new Date(Date.parse(val,"MMM dd yyyy"));
+                                  		if(value < valuer) {
+                                  			console.log(value);
+                                  			console.log(valuer);
+                                  			return false;
+                                  		}
+                                  		else {
+                                  			return true;
+                                  		}
+                                       }, 
+                                    },
+                                    true
+                        );
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.STRINGS,
+                                    {
+                                                customRuleForEndDate:"Meeting end date should be on or after start date",
+                                    },
+                                    true
+                        );
+    var rules = {
+     <portlet:namespace/>Meeting_To_Date: {
+      	customRuleForEndDate: true
+      },
+    };
+
+    var fieldStrings = {};
+    new A.FormValidator(
+      {
+        boundingBox: '#<portlet:namespace/>dateForm',
+        fieldStrings: fieldStrings,
+        rules: rules,
+        showAllMessages: true
+      }
+    );
+  }
+);
+}
 </aui:script>
-<aui:form>
+<!-- <style>
+table.dataTable{clear:both;margin-top:6px !important;margin-bottom:6px !important;max-width:none !important;border-collapse:separate !important}table.dataTable td,table.dataTable th{-webkit-box-sizing:content-box;box-sizing:content-box}table.dataTable td.dataTables_empty,table.dataTable th.dataTables_empty{text-align:center}table.dataTable.nowrap th,table.dataTable.nowrap td{white-space:nowrap}div.dataTables_wrapper div.dataTables_length label{font-weight:normal;text-align:left;white-space:nowrap}div.dataTables_wrapper div.dataTables_length select{width:75px;display:inline-block}div.dataTables_wrapper div.dataTables_filter{text-align:right}div.dataTables_wrapper div.dataTables_filter label{font-weight:normal;white-space:nowrap;text-align:left}div.dataTables_wrapper div.dataTables_filter input{margin-left:0.5em;display:inline-block;width:auto}div.dataTables_wrapper div.dataTables_info{padding-top:8px;white-space:nowrap}div.dataTables_wrapper div.dataTables_paginate{margin:0;white-space:nowrap;text-align:right}div.dataTables_wrapper div.dataTables_paginate ul.pagination{margin:2px 0;white-space:nowrap}div.dataTables_wrapper div.dataTables_processing{position:absolute;top:50%;left:50%;width:200px;margin-left:-100px;margin-top:-26px;text-align:center;padding:1em 0}table.dataTable thead>tr>th.sorting_asc,table.dataTable thead>tr>th.sorting_desc,table.dataTable thead>tr>th.sorting,table.dataTable thead>tr>td.sorting_asc,table.dataTable thead>tr>td.sorting_desc,table.dataTable thead>tr>td.sorting{padding-right:30px}table.dataTable thead>tr>th:active,table.dataTable thead>tr>td:active{outline:none}table.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc_disabled,table.dataTable thead .sorting_desc_disabled{cursor:pointer;position:relative}table.dataTable thead .sorting:after,table.dataTable thead .sorting_asc:after,table.dataTable thead .sorting_desc:after,table.dataTable thead .sorting_asc_disabled:after,table.dataTable thead .sorting_desc_disabled:after{position:absolute;bottom:8px;right:8px;display:block;font-family:'Glyphicons Halflings';opacity:0.5}table.dataTable thead .sorting:after{opacity:0.2;content:"\e150"}table.dataTable thead .sorting_asc:after{content:"\e155"}table.dataTable thead .sorting_desc:after{content:"\e156"}table.dataTable thead .sorting_asc_disabled:after,table.dataTable thead .sorting_desc_disabled:after{color:#eee}div.dataTables_scrollHead table.dataTable{margin-bottom:0 !important}div.dataTables_scrollBody>table{border-top:none;margin-top:0 !important;margin-bottom:0 !important}div.dataTables_scrollBody>table>thead .sorting:after,div.dataTables_scrollBody>table>thead .sorting_asc:after,div.dataTables_scrollBody>table>thead .sorting_desc:after{display:none}div.dataTables_scrollBody>table>tbody>tr:first-child>th,div.dataTables_scrollBody>table>tbody>tr:first-child>td{border-top:none}div.dataTables_scrollFoot>.dataTables_scrollFootInner{box-sizing:content-box}div.dataTables_scrollFoot>.dataTables_scrollFootInner>table{margin-top:0 !important;border-top:none}@media screen and (max-width: 767px){div.dataTables_wrapper div.dataTables_length,div.dataTables_wrapper div.dataTables_filter,div.dataTables_wrapper div.dataTables_info,div.dataTables_wrapper div.dataTables_paginate{text-align:center}}table.dataTable.table-condensed>thead>tr>th{padding-right:20px}table.dataTable.table-condensed .sorting:after,table.dataTable.table-condensed .sorting_asc:after,table.dataTable.table-condensed .sorting_desc:after{top:6px;right:6px}table.table-bordered.dataTable th,table.table-bordered.dataTable td{border-left-width:0}table.table-bordered.dataTable th:last-child,table.table-bordered.dataTable th:last-child,table.table-bordered.dataTable td:last-child,table.table-bordered.dataTable td:last-child{border-right-width:0}table.table-bordered.dataTable tbody th,table.table-bordered.dataTable tbody td{border-bottom-width:0}div.dataTables_scrollHead table.table-bordered{border-bottom-width:0}div.table-responsive>div.dataTables_wrapper>div.row{margin:0}div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:first-child{padding-left:0}div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-child{padding-right:0}
+</style> -->
+<aui:form name="dateForm">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">
@@ -98,15 +214,17 @@ function save(){
 		<div class="row">
 			<div class="col-sm">
 				<div class="form-group">
-					<aui:input type="date" name="Meeting From Date" id="meetingFrmDate" label="from-meetingIndex-meetingdatefrom" />
-					<!-- <input
+					<aui:input type="date" name="Meeting_From_Date" id="meetingFromDate" onchange="valStartDate()" label="from-meetingIndex-meetingdatefrom">     					
+					</aui:input>
+					 <!-- <input
 						class="form-control" type="date" value="" id="meetingFrmDate"
-						name="MeetingFromDate"> -->
+						name="MeetingFromDate">  -->
 				</div>
 			</div>
 			<div class="col-sm">
 				<div class="form-group">
-					<aui:input type="date" name="Meeting To Date" id="meetingToDate" label="from-meetingIndex-meetingdateto" />
+					<aui:input type="date" name="Meeting_To_Date" id="meetingToDate" 
+					label="from-meetingIndex-meetingdateto" onchange="valEndDate()" />
 					<!-- <input
 						class="form-control" type="date" value="" id="meetingToDate"
 						name="MeetingToDate"> -->
@@ -124,7 +242,7 @@ function save(){
 	</div>
 </aui:form>
 </form>
-<table class="table" id="default">
+<table class="table" id="mtng_indx_tabl">
 	<thead>
 		<tr>
 			<th scope="col"><label><liferay-ui:message key="from-meetingIndex-srno" /></th>
@@ -185,7 +303,7 @@ function save(){
 	<div class="col-sm-4">
 
 		<aui:button-row>
-			<aui:button onClick="<%=createMeeting.toString()%>"
+			<aui:button style="width:100%;background-color:#D3D3D3;margin:0px 50px 0px 0px;" onClick="<%=createMeeting.toString()%>"
 				value="from-meetingIndex-create"></aui:button>
 		</aui:button-row>
 
@@ -193,7 +311,8 @@ function save(){
 	</div>
 	<div class="col-sm-4">
 		<center>
-			<aui:button type="reset"
+			<aui:button style="width:100%;background-color:#D3D3D3;
+		margin:20px 0px 0px 75px;" type="reset"
 				class="btn btn-secondary" value="from-meetingIndex-reset"></aui:button>
 			
 			<!-- <button type="button" class="btn btn-secondary" value="from-meetingIndex-reset"></button> -->

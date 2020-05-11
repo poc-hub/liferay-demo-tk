@@ -20,6 +20,8 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <portlet:resourceURL var="saveDataUrl"/>
 
 <script src="../js/main.js" type="text/javascript"></script>
+
+<!-- <script src="../js/dataTable.js" type="text/javascript"></script> -->
 <%
 int totalMeetings = TriggerMeetingLocalServiceUtil.getTriggerMeetingsCount();
 List<TriggerMeeting> Meetins = TriggerMeetingLocalServiceUtil.getTriggerMeetings(0, totalMeetings);
