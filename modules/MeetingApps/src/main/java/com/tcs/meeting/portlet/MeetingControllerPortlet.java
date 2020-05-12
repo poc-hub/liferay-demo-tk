@@ -47,7 +47,9 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(immediate = true, property = { "com.liferay.portlet.display-category=category.Takenaka",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
-		"com.liferay.portlet.footer-portlet-javascript=/js/main.js", "com.liferay.portlet.instanceable=true",
+		"com.liferay.portlet.footer-portlet-javascript=/js/main.js",
+		"com.liferay.portlet.footer-portlet-javascript=/js/datatable.js",
+		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.display-name=MeetingController", "javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
 		"javax.portlet.name=" + MeetingControllerPortletKeys.MEETINGCONTROLLER,
@@ -67,9 +69,11 @@ public class MeetingControllerPortlet extends MVCPortlet {
 		String MeetingType = resourceRequest.getParameter("MeetingType");
 		String MeetingId = resourceRequest.getParameter("MeetingId");
 		String Issuer = resourceRequest.getParameter("Issuer");
-		String MeetingFrmDate = resourceRequest.getParameter("MeetingFrmDate");
+		String MeetingFrmDate = resourceRequest.getParameter("MeetingFromDate");
 		String MeetingToDate = resourceRequest.getParameter("MeetingToDate");
 		String MeetingTitle = resourceRequest.getParameter("MeetingTitle");
+		System.out.println("MeetinFrmDate: "+MeetingFrmDate);
+		System.out.println("MeetingToDate:" +MeetingToDate);
 		Date FrmDate=null;
 		if(MeetingFrmDate.equals(null)|| MeetingFrmDate.equals("")) {
 			System.out.println("inside MeetingFrmDate.equals(null)");
@@ -127,7 +131,7 @@ public class MeetingControllerPortlet extends MVCPortlet {
 				jsonobj.put("MeetingTitle", arr.get(i + 4));
 				searchData.put(jsonobj);
 			}
-
+System.out.println("Size of  search data-->"+searchData);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -161,7 +165,7 @@ public class MeetingControllerPortlet extends MVCPortlet {
 		// Meeting Information Pages
 		String Project = ParamUtil.getString(actionRequest, "Project");
 		// System.out.println("Project" + Project);
-		// String MeetingId = ParamUtil.getString(actionRequest, "MeetingId");
+		//String MeetingId = ParamUtil.getString(actionRequest, "MeetingId");
 		// System.out.println("MeetingId" + MeetingId);
 		String Issuer = ParamUtil.getString(actionRequest, "Issuer");
 		// System.out.println("Issuer" + Issuer);
