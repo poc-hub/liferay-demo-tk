@@ -736,3 +736,10 @@ background-color: #15A3E6 ;
 			</div>
 	</form>
 </div>
+
+<p id='output'></p>
+<p id='output1'></p>
+<p id='output2'></p>
+<p id='output3'></p>
+<p id='output4'></p>
+<p id='output5'></p>

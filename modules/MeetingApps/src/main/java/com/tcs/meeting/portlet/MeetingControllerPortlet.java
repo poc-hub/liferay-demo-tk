@@ -47,7 +47,7 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(immediate = true, property = { "com.liferay.portlet.display-category=category.Takenaka",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
-		"com.liferay.portlet.footer-portlet-javascript=/js/main.js",
+		"com.liferay.portlet.header-portlet-javascript=/js/main.js",
 		"com.liferay.portlet.footer-portlet-javascript=/js/datatable.js",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.display-name=MeetingController", "javax.portlet.init-param.template-path=/",
