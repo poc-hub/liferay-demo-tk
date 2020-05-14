@@ -5,7 +5,7 @@
 <%@page import="com.takenaka.service.*"%>
 <%@page import="java.text.*"%>
 
-<script>
+<!-- <script>
 var header = document.getElementById("myDIV");
 var btns = header.getElementsByClassName("step");
 for (var i = 0; i < btns.length; i++) {
@@ -16,7 +16,7 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
-
+ -->
 
 <style>
 body {
@@ -82,6 +82,7 @@ content: " *";
 color: red;
 }
 .btn {
+background-color: #C1B8B6;
   border: none;
   color: white;
   padding: 12px 16px;
@@ -147,12 +148,12 @@ else{
 	<div class="stepwizard col-md-offset-3" id="myDIV">
 		<div class="stepwizard-row setup-panel">
 			<div class="stepwizard-step">
-				<a href="#step-1" type="button" class="btn btn-primary active step">
+				<a href="#step-1" type="button" class="btn btn-primary active">
 				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
 				<p></p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="#step-2" type="button" class="btn btn-default active step"
+				<a href="#step-2" type="button" class="btn btn-default active"
 					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
 				<p></p>
 			</div>
@@ -235,7 +236,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingparticipants" /></label><input type="text"
-								class="form-control" id="meetingParticipants" style="height:75px"
+								class="form-control" id="meetingParticipants" 
 								name="MeetingParticipants" value="<%=MeetinInfo.getParticipant() %>" readonly="readonly">
 						</div>
 					</div>
@@ -244,8 +245,9 @@ else{
 				<div class="row">
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-meetingsummary" /></label> <input type="text"
-								class="form-control" style="height:150px" id="meetingSummary" name="MeetingSummary" value="<%=MeetinInfo.getMeetingSummary() %>" readonly="readonly">
+							<label><liferay-ui:message key="from-createmeeting-meetingsummary" /></label>
+							 <textarea class="form-control" id="meetingSummary" name="MeetingSummary" value="<%=MeetinInfo.getMeetingSummary() %>" readonly="readonly">
+							 </textarea>
 						</div>
 					</div>
 				</div>
@@ -267,18 +269,18 @@ else{
 					</div>
 					<div class="col-sm">
 						<div class="form-group">
-							<button class="btn btn-primary nextBtn btn-lg pull-right"
-								type="button">Next</button>
+							<aui:button style="width:100%;color:black;background-color:#F0F0F0;" class="btn btn-secondary nextBtn btn-lg pull-right"
+								type="button" value="from-createmeeting-next"></aui:button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row setup-content" id="step-2">
+		<div class="row setup-content" id="step-2" style="overflow-x:auto;">
 			<div class="container">
 
-				<div class="row">
+				<div class="row" style="overflow-x:auto;">
 					<table class="table table-striped dsng_chng_tabl"
 						id="rsn_fr_chng_tabl">
 

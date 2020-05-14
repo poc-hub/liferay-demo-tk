@@ -28,11 +28,7 @@ $(document)
 					
 					allNextBtn
 							.click(function() {
-								console.log("Inside dateval");
-								var val=document.getElementById("meetingDate").value;
-								console.log(val);
 								
-								if(val!=""){
 								var curStep = $(this).closest(".setup-content"), curStepBtn = curStep
 										.attr("id"), nextStepWizard = $(
 										'div.setup-panel div a[href="#'
@@ -49,15 +45,13 @@ $(document)
 									}
 								}
 
-								if (isValid)
+								if (isValid){
 									nextStepWizard.removeAttr('disabled')
 											.trigger('click');
-							}
-								else{
-									alert("Please fill all the fields")
-									document.getElementById("validationspan").innerHTML("Please fill date field");
+								}
+						
 									
-								}});
+								});
 								
 
 					
@@ -180,7 +174,7 @@ function addRow() {
             // add button's 'onclick' event.
             button.setAttribute('onclick', 'removeRow(this)');
             var label = document.createElement("label");
-			label.innerHTML = " ";
+			label.innerHTML = "&nbsp;";
 			
 			td.appendChild(label);
 
@@ -205,10 +199,11 @@ function addRow() {
 			  select.setAttribute('required','')
 
 			  var label = document.createElement("label");
-			  label.innerHTML = "Category:"
+			  label.innerHTML = "Category"
 			  label.htmlFor = "Category";
 
-			  td.appendChild(label).appendChild(select);
+			  td.appendChild(label);
+			  td.appendChild(select);
 			  catagoryCounter++;
 			  label.classList.add("mandatory");
 		}

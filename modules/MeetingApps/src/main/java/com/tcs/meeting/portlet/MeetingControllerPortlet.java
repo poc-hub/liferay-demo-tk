@@ -5,6 +5,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
@@ -47,13 +48,15 @@ import org.osgi.service.component.annotations.Component;
 @Component(immediate = true, property = { "com.liferay.portlet.display-category=category.Takenaka",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
 		"com.liferay.portlet.header-portlet-javascript=/js/main.js",
-		"com.liferay.portlet.footer-portlet-javascript=/js/datatable.js", "com.liferay.portlet.instanceable=true",
+		"com.liferay.portlet.footer-portlet-javascript=/js/datatable.js",
 		"javax.portlet.display-name=MeetingController", "javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
 		"javax.portlet.name=" + MeetingControllerPortletKeys.MEETINGCONTROLLER,
 		"javax.portlet.resource-bundle=content.Language", "javax.portlet.security-role-ref=power-user,user",
 		"com.liferay.portlet.private-request-attributes=false",
-		"com.liferay.portlet.requires-namespaced-parameters=false" }, service = Portlet.class)
+		"com.liferay.portlet.requires-namespaced-parameters=false"
+		
+}, service = Portlet.class)
 
 public class MeetingControllerPortlet extends MVCPortlet {
 	// Method for retrive the search Data
@@ -147,7 +150,13 @@ public class MeetingControllerPortlet extends MVCPortlet {
 				} else {
 					jsonUserArray.put("");
 				}
-				jsonUserArray.put(tm.getMeetingType());
+				/*
+				 * if(tm.getMeetingType().equalsIgnoreCase("from-internal")){
+				 * jsonUserArray.put("Internal");
+				 * 
+				 * }else{ jsonUserArray.put("External"); }
+				 */
+				jsonUserArray.put(LanguageUtil.get(serveletRequest, tm.getMeetingType()));
 				jsonUserArray.put(tm.getMeetingTitle());
 				allUsersJsonArray.put(jsonUserArray);
 

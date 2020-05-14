@@ -18,26 +18,15 @@
 	<b><liferay-ui:message key="meetingcontroller.caption" /></b>
 </p> -->
 <!-- <portlet:actionURL name="SearchAction" var="searchVar" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js/data-senna-track='temporary'"></script>
+ -->
 
  <portlet:actionURL name="AddDetailsMeeting" var="addDetailsMeetingajax">
 </portlet:actionURL>
-<!--  <script>
-$(document).ready(function(){
-	
-	$('#default').DataTable();
-	$('#default_filter').hide();
-	
-  });
-
-</script> -->
+  
  
 <aui:script>
-
-
-AUI().ready('aui-module', function(A){ 
-   document.getElementById('<portlet:namespace />meetingFromDate').valueAsDate = new Date();
-   document.getElementById('<portlet:namespace />meetingToDate').valueAsDate = new Date();
-});
 function save(){
 	        var MeetingId=$("#<portlet:namespace />meetingId").val();
 	        var MeetingType=$("#<portlet:namespace />meetingType").val();
@@ -209,14 +198,6 @@ document.getElementById("<portlet:namespace/>meetingTitle").value="";
        
 }
 </aui:script>
-<!-- <script>
-function reset(){
-	alert("Reset Method");
-	
-	document.getElementById("myForm").reset();
-}
-</script> -->
- </style>
  <aui:form name="dateForm" id="myForm">
 	<div class="container">
 		<div class="row">
@@ -288,7 +269,7 @@ function reset(){
 		<div class="col-sm-2"></div>
 		<div class="col-sm-2"></div>
 			<div class="col-sm-4">
-			<aui:button style="width:60%; float:right;pxbackground-color:#F0F0F0;" 
+			<aui:button class="btn btn-secondary mb-2" style="width:60%; color:black;float:right;pxbackground-color:#F0F0F0;" 
 			type="button" name="saveButton" value="from-meetingIndex-search" onclick="save();" />
 			</div>
 			</div>
@@ -357,17 +338,18 @@ function reset(){
 	<div class="col-sm-4">
 
 		<aui:button-row>
-			<aui:button style="width:100%;background-color:#F0F0F0;;margin:0px 50px 0px 0px;" onClick="<%=createMeeting.toString()%>"
-				value="from-meetingIndex-create"></aui:button>
+			<aui:button style="width:100%;
+			background-color:#F0F0F0;color:black;margin:0px 50px 0px 0px;" onClick="<%=createMeeting.toString()%>"
+				class="btn btn-secondary mt-1" value="from-meetingIndex-create"></aui:button>
 		</aui:button-row>
 
 
 	</div>
 	<div class="col-sm-4">
 		<center>
-			<aui:button style="width:100%;background-color:#F0F0F0;;
+			<aui:button style="width:100%;color:black;background-color:#F0F0F0;;
 		margin:20px 0px 0px 75px;" type="button"
-				class="btn btn-secondary" value="from-meetingIndex-reset" onclick="reset()"></aui:button>
+				class="btn btn-secondary mt-1" value="from-meetingIndex-reset" onclick="reset()"></aui:button>
 			
 			<!-- <button type="button" class="btn btn-secondary" value="from-meetingIndex-reset"></button> -->
 		</center>

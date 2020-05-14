@@ -38,9 +38,22 @@ function dateChange(){
         document.getElementById("validationspan").innerHTML("Please fill date field");
          }
 }
-function newFunction() {
-            document.getElementById("newForm").reset();
+function resetInfo() {
+            document.getElementById("meetingType").value="";
+			document.getElementById("meetingSummary").value="";
+			document.getElementById("issuer").value="";
+			document.getElementById("meetingParticipants").value="";
+			document.getElementById("meetingPlace").value="";
+			document.getElementById("meetingTitle").value="";
+            
          }
+function resetDetails(){
+			document.getElementById("floor").value="";
+			document.getElementById("items").value="";
+			document.getElementById("action").value="";
+			document.getElementById("persionInCharge").value="";
+
+}
 
 </aui:script>
  
@@ -113,14 +126,14 @@ body {
 
 .add_btn {
 	float: right;
-	background-color: #15A3E6 ;
+	background-color:#F0F0F0 ;
 }
 .mandatory:after{
-content: " *";
+content: "*";
 color: red;
 }
 .btn {
-  background-color: #C1B8B6;
+  background-color:#1E90FF;
   border: none;
   color: white;
   padding: 12px 16px;
@@ -170,12 +183,12 @@ background-color: #15A3E6 ;
 		<div class="stepwizard-row setup-panel" id="myDIV" >
 			<div class="stepwizard-step">
 				<a href="#step-1" type="button" class="btn btn-primary active">
-				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
+				<label style="color:white"><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
 				<p></p>
 			</div>
 			<div class="stepwizard-step">
 				<a href="#step-2" type="button"  class="btn btn-default active"
-					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
+					disabled="disabled"><label style="color:white"><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
 				<p></p>
 			</div>
 		</div>
@@ -247,7 +260,7 @@ background-color: #15A3E6 ;
 					<div class="col-sm">
 						<div class="form-group">
 							<label class="mandatory"><liferay-ui:message key="from-createmeeting-meetingparticipants" /></label> <input type="text"
-								style="height:75px" class="form-control" id="meetingParticipants"
+								 class="form-control" id="meetingParticipants"
 								name="MeetingParticipants" required>
 						</div>
 					</div>
@@ -256,8 +269,8 @@ background-color: #15A3E6 ;
 				<div class="row">
 					<div class="col-sm">
 						<div class="form-group">
-							<label><liferay-ui:message key="from-createmeeting-meetingsummary" /></label><input type="text"
-								style="height:150px" class="form-control" id="meetingSummary" name="MeetingSummary">
+							<label><liferay-ui:message key="from-createmeeting-meetingsummary" /></label><textarea 
+								 class="form-control" id="meetingSummary" name="MeetingSummary"></textarea>
 						</div>
 					</div>
 				</div>
@@ -291,12 +304,14 @@ background-color: #15A3E6 ;
 					
 					<div class="col-sm-4">
 						<div class="form-group">
-							<button type="reset" style="width:100%;color:black;background-color:#F0F0F0;" class="btn btn-default" type=" button" onclick="newFunction()"><label><liferay-ui:message key="from-createmeeting-reset" /></label></button>
+							<aui:button type="button" style="margin:50px 0px 0px 0px;width:100%;color:black;background-color:#F0F0F0;" 
+							class="btn btn-secondary mt-1" onclick="resetInfo()" value="from-createmeeting-reset" />
+							
 						</div>
 					</div>
 					<div class="col-sm-4">
-			<aui:button style="width:100%;color:black;background-color:#F0F0F0;" onClick="<%=indexMeeting.toString()%>"
-				value="from-createmeeting-cancel"></aui:button>
+			<aui:button class="btn btn-secondary mt-1" style="margin:50px 0px 0px 0px;width:100%;color:black;background-color:#F0F0F0;" onClick="<%=indexMeeting.toString()%>"
+			 value="from-createmeeting-cancel" ></aui:button>
 		
 						<%-- <div class="form-group">
 							<button style="width:100%;color:black;background-color:#F0F0F0;" class="btn btn-default" type="button" onClick="<%=indexMeeting.toString()%>"><label><liferay-ui:message key="from-createmeeting-cancel" /></label></button>
@@ -304,8 +319,8 @@ background-color: #15A3E6 ;
 					</div>
 					 <div class="col-sm-4">
 						<div class="form-group">
-							<button style="width:100%;color:black;background-color:#F0F0F0;" class="btn btn-default nextBtn"
-								type="button">Next</button>
+							<button style="margin:50px 0px 0px 0px;width:100%;color:black;background-color:#F0F0F0;" class="btn aui-button btn-secondary mt-10 nextBtn"
+								type="button" value="from-createmeeting-next"><label><b><liferay-ui:message key="from-createmeeting-save" /></b></label></button>
 						</div>
 					</div> 
 									</div>
@@ -341,7 +356,7 @@ background-color: #15A3E6 ;
 									value="" id="expectedDueDate" name="ExpectedDueDate" required></td>
 								<td><label class="mandatory"><liferay-ui:message key="from-createmeeting-personIncharge" /></label> <input type="text"
 									id="persionInCharge" name="PersionInCharge" required></td>
-									<td><button style="display:none;" type="button" class="btn btn-primary" id="remove" value="Remove"><label></label></button></td>
+									<td><label>&nbsp;</label><button style="display:none;" type="button" class="btn btn-primary" id="remove" value="Remove"><label></label></button></td>
 
 							</tr>
 						</tbody>
@@ -355,8 +370,7 @@ background-color: #15A3E6 ;
 					<div class="col-sm">
 					<!-- <liferay-ui:message key="from-createmeeting-additems" /> -->
 						<button type="button"
-							style="float: right;" onclick="addRow()" class="btn add_btn">
-							<i class="fa fa-plus" aria-hidden="true"></i><label></label>
+							style="float: right;background-color:#F0F0F0; " onclick="addRow()" class="btn btn-secondary mt-2 add_btn"><label><liferay-ui:message key="from-createmeeting-additems" /></label>
 							</button></div>
 							
 					
@@ -365,21 +379,23 @@ background-color: #15A3E6 ;
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="form-group">
-							<button style="width:100%;color:black;background-color:#F0F0F0;
-							margin: 50px 0px 0px 0px;" class="btn btn-default" type="button" onclick="newFunction()">Reset</button>
+							<aui:button style="width:100%;color:black;background-color:#F0F0F0;
+							margin: 50px 0px 0px 0px;" class="btn btn-secondary mt-1"
+							 type="button" onclick="resetDetails()" value="from-meetingIndex-reset" />
 						</div>
 					</div>
 					<div class="col-sm-4">
 						
-							<aui:button style="width:100%;color:black;background-color:#F0F0F0;
+							<aui:button class="btn btn-secondary mt-1" style="width:100%;color:black;background-color:#F0F0F0;
 							margin: 50px 0px 0px 0px;" onClick="<%=indexMeeting.toString()%>"
 				value="from-createmeeting-cancel"></aui:button>
 						
 					</div>
 					<div class="col-sm-4">
 						<div class="form-group">
-							<button style="width:100%;color:black;background-color:#F0F0F0;
-							margin: 50px 0px 0px 0px;" class="btn btn-default" type="submit">Submit</button>
+							<aui:button style="width:100%;color:black;background-color:#F0F0F0;
+							margin: 50px 0px 0px 0px;" class="btn btn-secondary mt-1" 
+							type="submit" value="from-meetingIndex-submit"></aui:button>
 						
 						</div>
 					</div>
