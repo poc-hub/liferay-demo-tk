@@ -83,13 +83,13 @@ public class MeetingControllerPortlet extends MVCPortlet {
 		if (null == Issuer || Issuer.isEmpty()) {
 			Issuer = serveletRequest.getParameter("Issuer");
 		}
-		if (null == MeetingFrmDate || MeetingFrmDate.isEmpty()) {
-			MeetingFrmDate = serveletRequest.getParameter("MeetingFrmDate");
-
-		}
-		if (null == MeetingToDate || MeetingToDate.isEmpty()) {
-			MeetingToDate = serveletRequest.getParameter("MeetingToDate");
-		}
+		/*
+		 * if (null == MeetingFrmDate || MeetingFrmDate.isEmpty()) { MeetingFrmDate =
+		 * serveletRequest.getParameter("MeetingFrmDate");
+		 * 
+		 * } if (null == MeetingToDate || MeetingToDate.isEmpty()) { MeetingToDate =
+		 * serveletRequest.getParameter("MeetingToDate"); }
+		 */
 		if (null == MeetingTitle || MeetingTitle.isEmpty()) {
 			MeetingTitle = serveletRequest.getParameter("MeetingTitle");
 		}
@@ -131,7 +131,6 @@ public class MeetingControllerPortlet extends MVCPortlet {
 		// TriggerMeetingLocalServiceUtil.getTriggerMeetings(0, 3);
 
 		try {
-			System.out.println("ggggg");
 			List<TriggerMeeting> Meetins = TriggerMeetingLocalServiceUtil.getTriggerMeetingByFilter(MeetingType,
 					MeetingId, Issuer, MeetingTitle, FrmDate, ToDate);
 			System.out.println("Search Array Size" + Meetins);

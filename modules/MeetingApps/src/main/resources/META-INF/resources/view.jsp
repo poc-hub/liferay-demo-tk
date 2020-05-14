@@ -21,8 +21,18 @@
 
  <portlet:actionURL name="AddDetailsMeeting" var="addDetailsMeetingajax">
 </portlet:actionURL>
+<!--  <script>
+$(document).ready(function(){
+	
+	$('#default').DataTable();
+	$('#default_filter').hide();
+	
+  });
+
+</script> -->
  
 <aui:script>
+
 
 AUI().ready('aui-module', function(A){ 
    document.getElementById('<portlet:namespace />meetingFromDate').valueAsDate = new Date();

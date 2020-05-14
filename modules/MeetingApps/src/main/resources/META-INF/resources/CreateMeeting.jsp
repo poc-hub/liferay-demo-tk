@@ -5,8 +5,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+	
 	document.getElementById('meetingDate').valueAsDate = new Date();
 	document.getElementById('expectedDueDate').valueAsDate = new Date();
+	/* var header = document.getElementById("myDIV");
+	var btns = header.getElementsByClassName("step");
+	for (var i = 0; i < btns.length; i++) {
+	  btns[i].addEventListener("click", function() {
+	  var current = document.getElementsByClassName("active");
+	  current[0].className = current[0].className.replace(" active", "step");
+	  this.className += " active";
+	  });
+	}
+	 */
+	
   });
 
 </script>
@@ -32,7 +44,7 @@ function newFunction() {
 
 </aui:script>
  
-<script>
+<!-- <script>
 var header = document.getElementById("myDIV");
 var btns = header.getElementsByClassName("step");
 for (var i = 0; i < btns.length; i++) {
@@ -44,7 +56,7 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 </script>
-<style>
+ --><style>
 body {
 	margin-top: 20px;
 }
@@ -108,6 +120,7 @@ content: " *";
 color: red;
 }
 .btn {
+  background-color: #C1B8B6;
   border: none;
   color: white;
   padding: 12px 16px;
@@ -156,12 +169,12 @@ background-color: #15A3E6 ;
 		<div class="stepwizard col-md-offset-3" >
 		<div class="stepwizard-row setup-panel" id="myDIV" >
 			<div class="stepwizard-step">
-				<a href="#step-1" type="button" class="btn btn-primary active step">
+				<a href="#step-1" type="button" class="btn btn-primary active">
 				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
 				<p></p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="#step-2" type="button"  class="btn btn-default step active"
+				<a href="#step-2" type="button"  class="btn btn-default active"
 					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
 				<p></p>
 			</div>
@@ -301,8 +314,8 @@ background-color: #15A3E6 ;
 			</div>
 		</div>
 
-		<div class="row setup-content" id="step-2">
-			<div class="container">
+		<div class="row setup-content" id="step-2" style="overflow-x:auto;">
+				<div class="container">
 
 				<div class="row" style="overflow-x:auto;">
 					
@@ -337,6 +350,7 @@ background-color: #15A3E6 ;
 						
 						
 					</table>
+					</div>
 					<p id="test"></p>
 					<div class="col-sm">
 					<!-- <liferay-ui:message key="from-createmeeting-additems" /> -->
@@ -345,7 +359,7 @@ background-color: #15A3E6 ;
 							<i class="fa fa-plus" aria-hidden="true"></i><label></label>
 							</button></div>
 							
-					</div>
+					
 				</div>
 				<div class="container">
 				<div class="row">
@@ -371,34 +385,6 @@ background-color: #15A3E6 ;
 					</div>
 				</div>
 					</div>
-				<!-- <div class="row">
-					<div class="col-sm">
-						<div class="form-group">
-							<button class="btn btn-primary type="button" onclick="#">Draft</button>
-						</div>
-					</div> 
-					<div class="col-sm-4">
-						<div class="form-group">
-							<button style="width:60%; color:black;background-color:#F0F0F0; 
-							margin: 50px 50px 50px 50px;" class="btn btn-default" type=" button" onclick="newFunction()"><label><liferay-ui:message key="from-createmeeting-reset" /></label></button>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="form-group">
-							<button style="width:60%; color:black;background-color:#F0F0F0; 
-							margin: 50px 50px 50px 50px;" class="btn btn-default" type="button">
-							<label><liferay-ui:message key="from-createmeeting-cancel" /></label></button>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="form-group">
-							<button style="width:60%; color:black;background-color:#F0F0F0; 
-							margin: 50px 50px 50px 50px;" class="btn btn-default" type="button">save</button>
-							<label><liferay-ui:message key="from-createmeeting-save" /></label>
-							
-						</div>
-					</div>
-				</div> -->
 				
 			</div>
 	</form>
