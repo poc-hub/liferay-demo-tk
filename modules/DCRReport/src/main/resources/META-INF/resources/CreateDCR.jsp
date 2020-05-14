@@ -77,14 +77,14 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
 					</aui:select></div>
         <div class="col-sm">
         <!-- <label><liferay-ui:message key="from-dcrNew-reasonforchange" /></label> -->
-        <aui:select label="from-dcrNew-reasonforchange" name="ReasonforChange" id="ReasonforChange">
+        <aui:select label="from-dcrNew-reasonforchange" name="ReasonforChange" id="ReasonforChange" onchange="otherField()">
 						<aui:option value="from-dcrNew-custrequested"><label><liferay-ui:message key="from-dcrNew-custrequested" /></aui:option>
 						<aui:option value="from-dcrNew-legal"><label><liferay-ui:message key="from-dcrNew-legal" /></aui:option>
 						<aui:option value="from-dcrNew-designimprov"><label><liferay-ui:message key="from-dcrNew-designimprov" /></aui:option>
 						<aui:option value="from-dcrNew-consImprov"><label><liferay-ui:message key="from-dcrNew-consImprov" /></aui:option>
 						<aui:option value="from-dcrNew-others"><label><liferay-ui:message key="from-dcrNew-others" /></aui:option>
 					</aui:select></div>
-        <div class="col-sm"><aui:input type="text" label="from-dcrNew-others" name="Others" id="Others "/></div>
+        <div class="col-sm"><input type="text" label="from-dcrNew-others" name="Others" id="Others" disabled/></div>
         <div class="col-sm">
         <!-- <label><liferay-ui:message key="from-dcrNew-rangeofdisclosure"/></label> -->
         <aui:select label="from-dcrNew-rangeofdisclosure" name="Rangeofdisclosure" id="Rangeofdisclosure">
@@ -123,8 +123,13 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
         </div>
         <div class="col-sm">
             <div class="row">
-                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-originaldesign" name="OriginalDesgin" id="OriginalDesgin" /></div>
-                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-changedesign" name="ChangeDesgin" id="ChangeDesgin" /></div>
+                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-originaldesign" name="OriginalDesgin" id="OriginalDesgin" >
+                <aui:validator  name="required" errorMessage="Please fill this field"></aui:validator>
+                </aui:input></div>
+                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-changedesign" 
+                name="ChangeDesgin" id="ChangeDesgin" >
+                <aui:validator  name="required" errorMessage="Please fill this field"> </aui:validator>
+                </aui:input></div>
             </div>
         </div>
     </div>
@@ -186,4 +191,14 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
                   'directories=no, height=600, location=no, menubar=no, resizable=yes,scrollbars=yes, status=no, toolbar=no, width=1280');
                   organizationWindow.focus();
        }
+ function otherField() {
+    	var value = document.getElementById("<portlet:namespace/>ReasonforChange").value;
+    	alert(value);
+    	if(value == "from-dcrNew-others"){
+    		 document.getElementById("Others").removeAttribute("disabled");
+    		  }
+    	else{
+    		document.getElementById(Others).disabled= true;
+    	}
+    	}
 </script>
