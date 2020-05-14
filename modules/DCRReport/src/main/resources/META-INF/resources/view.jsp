@@ -97,12 +97,26 @@ border: 1px solid #0A0A0C;
 					</div>
 					<div class="col-sm">
 					<div class="form-group">
-					<aui:input type="text" label="from-dcrIndex-approvalstatus" name="Approval" id="Approval"  />
+					<!-- <aui:input type="text" label="from-dcrIndex-approvalstatus" name="Approval" id="Approval"  /> -->
+					
+					<aui:select label="from-dcrIndex-approvalstatus" name="Approval" id="Approval">
+						<aui:option value=""></aui:option>
+      					<aui:option value="from-itemapproval-yes"><label><liferay-ui:message key="from-itemapproval-yes" /></label></aui:option>
+      					<aui:option value="from-itemapproval-no"><label><liferay-ui:message key="from-itemapproval-no" /></label></aui:option>
+      				</aui:select>
+      				
 					</div>
 					</div>
 					<div class="col-sm">
 					<div class="form-group">
 					<aui:input type="text" label="Construction Status" name="ConstructionStatus" id="ConstructionStatus"  />
+					
+					
+					<!-- <aui:select label="Construction Status" name="CustomerApproval" id="CustomerApproval">
+      					<aui:option value="from-itemapproval-yes"><label><liferay-ui:message key="from-itemapproval-yes" /></label></aui:option>
+      					<aui:option value="from-itemapproval-no"><label><liferay-ui:message key="from-itemapproval-no" /></label></aui:option>
+      				</aui:select> -->
+					
 					</div>
 					</div>
 					</div>

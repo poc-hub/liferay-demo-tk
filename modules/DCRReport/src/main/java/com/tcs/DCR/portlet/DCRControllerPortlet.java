@@ -616,7 +616,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 					String strTo = serveletRequest.getParameter("dcrToDate");
 					String strFrom = serveletRequest.getParameter("dcrFromDate");
 					if (strTo == "") {
-						if (strFrom == "") {
+						if (strFrom == "" || strFrom.equals(null)) {
 							List<DesignChangeDetails> designChangeDetailsList = DesignChangeDetailsLocalServiceUtil
 									.getDesignChangeDetailsByFilter(
 											(String) serveletRequest.getParameter("reasonForChange"),
@@ -629,6 +629,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 							arrayOfJSONUserData(resourceRequest, resourceResponse, designChangeDetailsList);
 						} else {
 							// Date dateFrom=new SimpleDateFormat("dd/MM/yyyy").parse(strFrom);
+							System.out.println("strFrom-->"+strFrom);
 							Date dateFrom = StringtoDate(strFrom);
 							List<DesignChangeDetails> designChangeDetailsList = DesignChangeDetailsLocalServiceUtil
 									.getDesignChangeDetailsByFilter(
@@ -861,7 +862,11 @@ public class DCRControllerPortlet extends MVCPortlet {
 						   	jsonUserArray.put(tmd.getItem());
 						   	jsonUserArray.put(tmd.getActions());
 						   	jsonUserArray.put(tmd.getPersonInCharge());
-						   	jsonUserArray.put(tmd.getRESPONSE_DUEDATE());
+						   	
+						   	System.out.println("date hereeeeee"+tmd.getRESPONSE_DUEDATE());
+						   	jsonUserArray.put(dateFormat(tmd.getRESPONSE_DUEDATE()));
+						   	
+						   	System.out.println(tmd.getRESPONSE_DUEDATE());
 						} else {
 							jsonUserArray.put("");
 						}

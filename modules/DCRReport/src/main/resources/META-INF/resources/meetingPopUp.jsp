@@ -7,6 +7,14 @@
 <%@page import="com.takenaka.service.*"%>
 <%@page import="com.takenaka.model.TriggerMeetingDetails"%>
 <%@page import="com.takenaka.service.*"%>
+
+<style>
+
+
+.hide_column {
+    display : none;
+}
+</style>
 <!-- <p>
 	<b><liferay-ui:message key="meetingcontroller.caption" /></b>
 </p> -->
@@ -126,20 +134,19 @@ function save(){
 					'className': 'dt-body-center',
 					'render': function (data, type, full, meta){
 					return '<input type="radio" name="radioAjax" value=""'
-					+ $('<div/>').text(data).html() + '">'
-					;
+					+ $('<div/>').text(data).html() + '">';
+},
 },
 
 
-},
-{
-                "targets":  10 ,
-                "visible": false
-            },
-            {
-                "targets":  11 ,
-                "visible": false
-            }
+    { targets: 10,
+      className: "hide_column"
+    },
+    
+     { targets: 11,
+      className: "hide_column"
+    },
+
 ]
                    
 
@@ -365,9 +372,20 @@ AUI().ready('aui-module', function(A){
 			var Action = window.opener.document.getElementById("Action");
 			Action.value = action;
 			var ExpectedDueDate = window.opener.document.getElementById("<portlet:namespace/>ExpectedDueDate");
-			alert(dueDate);
-			ExpectedDueDate.value = dueDate.toString();
+			
+			if(dueDate ==null ||dueDate == ""){
+				ExpectedDueDate.value = "";
+			}else{
+				var date = dueDate;
+				var yourdate = dueDate.split("-");
+				var mydate =yourdate[2]+"-"+yourdate[0]+"-"+yourdate[1];
+				ExpectedDueDate.value = mydate;
+			}
+			
+			/* alert(dueDate); */
+			//ExpectedDueDate.value = dueDate.toString();
 			//alert(ExpectedDueDate.value + ExpectedDueDate.value.toString());
+			
 			var PersoninCharge = window.opener.document.getElementById("PersoninCharge");
 			PersoninCharge.value = personInCharge;
 		} 
@@ -401,10 +419,12 @@ function getAjaxPopUpdata() {
 		          console.log(items);
 		          action = document.getElementById("default").rows[j+1].cells[9].innerHTML;
 		          console.log(action);
-		            dueDate= document.getElementById("default").rows[j+1].cells[10].innerHTML;
+		           
+		          dueDate= document.getElementById("default").rows[j+1].cells[11].innerHTML;
 		           console.log(dueDate); 
-		           personInCharge = document.getElementById("default").rows[j+1].cells[11].innerHTML;
+		           personInCharge = document.getElementById("default").rows[j+1].cells[10].innerHTML;
 		           console.log(personInCharge);
+		            
 		            
 		           /*  alert("meetId"+meetId);
 		             alert("floor"+floor);
@@ -422,11 +442,31 @@ function getAjaxPopUpdata() {
 			var ItemDetails = window.opener.document.getElementById("ItemDetails");
 			ItemDetails.value = items;
 			var Action = window.opener.document.getElementById("Action");
+			//alert(Action);
 			Action.value = action;
-			var ExpectedDueDate = window.opener.document.getElementById("ExpectedDueDate");
-			ExpectedDueDate.value = dueDate;
+			
+			var ExpectedDueDate = window.opener.document.getElementById("<portlet:namespace />ExpectedDueDate");
+			//alert(dueDate);
+			//alert(ExpectedDueDate);
+			//ExpectedDueDate.value = dueDate.toString();
+			//$("#ExpectedDueDate").val('2020-08-03');mm-dd-yyyy
+			if(dueDate ==null ||dueDate == ""){
+				ExpectedDueDate.value = "";
+			}else{
+				var date = dueDate;
+				var yourdate = dueDate.split("-");
+				var mydate =yourdate[2]+"-"+yourdate[0]+"-"+yourdate[1];
+				ExpectedDueDate.value = mydate;
+			}
+			
+			var date = dueDate;
+			var yourdate = dueDate.split("-");
+			var mydate =yourdate[2]+"-"+yourdate[0]+"-"+yourdate[1];
+			ExpectedDueDate.value = mydate;
 			var PersoninCharge = window.opener.document.getElementById("PersoninCharge");
 			PersoninCharge.value = personInCharge;
+			
+			
 		} 
 		window.close();
 	}

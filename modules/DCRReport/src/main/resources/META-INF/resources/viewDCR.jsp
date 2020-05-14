@@ -32,7 +32,7 @@ System.out.println(designChangeDetails);
         
         </div>
         <div class="col-sm">
-        <aui:input type="text" label="from-dcrNew-issuer" name="IssuerNew" value="<%= themeDisplay.getUser().getScreenName() %>" id="IssuerNew" readonly="readonly" />
+        <aui:input type="text" label="from-dcrNew-issuer" name="IssuerNew" value="<%=themeDisplay.getUser().getFullName() %>" id="IssuerNew" readonly="readonly" />
         </div>
         <div class="col-sm">
         
@@ -113,8 +113,10 @@ System.out.println(designChangeDetails);
         </div>
         <div class="col-sm">
             <div class="row">
-                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-originaldesign" name="OriginalDesgin" id="OriginalDesgin" value="<%=designChangeDetails.getOriginaldesginDetail() %>"/></div>
-                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-changedesign" name="ChangeDesgin" id="ChangeDesgin" value="<%=designChangeDetails.getChangeDetail() %>" /></div>
+                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-originaldesign" name="OriginalDesgin" id="OriginalDesgin" value="<%=designChangeDetails.getOriginaldesginDetail() %>"><aui:validator  name="required" errorMessage="Please fill this field"></aui:validator>
+                </aui:input></div>
+                <div class="col-sm"><aui:input type="textarea" label="from-dcrNew-changedesign" name="ChangeDesgin" id="ChangeDesgin" value="<%=designChangeDetails.getChangeDetail() %>" ><aui:validator  name="required" errorMessage="Please fill this field"></aui:validator>
+                </aui:input></div>
             </div>
         </div>
     </div>

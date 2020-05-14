@@ -13,7 +13,9 @@
 <portlet:renderURL var="popupUrl" windowState="<%=LiferayWindowState.POP_UP.toString()%>">
 	<portlet:param name="mvcPath" value="/meetingPopUp.jsp"/>
 </portlet:renderURL>
-
+<portlet:renderURL var="cancelSubmit">
+	<portlet:param name="mvcPath" value="/view.jsp"/>
+</portlet:renderURL>
 <!-- <liferay-ui:success key="success" message="Your Action Completed Successfully..."/> -->
 
 <%-- <portlet:renderURL var=”popupUrl” windowState=”<%=LiferayWindowState.POP_UP.toString() %>”>
@@ -28,7 +30,7 @@
         
         </div>
         <div class="col-sm">
-        <aui:input type="text" label="from-dcrNew-issuer" name="IssuerNew" value="<%= themeDisplay.getUser().getScreenName() %>" id="IssuerNew" readonly="readonly" />
+        <aui:input type="text" label="from-dcrNew-issuer" name="IssuerNew" value="<%= themeDisplay.getUser().getFullName() %>" id="IssuerNew" readonly="readonly" />
         </div>
         <div class="col-sm">
         
@@ -164,9 +166,12 @@
         <div class="col-sm"><div class="form-group">
             <button class="btn btn-primary" type="submit">Submit</button>
         </div></div>
+        
     </div>
 
 </aui:form>
+
+<aui:button onClick="<%=cancelSubmit.toString() %>" value="Cancel"/>
 
 <script type="text/javascript">
 

@@ -22,36 +22,42 @@ long PARENT_FOLDER_ID = DLFolderConstants.DEFAULT_PARENT_FOLDER_ID;
 long chngSeqNo=Long.parseLong(request.getParameter("chngSeqNo"));
 DesignChangeDetails dcd=DesignChangeDetailsLocalServiceUtil.fetchDesignChangeDetails(chngSeqNo);
 String chngSeqNoStr=Long.toString(chngSeqNo);
-//ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
-Folder folder=DLAppServiceUtil.getFolder(themeDisplay.getScopeGroupId(), PARENT_FOLDER_ID, ROOT_FOLDER_NAME);
-
-long array[]=new long[4];
-
-array[0]=dcd.getAttachmentId1();
-array[1]=dcd.getAttachmentId2();
-array[2]=dcd.getAttachmentId3();
-array[3]=dcd.getAttachmentId4();
-
 String[] Urls={"","","",""};
 String[] filenames={"","","",""};
-int i=0;
-List<FileEntry> fileEntry=DLAppServiceUtil.getFileEntries(themeDisplay.getScopeGroupId(), folder.getFolderId());
+//ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+try{
+	Folder folder=DLAppServiceUtil.getFolder(themeDisplay.getScopeGroupId(), PARENT_FOLDER_ID, ROOT_FOLDER_NAME);
+
+	long array[]=new long[4];
+
+	array[0]=dcd.getAttachmentId1();
+	array[1]=dcd.getAttachmentId2();
+	array[2]=dcd.getAttachmentId3();
+	array[3]=dcd.getAttachmentId4();
+
+	
+	int i=0;
+	List<FileEntry> fileEntry=DLAppServiceUtil.getFileEntries(themeDisplay.getScopeGroupId(), folder.getFolderId());
 
 
 
-for(FileEntry file:fileEntry){
-	//if(file.getFileEntryId()==arra){
-		//Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
-		//i++;
-	//}
-	for(int j=0;j<array.length;j++){
-		if(file.getFileEntryId()==array[j]){
-			filenames[i]=file.getFileName();
-			Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
-			i++;
+	for(FileEntry file:fileEntry){
+		//if(file.getFileEntryId()==arra){
+			//Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
+			//i++;
+		//}
+		for(int j=0;j<array.length;j++){
+			if(file.getFileEntryId()==array[j]){
+				filenames[i]=file.getFileName();
+				Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
+				i++;
+			}
 		}
 	}
+}catch(Exception e){
+	System.out.println("FOlder not found");
 }
+
 //DLUtil.getPreviewURL(fileEntry, fileVersion, themeDisplay, queryString);
 
 
@@ -183,30 +189,32 @@ AUI().ready('aui-module', function(A){
 		</div>
     </div>
     </fieldset>
-     <div class="row">
+     <label>Attached Files</label>
+	<div class="row">
+ 
        <div class="col-sm">
      	<a href="<%=Urls[0] %>"><%=filenames[0] %></a>
      </div>
        <div class="col-sm">
      <a href="<%=Urls[1] %>"><%=filenames[1] %></a>
      </div>
-     </div>
-      <div class="row">
+     
+      
       <div class="col-sm">
       <a href="<%=Urls[2] %>"><%=filenames[2] %></a>
      </div>
        <div class="col-sm">
      <a href="<%=Urls[3] %>"><%=filenames[3] %></a>
      </div>
-     </div>
-	
+     
+	</div>
      <div class="row">
       <div class="col-sm">
      <aui:input type="number" name="Approval number" label="from-itemapproval-approvalno" readonly="readonly" value="<%=dcd.getApprovalNo() %>"></aui:input>
      </div>
     
-     </div>
-     <div class="row">
+     
+     
       <div class="col-sm">
       <aui:select label="from-itemapproval-approval" name="Approval" id="Approval">
       	<aui:option value="from-itemapproval-yes"><label><liferay-ui:message key="from-itemapproval-yes" /></label></aui:option>
