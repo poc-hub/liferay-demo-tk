@@ -57,7 +57,7 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
     <div class="row">
         <div class="col-sm">
         <!-- <p>DESIGN CHANGE RECORD CREATION</p> -->
-        <label><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></label>
+        <legend><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend>
         </div>
     </div>
     <div class="row">
@@ -98,26 +98,26 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
     <div class="row">
         <div class="col-sm">
             <div class="row">
-                <div class="col-sm"><label class="control-label">&nbsp;</label>
+                <div class="col-sm pl-2 pr-2"><label class="control-label">&nbsp;</label>
                     <%-- <aui:button href="${meetingPopUp}" useDialog="true" value="Get Meeting" />	 --%>				
                     <!-- <aui:button type="button" name="GeteetingItem" id="GeteetingItem" value=""	onclick="getMeeting();" /> -->
                     <%-- <aui:button href="${meetingPopUp}" value="Get Meeting" /> --%>
                     <input type="button" class="btn btn-secondary" value="Get Meeting" onclick="getMeetingData()" />
                 </div>
-                <div class="col-sm"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
+                <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
                     <input type="text" class="form-control" id="meetingId" name="meetingId"></div>
-                <div class="col-sm">
+                <div class="col-sm pl-2 pr-2">
                 <label><liferay-ui:message key="from-dcrNew-floor" /></label>
                     <input type="text" class="form-control" id="Floor" name="Floor"></div>
-                <div class="col-sm"><label><liferay-ui:message key="from-dcrNew-itemdetails" /></label>
+                <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-itemdetails" /></label>
                     <input type="text" class="form-control" id="ItemDetails" name="ItemDetails"></div>
             </div>
             <div class="row">
-                <div class="col-sm"><label><liferay-ui:message key="from-dcrNew-action" /></label>
+                <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-action" /></label>
                     <input type="text" class="form-control" id="Action" name="Action"></div>
-                <div class="col-sm"><label><liferay-ui:message key="from-dcrNew-expectedduedate" /></label>
+                <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-expectedduedate" /></label>
                     <input type="text" class="form-control" id="ExpectedDueDate" name="ExpectedDueDate"></div>
-                <div class="col-sm"><label><liferay-ui:message key="from-dcrNew-personIn" /></label>
+                <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-personIn" /></label>
                     <input type="text" class="form-control" id="PersoninCharge" name="PersoninCharge"></div>
             </div>
         </div>
@@ -166,11 +166,11 @@ AUI().use('aui-dialog', 'aui-io', function(A) {
     </div>
 
     <div class="row">
-        <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment1" name="Attachment1" id="Attachment1" /></div>
-        <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment3" name="Attachment3" id="Attachment3" /></div>
+        <div class="col-sm border-right border-bottom"><aui:input type="file" label="from-dcrNew-attachment1" name="Attachment1" id="Attachment1" /></div>
+        <div class="col-sm border-bottom"><aui:input type="file" label="from-dcrNew-attachment3" name="Attachment3" id="Attachment3" /></div>
     </div>
     <div class="row">
-        <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment2" name="Attachment2" id="Attachment2 " /></div>
+        <div class="col-sm border-right"><aui:input type="file" label="from-dcrNew-attachment2" name="Attachment2" id="Attachment2 " /></div>
         <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment4" name="Attachment4" id="Attachment4" /></div>
     </div>
 
