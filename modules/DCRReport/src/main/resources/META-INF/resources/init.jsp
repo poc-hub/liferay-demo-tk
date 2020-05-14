@@ -14,10 +14,15 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@page import="com.takenaka.service.*" %>
 
 <script src="../js/main.js" type="text/javascript"></script>
-<liferay-theme:defineObjects />
 
+<liferay-theme:defineObjects />
+<!-- <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+	
+	
 <portlet:defineObjects />
-<portlet:resourceURL var="saveDataUrl"/>
+<portlet:resourceURL var="saveDataUrl" id="searchPopUpData"/>
 <portlet:renderURL var="createDCR">
     <portlet:param name="mvcPath" value="/CreateDCR.jsp"></portlet:param>
 </portlet:renderURL>
