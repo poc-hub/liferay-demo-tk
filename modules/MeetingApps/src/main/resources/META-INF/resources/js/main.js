@@ -2,6 +2,9 @@ $(document)
 		.ready(
 				function() {
 					//alert("Page Loading");
+					
+					$('#default').DataTable();
+					$('#default_filter').hide();
 					var navListItems = $('div.setup-panel div a'), allWells = $('.setup-content'), allNextBtn = $('.nextBtn');
 
 					allWells.hide();
@@ -22,16 +25,14 @@ $(document)
 						}
 					},
 					);
-
+					
 					allNextBtn
 							.click(function() {
 								console.log("Inside dateval");
 								var val=document.getElementById("meetingDate").value;
 								console.log(val);
-								if(val=="") {
-									document.getElementsByClassName("validationspan").innerHTML("Please fill date field");
-								}
-								else{
+								
+								if(val!=""){
 								var curStep = $(this).closest(".setup-content"), curStepBtn = curStep
 										.attr("id"), nextStepWizard = $(
 										'div.setup-panel div a[href="#'
@@ -51,8 +52,18 @@ $(document)
 								if (isValid)
 									nextStepWizard.removeAttr('disabled')
 											.trigger('click');
-							}});
+							}
+								else{
+									alert("Please fill all the fields")
+									document.getElementById("validationspan").innerHTML("Please fill date field");
+									
+								}});
+								
 
+					
+					
+					
+					
 					$('div.setup-panel div a.btn-primary').trigger('click');
 
 					$(document).on("click", ".close_icon", function() {
@@ -292,7 +303,3 @@ function removeRow(oButton) {
 	empTab.deleteRow(oButton.parentNode.parentNode.rowIndex); // button -> td
 																// -> tr.
 }
-
-
-
-

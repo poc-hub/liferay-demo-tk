@@ -218,7 +218,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingplace" /></label> <input type="text"
-								class="form-control" style="height:75px" id="meetingPlace" name="MeetingPlace" value="<%=MeetinInfo.getMeetingPlace() %>" readonly="readonly"
+								class="form-control" id="meetingPlace" name="MeetingPlace" value="<%=MeetinInfo.getMeetingPlace() %>" readonly="readonly"
 								>
 						</div>
 					</div>

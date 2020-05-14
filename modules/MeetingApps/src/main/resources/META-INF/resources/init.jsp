@@ -16,6 +16,9 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <portlet:renderURL var="createMeeting">
     <portlet:param name="mvcPath" value="/CreateMeeting.jsp"></portlet:param>
 </portlet:renderURL>
+<portlet:renderURL var="indexMeeting">
+    <portlet:param name="mvcPath" value="/view.jsp"></portlet:param>
+</portlet:renderURL>
 
 <portlet:resourceURL var="saveDataUrl"/>
 

@@ -1,5 +1,22 @@
 package com.tcs.meeting.portlet;
 
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSONArray;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.servlet.ServletResponseUtil;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.WebKeys;
+import com.takenaka.model.TriggerMeeting;
+import com.takenaka.model.TriggerMeetingDetails;
+import com.takenaka.service.TriggerMeetingDetailsLocalServiceUtil;
+import com.takenaka.service.TriggerMeetingLocalServiceUtil;
 import com.tcs.meeting.constants.MeetingControllerPortletKeys;
 
 import java.io.IOException;
@@ -11,23 +28,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.json.JSONArray;
-import com.liferay.portal.kernel.json.JSONFactoryUtil;
-import com.liferay.portal.kernel.json.JSONObject;
-import com.liferay.portal.kernel.model.User;
-import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.theme.ThemeDisplay;
-import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.PortalUtil;
-import com.liferay.portal.kernel.util.WebKeys;
-import com.takenaka.model.TriggerMeeting;
-import com.takenaka.model.TriggerMeetingDetails;
-import com.takenaka.service.TriggerMeetingDetailsLocalServiceUtil;
-import com.takenaka.service.TriggerMeetingLocalServiceUtil;
-
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
@@ -35,10 +35,9 @@ import javax.portlet.PortletException;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletURL;
 import javax.portlet.ProcessAction;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -48,8 +47,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(immediate = true, property = { "com.liferay.portlet.display-category=category.Takenaka",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
 		"com.liferay.portlet.header-portlet-javascript=/js/main.js",
-		"com.liferay.portlet.footer-portlet-javascript=/js/datatable.js",
-		"com.liferay.portlet.instanceable=true",
+		"com.liferay.portlet.footer-portlet-javascript=/js/datatable.js", "com.liferay.portlet.instanceable=true",
 		"javax.portlet.display-name=MeetingController", "javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
 		"javax.portlet.name=" + MeetingControllerPortletKeys.MEETINGCONTROLLER,
@@ -67,88 +65,132 @@ public class MeetingControllerPortlet extends MVCPortlet {
 		System.out.println("inside resource method for testing ajax call using resource url");
 
 		String MeetingType = resourceRequest.getParameter("MeetingType");
+		System.out.println("MeetingType---->" + MeetingType);
 		String MeetingId = resourceRequest.getParameter("MeetingId");
 		String Issuer = resourceRequest.getParameter("Issuer");
 		String MeetingFrmDate = resourceRequest.getParameter("MeetingFromDate");
 		String MeetingToDate = resourceRequest.getParameter("MeetingToDate");
 		String MeetingTitle = resourceRequest.getParameter("MeetingTitle");
-		System.out.println("MeetinFrmDate: "+MeetingFrmDate);
-		System.out.println("MeetingToDate:" +MeetingToDate);
-		Date FrmDate=null;
-		if(MeetingFrmDate.equals(null)|| MeetingFrmDate.equals("")) {
-			System.out.println("inside MeetingFrmDate.equals(null)");
-			FrmDate=null;
+
+		HttpServletRequest serveletRequest = PortalUtil
+				.getOriginalServletRequest(PortalUtil.getHttpServletRequest(resourceRequest));
+		if (null == MeetingType || MeetingType.isEmpty()) {
+			MeetingType = serveletRequest.getParameter("MeetingType");
 		}
-		else {
+		if (null == MeetingId || MeetingId.isEmpty()) {
+			MeetingId = serveletRequest.getParameter("MeetingId");
+		}
+		if (null == Issuer || Issuer.isEmpty()) {
+			Issuer = serveletRequest.getParameter("Issuer");
+		}
+		if (null == MeetingFrmDate || MeetingFrmDate.isEmpty()) {
+			MeetingFrmDate = serveletRequest.getParameter("MeetingFrmDate");
+
+		}
+		if (null == MeetingToDate || MeetingToDate.isEmpty()) {
+			MeetingToDate = serveletRequest.getParameter("MeetingToDate");
+		}
+		if (null == MeetingTitle || MeetingTitle.isEmpty()) {
+			MeetingTitle = serveletRequest.getParameter("MeetingTitle");
+		}
+		System.out.println("Meeting Id" + MeetingId);
+		System.out.println("MeetinFrmDate: " + MeetingFrmDate);
+		System.out.println("MeetingToDate:" + MeetingToDate);
+		System.out.println("MeetingTitle:" + MeetingTitle);
+
+		Date FrmDate = null;
+
+		if (MeetingFrmDate.equals(null) || MeetingFrmDate.equals("")) {
+			System.out.println("inside MeetingFrmDate.equals(null)");
+			FrmDate = null;
+
+		} else {
 			System.out.println("inside MeetingFrmDate--else");
 			FrmDate = StringtoDate(MeetingFrmDate);
 		}
-		Date ToDate=null;
-		if(MeetingToDate.equals(null)|| MeetingToDate.equals("")) {
+
+		Date ToDate = null;
+
+		if (MeetingToDate.equals(null) || MeetingToDate.equals("")) {
 			System.out.println("inside MeetingToDate.equals(null)");
-			ToDate=null;
-		}
-		else {
+			ToDate = null;
+		} else {
 			System.out.println("inside MeetingToDate--else");
 			ToDate = StringtoDate(MeetingToDate);
-			
+
 		}
+
 		System.out.println("MeetingToDate" + ToDate);
 
-	//	Date todate = getStringToDate(MeetingToDate);
+		// Date todate = getStringToDate(MeetingToDate);
 
 		System.out.println("MeetingFrmDate" + FrmDate);
 
 		// int totalMeetings = TriggerMeetingLocalServiceUtil.getTriggerMeetingsCount();
 		// List<TriggerMeeting> Meetins =
 		// TriggerMeetingLocalServiceUtil.getTriggerMeetings(0, 3);
-		JSONArray searchData = JSONFactoryUtil.createJSONArray();
-		ArrayList<String> arr = new ArrayList<String>();
 
 		try {
+			System.out.println("ggggg");
 			List<TriggerMeeting> Meetins = TriggerMeetingLocalServiceUtil.getTriggerMeetingByFilter(MeetingType,
 					MeetingId, Issuer, MeetingTitle, FrmDate, ToDate);
 			System.out.println("Search Array Size" + Meetins);
-			for (TriggerMeeting tm : Meetins) {
-
-				arr.add(tm.getMeetingId());
-				arr.add(tm.getIssuer());
+			JSONArray allUsersJsonArray = JSONFactoryUtil.createJSONArray();
+			JSONArray jsonUserArray = null;
+			for (int i = 0; i < Meetins.size(); i++) {
+				TriggerMeeting tm = Meetins.get(i);
+				jsonUserArray = JSONFactoryUtil.createJSONArray();
+				jsonUserArray.put(i + 1);
+				jsonUserArray.put(tm.getMeetingId());
+				jsonUserArray.put(tm.getIssuer());
 				if (tm.getMeetDate() != null) {
-					arr.add(dateFormat(tm.getMeetDate()));
+					jsonUserArray.put(dateFormat(tm.getMeetDate()));
 				} else {
-					arr.add("");
+					jsonUserArray.put("");
 				}
-				arr.add(tm.getMeetingType());
-				arr.add(tm.getMeetingTitle());
+				jsonUserArray.put(tm.getMeetingType());
+				jsonUserArray.put(tm.getMeetingTitle());
+				allUsersJsonArray.put(jsonUserArray);
+
 			}
-			System.out.println("Arrray Size---" + arr.size());
-			for (int i = 0; i < arr.size(); i += 5) {
-				JSONObject jsonobj = JSONFactoryUtil.createJSONObject();
-				jsonobj.put("MeetingId", arr.get(i));
-				jsonobj.put("Issuer", arr.get(i + 1));
-				jsonobj.put("MeetingDate", arr.get(i + 2));
-				jsonobj.put("MeetingDateMeetingDate", arr.get(i + 3));
-				jsonobj.put("MeetingTitle", arr.get(i + 4));
-				searchData.put(jsonobj);
-			}
-System.out.println("Size of  search data-->"+searchData);
+
+			JSONObject tableData = JSONFactoryUtil.createJSONObject();
+			tableData.put("data", allUsersJsonArray);
+			System.out.println(allUsersJsonArray);
+			ServletResponseUtil.write(PortalUtil.getHttpServletResponse(resourceResponse), tableData.toString());
+
+			/*
+			 * for (TriggerMeeting tm : Meetins) {
+			 * 
+			 * arr.add(tm.getMeetingId()); arr.add(tm.getIssuer()); if (tm.getMeetDate() !=
+			 * null) { arr.add(dateFormat(tm.getMeetDate())); } else { arr.add(""); }
+			 * arr.add(tm.getMeetingType()); arr.add(tm.getMeetingTitle()); }
+			 */ /*
+				 * System.out.println("Arrray Size---" + arr.size()); for (int i = 0; i <
+				 * arr.size(); i += 5) { JSONObject jsonobj =
+				 * JSONFactoryUtil.createJSONObject(); jsonobj.put("MeetingId", arr.get(i));
+				 * jsonobj.put("Issuer", arr.get(i + 1)); jsonobj.put("MeetingDate", arr.get(i +
+				 * 2)); jsonobj.put("MeetingDateMeetingDate", arr.get(i + 3));
+				 * jsonobj.put("MeetingTitle", arr.get(i + 4)); searchData.put(jsonobj); }
+				 */
+			/* System.out.println("Size of  search data-->"+searchData); */
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		// jsonobj.put("UserEmail", Meetins);
 
-		PrintWriter printout = resourceResponse.getWriter();
-		printout.print(searchData.toString());
+		// PrintWriter printout = resourceResponse.getWriter();
+		// printout.print(searchData.toString());
 	}
 
 	private String dateFormat(Date date) throws ParseException {
-		
+
 		SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd-yyyy");
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-		    String formatDate = sdf1.format(date);
-		    String formatedDate = sdf2.format(sdf1.parse(formatDate));
-		    System.out.println("My Date"+formatDate);
+		String formatDate = sdf1.format(date);
+		String formatedDate = sdf2.format(sdf1.parse(formatDate));
+		System.out.println("My Date" + formatDate);
 		return formatedDate;
 	}
 
@@ -165,15 +207,15 @@ System.out.println("Size of  search data-->"+searchData);
 		// Meeting Information Pages
 		String Project = ParamUtil.getString(actionRequest, "Project");
 		// System.out.println("Project" + Project);
-		//String MeetingId = ParamUtil.getString(actionRequest, "MeetingId");
+		// String MeetingId = ParamUtil.getString(actionRequest, "MeetingId");
 		// System.out.println("MeetingId" + MeetingId);
 		String Issuer = ParamUtil.getString(actionRequest, "Issuer");
 		// System.out.println("Issuer" + Issuer);
 		String MeetingType = ParamUtil.getString(actionRequest, "MeetingType");
 		// System.out.println("MeetingType" + MeetingType);
 		String MeetingDate = ParamUtil.getString(actionRequest, "MeetingDate");
-		Date meetingDate=createStringToDate(MeetingDate);
-		System.out.println("MeetingDate" + MeetingDate+"Date meeing"+meetingDate);
+		Date meetingDate = createStringToDate(MeetingDate);
+		System.out.println("MeetingDate" + MeetingDate + "Date meeing" + meetingDate);
 		String MeetingPlace = ParamUtil.getString(actionRequest, "MeetingPlace");
 		// System.out.println("MeetingPlace" + MeetingPlace);
 		String MeetingTitle = ParamUtil.getString(actionRequest, "MeetingTitle");
@@ -194,7 +236,7 @@ System.out.println("Size of  search data-->"+searchData);
 		Floor.add(ParamUtil.getString(actionRequest, "Floor"));
 		Items.add(ParamUtil.getString(actionRequest, "Items"));
 		ActionData.add(ParamUtil.getString(actionRequest, "Action"));
-		System.out.println("ActionData-->"+ParamUtil.getString(actionRequest, "Action")+"Size"+ActionData.size());
+		System.out.println("ActionData-->" + ParamUtil.getString(actionRequest, "Action") + "Size" + ActionData.size());
 		ExpectedDueDate.add(ParamUtil.getString(actionRequest, "ExpectedDueDate"));
 		PersionInCharge.add(ParamUtil.getString(actionRequest, "PersionInCharge"));
 
@@ -285,11 +327,11 @@ System.out.println("Size of  search data-->"+searchData);
 
 				// Calling Service Bulder Impl class
 				TriggerMeetingDetailsLocalServiceUtil.addTriggerMeetingDetails(triggerMeetingDetails);
-				//Redirect to Portlet Page
+				// Redirect to Portlet Page
 				ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
-				String portletName = (String)actionRequest.getAttribute(WebKeys.PORTLET_ID);
-				PortletURL redirectURL = PortletURLFactoryUtil.create(PortalUtil.getHttpServletRequest(actionRequest), portletName,
-				themeDisplay.getLayout().getPlid(), PortletRequest.RENDER_PHASE);
+				String portletName = (String) actionRequest.getAttribute(WebKeys.PORTLET_ID);
+				PortletURL redirectURL = PortletURLFactoryUtil.create(PortalUtil.getHttpServletRequest(actionRequest),
+						portletName, themeDisplay.getLayout().getPlid(), PortletRequest.RENDER_PHASE);
 				redirectURL.setParameter("mvcPath", "/view.jsp");
 				actionResponse.sendRedirect(redirectURL.toString());
 			}
@@ -302,28 +344,29 @@ System.out.println("Size of  search data-->"+searchData);
 	private Date createStringToDate(String meetingDate) {
 		Date d1 = null;
 		try {
-			String[] brkDate=meetingDate.split("-");
-			d1 = new Date((Integer.parseInt(brkDate[0])), (Integer.parseInt(brkDate[1])), (Integer.parseInt(brkDate[2])));
-			System.out.println("createStringToDate"+d1.toString());
+			String[] brkDate = meetingDate.split("-");
+			d1 = new Date((Integer.parseInt(brkDate[0])), (Integer.parseInt(brkDate[1])),
+					(Integer.parseInt(brkDate[2])));
+			System.out.println("createStringToDate" + d1.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return d1;
 	}
 
 	// String to Date convert method
 	private Date StringtoDate(String meetingDate) {
-		System.out.println("Before meeting date convert"+meetingDate);
+		System.out.println("Before meeting date convert" + meetingDate);
 		Date convertedDate = null;
 		DateFormat formatter = null;
 		try {
 			if (!meetingDate.equals(null)) {
-				
-				formatter =new SimpleDateFormat("yyyy-MM-dd");
-		        convertedDate =(Date) formatter.parse(meetingDate);
-				//date = new SimpleDateFormat("yyyy-mm-dd").parse(meetingDate);
-				System.out.println("After Meeting date convart"+convertedDate);
+
+				formatter = new SimpleDateFormat("yyyy-MM-dd");
+				convertedDate = (Date) formatter.parse(meetingDate);
+				// date = new SimpleDateFormat("yyyy-mm-dd").parse(meetingDate);
+				System.out.println("After Meeting date convart" + convertedDate);
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -367,6 +410,11 @@ System.out.println("Size of  search data-->"+searchData);
 		System.out.println("I am render");
 
 		String MeetingId = request.getParameter("meetingId");
+		HttpServletRequest serveletRequest = PortalUtil
+				.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
+		if (null == MeetingId || MeetingId.isEmpty()) {
+			MeetingId = serveletRequest.getParameter("MeetingId");
+		}
 		System.out.println("MeetingId-----" + MeetingId);
 
 		try {
@@ -379,8 +427,9 @@ System.out.println("Size of  search data-->"+searchData);
 			System.out.println("Meetins getFloor: " + MeetinsDetails.size());
 
 			for (TriggerMeetingDetails tm : MeetinsDetails) {
-				System.out.println("cat--" + tm.getCategory() + "flo--" + tm.getFloor() + "itm--" + tm.getItem() + "due--"
-						+ tm.getRESPONSE_DUEDATE() + "ac--" + tm.getActions() + "Per--" + tm.getPersonInCharge());
+				System.out.println("cat--" + tm.getCategory() + "flo--" + tm.getFloor() + "itm--" + tm.getItem()
+						+ "due--" + tm.getRESPONSE_DUEDATE() + "ac--" + tm.getActions() + "Per--"
+						+ tm.getPersonInCharge());
 
 			}
 			request.setAttribute("MeetingInfo", Meetins);
