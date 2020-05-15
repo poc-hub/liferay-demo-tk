@@ -279,7 +279,7 @@ function addRow() {
         	PersionInCharge.setAttribute('value', '');
         	PersionInCharge.setAttribute('required', '');
         	var label = document.createElement("label");
-			label.innerHTML = "Person In Charge";
+			label.innerHTML = "Persion In Charge";
 			label.classList.add("mandatory");
 			
 			td.appendChild(label);

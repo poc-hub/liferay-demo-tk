@@ -8,6 +8,16 @@ $(document).ready(function(){
 	
 	document.getElementById('meetingDate').valueAsDate = new Date();
 	document.getElementById('expectedDueDate').valueAsDate = new Date();
+	/* var header = document.getElementById("myDIV");
+	var btns = header.getElementsByClassName("step");
+	for (var i = 0; i < btns.length; i++) {
+	  btns[i].addEventListener("click", function() {
+	  var current = document.getElementsByClassName("active");
+	  current[0].className = current[0].className.replace(" active", "step");
+	  this.className += " active";
+	  });
+	}
+	 */
 	
   });
 
@@ -46,7 +56,20 @@ function resetDetails(){
 }
 
 </aui:script>
- <style>
+ 
+<!-- <script>
+var header = document.getElementById("myDIV");
+var btns = header.getElementsByClassName("step");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "step");
+  this.className += " active";
+  });
+}
+
+</script>
+ --><style>
 body {
 	margin-top: 20px;
 }
@@ -140,16 +163,31 @@ background-color: #15A3E6 ;
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container">	
+<div class="container">
+
+<!-- 	<div class="stepwizard col-md-offset-3">
+		<div class="stepwizard-row setup-panel">
+			<div class="stepwizard-step">
+				<a href="#step-1" type="button" class="btn btn-primary">
+				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
+				<p></p>
+			</div>
+			<div class="stepwizard-step">
+				<a href="#step-2" type="button" class="btn btn-default"
+					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
+				<p></p>
+			</div>
+		</div>
+	</div> -->
 		<div class="stepwizard col-md-offset-3" >
 		<div class="stepwizard-row setup-panel" id="myDIV" >
 			<div class="stepwizard-step">
-				<a href="#step-1" type="button" class="btn btn-primary mt-1 active">
+				<a href="#step-1" type="button" class="btn btn-primary active">
 				<label style="color:white"><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
 				<p></p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="#step-2" type="button"  class="btn btn-default mt-1 active"
+				<a href="#step-2" type="button"  class="btn btn-default active"
 					disabled="disabled"><label style="color:white"><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
 				<p></p>
 			</div>
@@ -237,6 +275,29 @@ background-color: #15A3E6 ;
 					</div>
 				</div>
 				
+				<!-- added by <div class="row">
+					<div class="col-sm">
+						<div class="form-group">
+							<button class="btn btn-primary type=" button" onclick="#">Draft</button>
+						</div>
+					</div>
+					<div class="col-sm">
+						<div class="form-group">
+							<button class="btn btn-primary type=" button" onclick="#">Reset</button>
+						</div>
+					</div>
+					<div class="col-sm">
+						<div class="form-group">
+							<button class="btn btn-primary type="button">Cancel</button>
+						</div>
+					</div>
+					<div class="col-sm">
+						<div class="form-group">
+							<button class="btn btn-primary nextBtn btn-lg pull-right"
+								type="button">Next</button>
+						</div>
+					</div>
+				</div> -->
 				</div>
 				<div class="container">
 				<div class="row">
@@ -259,7 +320,7 @@ background-color: #15A3E6 ;
 					 <div class="col-sm-4">
 						<div class="form-group">
 							<button style="margin:50px 0px 0px 0px;width:100%;color:black;background-color:#F0F0F0;" class="btn aui-button btn-secondary mt-10 nextBtn"
-								type="button" value="from-createmeeting-next"><label><b><liferay-ui:message key="from-createmeeting-next" /></b></label></button>
+								type="button" value="from-createmeeting-next"><label><b><liferay-ui:message key="from-createmeeting-save" /></b></label></button>
 						</div>
 					</div> 
 									</div>
@@ -309,7 +370,7 @@ background-color: #15A3E6 ;
 					<div class="col-sm">
 					<!-- <liferay-ui:message key="from-createmeeting-additems" /> -->
 						<button type="button"
-							style="float: right;background-color:#F0F0F0; " onclick="addRow()" class="btn btn-secondary mb-1 mt-2 add_btn"><label><liferay-ui:message key="from-createmeeting-additems" /></label>
+							style="float: right;background-color:#F0F0F0; " onclick="addRow()" class="btn btn-secondary mt-2 add_btn"><label><liferay-ui:message key="from-createmeeting-additems" /></label>
 							</button></div>
 							
 					

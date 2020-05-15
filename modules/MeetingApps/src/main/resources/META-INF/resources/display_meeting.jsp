@@ -148,12 +148,12 @@ else{
 	<div class="stepwizard col-md-offset-3" id="myDIV">
 		<div class="stepwizard-row setup-panel">
 			<div class="stepwizard-step">
-				<a href="#step-1" type="button" class="btn btn-primary mt-1 active">
+				<a href="#step-1" type="button" class="btn btn-primary active">
 				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
 				<p></p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="#step-2" type="button" class="btn btn-default mt-1 active"
+				<a href="#step-2" type="button" class="btn btn-default active"
 					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
 				<p></p>
 			</div>
@@ -246,7 +246,8 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingsummary" /></label>
-							 <textarea class="form-control" id="meetingSummary" name="MeetingSummary" readonly="readonly"><%=MeetinInfo.getMeetingSummary() %></textarea>
+							 <textarea class="form-control" id="meetingSummary" name="MeetingSummary" value="<%=MeetinInfo.getMeetingSummary() %>" readonly="readonly">
+							 </textarea>
 						</div>
 					</div>
 				</div>
@@ -268,8 +269,8 @@ else{
 					</div>
 					<div class="col-sm">
 						<div class="form-group">
-							<button style="width:100%;color:black;background-color:#F0F0F0;" class="btn btn-secondary nextBtn btn-lg pull-right"
-								type="button"></button><label><b><liferay-ui:message key="from-createmeeting-next" /></b></label><button>
+							<aui:button style="width:100%;color:black;background-color:#F0F0F0;" class="btn btn-secondary nextBtn btn-lg pull-right"
+								type="button" value="from-createmeeting-next"></aui:button>
 						</div>
 					</div>
 				</div>
