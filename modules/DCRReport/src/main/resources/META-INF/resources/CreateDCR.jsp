@@ -62,7 +62,7 @@
 					</aui:select></div>
         <div class="col-sm">
         <!-- <label><liferay-ui:message key="from-dcrNew-reasonforchange" /></label> -->
-        <aui:select label="from-dcrNew-reasonforchange" name="ReasonforChange" id="ReasonforChange">
+        <aui:select label="from-dcrNew-reasonforchange" name="ReasonforChange" id="ReasonforChange" onchange="ReasonforChange()">
 						<aui:option value="from-dcrNew-custrequested"><label><liferay-ui:message key="from-dcrNew-custrequested" /></aui:option>
 						<aui:option value="from-dcrNew-legal"><label><liferay-ui:message key="from-dcrNew-legal" /></aui:option>
 						<aui:option value="from-dcrNew-designimprov"><label><liferay-ui:message key="from-dcrNew-designimprov" /></aui:option>
@@ -170,10 +170,21 @@
     </div>
 
 </aui:form>
-
+<div style="margin-left: 110px;margin-top: -61px;">
 <aui:button onClick="<%=cancelSubmit.toString() %>" value="Cancel"/>
+</div>
 
 <script type="text/javascript">
+
+function ReasonforChange(){
+	var valuea =document.getElementById('<portlet:namespace />ReasonforChange').value;
+	if(valuea == "from-dcrNew-others"){
+		document.getElementById('<portlet:namespace />Others').disabled = true;
+	}else{
+		document.getElementById('<portlet:namespace />Others').disabled = false;
+	}
+	
+}
 
 
 AUI().ready('aui-module', function(A){

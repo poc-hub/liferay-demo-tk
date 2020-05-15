@@ -385,6 +385,9 @@ public class DCRControllerPortlet extends MVCPortlet {
 		String DesignCostType = ParamUtil.getString(actionRequest, "DesignCostType");
 		System.out.println("DesignCostType Type---" + DesignCostType);
 		long DesignCost = ParamUtil.getLong(actionRequest, "DesignCost");
+		
+		String changeDetail = ParamUtil.getString(actionRequest, "ChangeDesgin");
+		
 		System.out.println("DesignCostType Type---" + DesignCostType);
 		String ConstructionCostType = ParamUtil.getString(actionRequest, "ConstructionCostType");
 		System.out.println("ConstructionCostType Type---" + ConstructionCostType);
@@ -421,12 +424,12 @@ public class DCRControllerPortlet extends MVCPortlet {
 			dcd.setChangeType(ChangeType);
 			dcd.setChangeRequestby(ChangeRequestedBy);
 			dcd.setRfcId(ReasonforChange);
+			dcd.setChangeDetail(changeDetail);
 			dcd.setRfcOthers(Others);
 			dcd.setRangeOfDisclosure(Rangeofdisclosure);
 			dcd.setFloor(Floor);
 			dcd.setItem(ItemDetails);
 			dcd.setOriginaldesginDetail(OriginalDesgin);
-			dcd.setChangeDetail(changeDesign);
 			dcd.setAction(Action);
 			dcd.setEstdesignCosttype(DesignCostType);
 			dcd.setEstdesignCost(DesignCost);

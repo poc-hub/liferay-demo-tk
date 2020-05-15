@@ -150,6 +150,9 @@ border: 1px solid #0A0A0C;
 					
 </aui:form>
 
+<div class="container">
+<div class="row">
+	<div class="col-sm">
 
 <table id="userTable" class="display" cellspacing="0" width="100%">
 <thead>
@@ -168,6 +171,9 @@ border: 1px solid #0A0A0C;
 </tr>
 </thead>
 </table>
+</div>
+</div>
+</div>
 
 <script>
 

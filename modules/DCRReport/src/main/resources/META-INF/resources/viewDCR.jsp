@@ -64,7 +64,7 @@ System.out.println(designChangeDetails);
 					</aui:select></div>
         <div class="col-sm">
         <!-- <label><liferay-ui:message key="from-dcrNew-reasonforchange" /></label> -->
-        <aui:select label="from-dcrNew-reasonforchange" name="ReasonforChange" id="ReasonforChange" value="<%=designChangeDetails.getRfcId() %>">
+        <aui:select label="from-dcrNew-reasonforchange" name="ReasonforChange" id="ReasonforChange" value="<%=designChangeDetails.getRfcId() %>" onchange="ReasonforChange()">
 						<aui:option value="from-dcrNew-custrequested"><label><liferay-ui:message key="from-dcrNew-custrequested" /></aui:option>
 						<aui:option value="from-dcrNew-legal"><label><liferay-ui:message key="from-dcrNew-legal" /></aui:option>
 						<aui:option value="from-dcrNew-designimprov"><label><liferay-ui:message key="from-dcrNew-designimprov" /></aui:option>
@@ -189,6 +189,18 @@ System.out.println(designChangeDetails);
   }
 </aui:script>
 <script type="text/javascript">
+
+
+function ReasonforChange(){
+	var valuea =document.getElementById('<portlet:namespace />ReasonforChange').value;
+	if(valuea == "from-dcrNew-others"){
+		document.getElementById('<portlet:namespace />Others').disabled = true;
+	}else{
+		document.getElementById('<portlet:namespace />Others').disabled = false;
+	}
+	
+}
+
   /*    var popup; */
     function getMeetingData() {
 	  console.log("hello am here");
