@@ -74,10 +74,13 @@ public class DCRControllerPortlet extends MVCPortlet {
 	private static String ROOT_FOLDER_DESCRIPTION = "Test Descprition";
 	private static long PARENT_FOLDER_ID = DLFolderConstants.DEFAULT_PARENT_FOLDER_ID;
 	long[] longArray = new long[4];
+	ArrayList<Long> array=new ArrayList<Long>();
 
 	@ProcessAction(name = "dcrViewAction")
 	public void submitDCRView(ActionRequest actionRequest, ActionResponse actionResponse)
 			throws PortletException, IOException {
+		
+		long rId = Long.parseLong(actionRequest.getParameter("ID"));
 		int counter = 0;
 		int flag = 0;
 		FileItem[] item;
@@ -96,18 +99,22 @@ public class DCRControllerPortlet extends MVCPortlet {
 				}
 			}
 		}
+		DesignChangeDetails dcd = DesignChangeDetailsLocalServiceUtil.fetchDesignChangeDetails(rId);
 		if (counter != 0) {
 			flag = 1;
 			createFolder(actionRequest, themeDisplay);
-			fileUpload(themeDisplay, actionRequest);
+			fileUpload1(themeDisplay, actionRequest,rId);
 		}
 
-		long rId = Long.parseLong(actionRequest.getParameter("ID"));
+		
 		System.out.println("Inside Action!");
 		System.out.println(rId);
+		long[] idArray=new long[array.size()];
+		for(int j=0;j<array.size();j++) {
+			idArray[j]=array.get(j);
+		}
 
-
-		DesignChangeDetails dcd = DesignChangeDetailsLocalServiceUtil.fetchDesignChangeDetails(rId);
+		
 
 		// trying to get the no of files the user already had before update
 		if (dcd.getAttachmentId1() > 0) {
@@ -162,118 +169,100 @@ public class DCRControllerPortlet extends MVCPortlet {
 		dcd.setEstconstructionCost(ConstructionCost);
 		dcd.setExpenseAjustmentDivision(ExpensePayment);
 		if (flag == 1) {
-//				if(previousFileCounter==0&&longArray.length==4) {
-//					dcd.setAttachmentId1(longArray[0]);
-//					dcd.setAttachmentId2(longArray[1]);
-//					dcd.setAttachmentId3(longArray[2]);
-//					dcd.setAttachmentId4(longArray[3]);
-//					}
-//				else if(previousFileCounter==1&&longArray.length==3) {
-//					dcd.setAttachmentId2(longArray[0]);
-//					dcd.setAttachmentId3(longArray[1]);
-//					dcd.setAttachmentId4(longArray[2]);
-//				}
-//				else if(previousFileCounter==2&&longArray.length==2) {
-//					dcd.setAttachmentId3(longArray[0]);
-//					dcd.setAttachmentId4(longArray[1]);
-//				}
-//				else if(previousFileCounter==3&&longArray.length==1) {
-//					dcd.setAttachmentId4(longArray[0]);
-//				}
-//				else if()
-
 			if (previousFileCounter == 0) {
-				if (longArray.length == 4) {
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
-					dcd.setAttachmentId3(longArray[2]);
-					dcd.setAttachmentId4(longArray[3]);
-				} else if (longArray.length == 3) {
+				if (idArray.length == 4) {
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
+					dcd.setAttachmentId3(idArray[2]);
+					dcd.setAttachmentId4(idArray[3]);
+				} else if (idArray.length == 3) {
 
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
-					dcd.setAttachmentId3(longArray[2]);
-				} else if (longArray.length == 2) {
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
+					dcd.setAttachmentId3(idArray[2]);
+				} else if (idArray.length == 2) {
 
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
 				} else {
-					dcd.setAttachmentId1(longArray[0]);
+					dcd.setAttachmentId1(idArray[0]);
 				}
 			} else if (previousFileCounter == 1) {
-				if (longArray.length == 4) {
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
-					dcd.setAttachmentId3(longArray[2]);
-					dcd.setAttachmentId4(longArray[3]);
-				} else if (longArray.length == 3) {
+				if (idArray.length == 4) {
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
+					dcd.setAttachmentId3(idArray[2]);
+					dcd.setAttachmentId4(idArray[3]);
+				} else if (idArray.length == 3) {
 
-					dcd.setAttachmentId2(longArray[0]);
-					dcd.setAttachmentId3(longArray[1]);
-					dcd.setAttachmentId4(longArray[2]);
-				} else if (longArray.length == 2) {
+					dcd.setAttachmentId2(idArray[0]);
+					dcd.setAttachmentId3(idArray[1]);
+					dcd.setAttachmentId4(idArray[2]);
+				} else if (idArray.length == 2) {
 
-					dcd.setAttachmentId2(longArray[0]);
-					dcd.setAttachmentId3(longArray[1]);
+					dcd.setAttachmentId2(idArray[0]);
+					dcd.setAttachmentId3(idArray[1]);
 				} else {
-					dcd.setAttachmentId2(longArray[0]);
+					dcd.setAttachmentId2(idArray[0]);
 				}
 			} else if (previousFileCounter == 2) {
-				if (longArray.length == 4) {
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
-					dcd.setAttachmentId3(longArray[2]);
-					dcd.setAttachmentId4(longArray[3]);
-				} else if (longArray.length == 3) {
+				if (idArray.length == 4) {
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
+					dcd.setAttachmentId3(idArray[2]);
+					dcd.setAttachmentId4(idArray[3]);
+				} else if (idArray.length == 3) {
 
-					dcd.setAttachmentId2(longArray[0]);
-					dcd.setAttachmentId3(longArray[1]);
-					dcd.setAttachmentId4(longArray[2]);
-				} else if (longArray.length == 2) {
+					dcd.setAttachmentId2(idArray[0]);
+					dcd.setAttachmentId3(idArray[1]);
+					dcd.setAttachmentId4(idArray[2]);
+				} else if (idArray.length == 2) {
 
-					dcd.setAttachmentId3(longArray[0]);
-					dcd.setAttachmentId4(longArray[1]);
+					dcd.setAttachmentId3(idArray[0]);
+					dcd.setAttachmentId4(idArray[1]);
 				} else {
-					dcd.setAttachmentId3(longArray[0]);
+					dcd.setAttachmentId3(idArray[0]);
 				}
 			} else if (previousFileCounter == 3) {
-				if (longArray.length == 4) {
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
-					dcd.setAttachmentId3(longArray[2]);
-					dcd.setAttachmentId4(longArray[3]);
-				} else if (longArray.length == 3) {
+				if (idArray.length == 4) {
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
+					dcd.setAttachmentId3(idArray[2]);
+					dcd.setAttachmentId4(idArray[3]);
+				} else if (idArray.length == 3) {
 
-					dcd.setAttachmentId2(longArray[0]);
-					dcd.setAttachmentId3(longArray[1]);
-					dcd.setAttachmentId4(longArray[2]);
-				} else if (longArray.length == 2) {
+					dcd.setAttachmentId2(idArray[0]);
+					dcd.setAttachmentId3(idArray[1]);
+					dcd.setAttachmentId4(idArray[2]);
+				} else if (idArray.length == 2) {
 
-					dcd.setAttachmentId3(longArray[0]);
-					dcd.setAttachmentId4(longArray[1]);
+					dcd.setAttachmentId3(idArray[0]);
+					dcd.setAttachmentId4(idArray[1]);
 				} else {
-					dcd.setAttachmentId4(longArray[0]);
+					dcd.setAttachmentId4(idArray[0]);
 				}
 			} else {
-				if (longArray.length == 4) {
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
-					dcd.setAttachmentId3(longArray[2]);
-					dcd.setAttachmentId4(longArray[3]);
-				} else if (longArray.length == 3) {
+				if (idArray.length == 4) {
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
+					dcd.setAttachmentId3(idArray[2]);
+					dcd.setAttachmentId4(idArray[3]);
+				} else if (idArray.length == 3) {
 
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
-					dcd.setAttachmentId3(longArray[2]);
-				} else if (longArray.length == 2) {
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
+					dcd.setAttachmentId3(idArray[2]);
+				} else if (idArray.length == 2) {
 
-					dcd.setAttachmentId1(longArray[0]);
-					dcd.setAttachmentId2(longArray[1]);
+					dcd.setAttachmentId1(idArray[0]);
+					dcd.setAttachmentId2(idArray[1]);
 				} else {
-					dcd.setAttachmentId1(longArray[0]);
+					dcd.setAttachmentId1(idArray[0]);
 				}
 			}
+		
 		}
+		
 		DesignChangeDetailsLocalServiceUtil.updateDesignChangeDetails(dcd);
 
 	}
@@ -333,6 +322,8 @@ public class DCRControllerPortlet extends MVCPortlet {
 	@ProcessAction(name = "DCRAction")
 	public void submitDCR(ActionRequest actionRequest, ActionResponse actionResponse)
 			throws PortletException, IOException {
+		long DCRSeqno = 0L;
+		DCRSeqno = CounterLocalServiceUtil.increment(DesignChangeDetails.class.getName());
 		int counter = 0;
 		int flag = 0;
 		FileItem[] item;
@@ -352,7 +343,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 		if (counter != 0) {
 			flag = 1;
 			createFolder(actionRequest, themeDisplay);
-			fileUpload(themeDisplay, actionRequest);
+			fileUpload(themeDisplay, actionRequest,DCRSeqno);
 		}
 		System.out.println("Calling submitDCR-----");
 		String changeDesign=ParamUtil.getString(actionRequest,"changeDesign");
@@ -405,7 +396,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 		System.out.println("Attachment4 Type---" + longArray[3]);
 		// Inserting form data to DB by Service Builder
 		try {
-			long DCRSeqno = 0L;
+			
 			long DCRSubSeqno = 0L;
 			long groupId = 1111;
 			int revisionNo = 0;
@@ -413,7 +404,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 			User user = PortalUtil.getUser(actionRequest);
 			String UserName = user.getScreenName();
 			// Insert Data to DesignChangeDetails Table
-			DCRSeqno = CounterLocalServiceUtil.increment(DesignChangeDetails.class.getName());
+			
 			DesignChangeDetails dcd = DesignChangeDetailsLocalServiceUtil.createDesignChangeDetails(DCRSeqno);
 			dcd.setDcrChangeSeqno(DCRSeqno);
 			dcd.setDesignchangeSubseqno(DCRSubSeqno);
@@ -489,7 +480,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 	}
 
 	// Code to store the attachments into the Database.
-	public void fileUpload(ThemeDisplay themeDisplay, ActionRequest actionRequest) {
+	public void fileUpload(ThemeDisplay themeDisplay, ActionRequest actionRequest,long number) {
 		int i = 0;
 		UploadPortletRequest uploadPortletRequest = PortalUtil.getUploadPortletRequest(actionRequest);
 		Map<String, FileItem[]> files = uploadPortletRequest.getMultipartParameterMap();
@@ -505,6 +496,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 
 					title = fileItem.getFileName();
 					if (title != "") {
+						title=Long.toString(number)+"_"+title;
 						description = title + "is added through code!";
 						repositoryId = themeDisplay.getScopeGroupId();
 						mimeType = fileItem.getContentType();
@@ -948,7 +940,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 
 			for (DesignChangeDetails designChangeDetails : designChangeDetailsList) {
 				jsonUserArray = JSONFactoryUtil.createJSONArray();
-				jsonUserArray.put(designChangeDetails.getDcrChangeSeqno()+","+designChangeDetails.getApprovalNo());
+				jsonUserArray.put(designChangeDetails.getDcrChangeSeqno()+","+designChangeDetails.getApprovalNo() +","+designChangeDetails.getApprovalStatus());
 				HttpServletRequest serveletRequest = PortalUtil
 						.getOriginalServletRequest(PortalUtil.getHttpServletRequest(resourceRequest));
 
@@ -976,6 +968,54 @@ public class DCRControllerPortlet extends MVCPortlet {
 		JSONObject tableData = JSONFactoryUtil.createJSONObject();
 		tableData.put("data", allUsersJsonArray);
 		ServletResponseUtil.write(PortalUtil.getHttpServletResponse(resourceResponse), tableData.toString());
+	}
+	
+	public void fileUpload1(ThemeDisplay themeDisplay, ActionRequest actionRequest,long number) {
+		int i = 0;
+		UploadPortletRequest uploadPortletRequest = PortalUtil.getUploadPortletRequest(actionRequest);
+		Map<String, FileItem[]> files = uploadPortletRequest.getMultipartParameterMap();
+		Folder folder = getFolder(themeDisplay);
+		InputStream is;
+		File file;
+		String title, description, mimeType;
+		long repositoryId;
+		for (Entry<String, FileItem[]> file2 : files.entrySet()) {
+			FileItem item[] = file2.getValue();
+			try {
+				for (FileItem fileItem : item) {
+
+					title = fileItem.getFileName();
+					if (title != "") {
+						title=Long.toString(number)+"_"+title;
+						description = title + "is added through code!";
+						repositoryId = themeDisplay.getScopeGroupId();
+						mimeType = fileItem.getContentType();
+						is = fileItem.getInputStream();
+						file = fileItem.getStoreLocation();
+						try {
+							ServiceContext serviceContext = ServiceContextFactory
+									.getInstance(DLFileEntry.class.getName(), actionRequest);
+							DLAppServiceUtil.addFileEntry(repositoryId, folder.getFolderId(), title, mimeType, title,
+									description, "", file, serviceContext);
+							FileEntry fileentry = DLAppServiceUtil.getFileEntry(themeDisplay.getScopeGroupId(),
+									folder.getFolderId(), title);
+							 array.add(fileentry.getFileEntryId());
+							i++;
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					} else {
+						continue;
+					}
+
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 //			@Override

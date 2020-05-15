@@ -179,9 +179,9 @@
 function ReasonforChange(){
 	var valuea =document.getElementById('<portlet:namespace />ReasonforChange').value;
 	if(valuea == "from-dcrNew-others"){
-		document.getElementById('<portlet:namespace />Others').disabled = true;
-	}else{
 		document.getElementById('<portlet:namespace />Others').disabled = false;
+	}else{
+		document.getElementById('<portlet:namespace />Others').disabled = true;
 	}
 	
 }

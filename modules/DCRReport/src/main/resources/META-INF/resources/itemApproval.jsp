@@ -48,7 +48,9 @@ try{
 		//}
 		for(int j=0;j<array.length;j++){
 			if(file.getFileEntryId()==array[j]){
-				filenames[i]=file.getFileName();
+				String temp=file.getFileName();
+				String[] temp2=temp.split("_");
+				filenames[i]=temp2[1];
 				Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
 				i++;
 			}
@@ -189,7 +191,7 @@ AUI().ready('aui-module', function(A){
 		</div>
     </div>
     </fieldset>
-     <label>Attached Files</label>
+      <label>Attached Files</label>
 	<div class="row">
  
        <div class="col-sm">
@@ -212,26 +214,82 @@ AUI().ready('aui-module', function(A){
       <div class="col-sm">
      <aui:input type="number" name="Approval number" label="from-itemapproval-approvalno" readonly="readonly" value="<%=dcd.getApprovalNo() %>"></aui:input>
      </div>
-    
-     
-     
-      <div class="col-sm">
-      <aui:select label="from-itemapproval-approval" name="Approval" id="Approval">
-      	<aui:option value="from-itemapproval-yes"><label><liferay-ui:message key="from-itemapproval-yes" /></label></aui:option>
-      	<aui:option value="from-itemapproval-no"><label><liferay-ui:message key="from-itemapproval-no" /></label></aui:option>
-      </aui:select>
-      </div>
-      <div class="col-sm">
-      <aui:input type="date" name="ApprovalDate" id="ApprovalDate"  label="Approval Date" >
-      </aui:input>
-      </div>
-      <div class="col-sm">
-      <aui:select label="from-itemapproval-custapproval" name="CustomerApproval" id="CustomerApproval">
-      	<aui:option value="from-itemapproval-yes"><label><liferay-ui:message key="from-itemapproval-yes" /></label></aui:option>
-      	<aui:option value="from-itemapproval-no"><label><liferay-ui:message key="from-itemapproval-no" /></label></aui:option>
-      </aui:select>
-      </div>
-      <div class="col-sm">
+
+
+		<%
+			if(null == dcd.getApprovalStatus() || "" == dcd.getApprovalStatus()) {
+		%>
+		<div class="col-sm">
+			<aui:select label="from-itemapproval-approval" name="Approval"
+				id="Approval">
+				<aui:option value="from-itemapproval-yes">
+					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				</aui:option>
+				<aui:option value="from-itemapproval-no">
+					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				</aui:option>
+			</aui:select>
+		</div>
+		<%
+			} else {
+		%>
+		<div class="col-sm">
+			<aui:select label="from-itemapproval-approval" name="Approval"
+				id="Approval" value="<%=dcd.getApprovalStatus()%>">
+				<aui:option value="from-itemapproval-yes">
+					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				</aui:option>
+				<aui:option value="from-itemapproval-no">
+					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				</aui:option>
+			</aui:select>
+		</div>
+		<%
+			}
+		%>
+
+		<div class="col-sm">
+			<aui:input type="date" name="ApprovalDate" id="ApprovalDate"
+				label="Approval Date">
+			</aui:input>
+		</div>
+
+		<%
+			if (null == dcd.getClientApprovalStatus() || "" == dcd.getClientApprovalStatus()) {
+		%>
+		<div class="col-sm">
+			<aui:select label="from-itemapproval-custapproval"
+				name="CustomerApproval" id="CustomerApproval">
+				<aui:option value="from-itemapproval-yes">
+					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				</aui:option>
+				<aui:option value="from-itemapproval-no">
+					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				</aui:option>
+			</aui:select>
+		</div>
+
+		<%
+			} else {
+		%>
+
+		<div class="col-sm">
+			<aui:select label="from-itemapproval-custapproval"
+				name="CustomerApproval" id="CustomerApproval"
+				value="<%=dcd.getClientApprovalStatus()%>">
+				<aui:option value="from-itemapproval-yes">
+					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				</aui:option>
+				<aui:option value="from-itemapproval-no">
+					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				</aui:option>
+			</aui:select>
+		</div>
+		<%
+			}
+		%>
+
+		<div class="col-sm">
       <aui:input type="date" name="CustomerDate" id="CustomerDate" label="Customer Date"  >
       </aui:input>
 	  </div>

@@ -25,6 +25,11 @@ display:none;
 background: rgba(128, 128, 128, 0.33);
 border: 1px solid #0A0A0C;
 }
+
+table.dataTable thead th, table.dataTable thead td {
+padding: 10px 15px !important;
+border-bottom: 1px solid #111 ;
+}
 </style>
 
 <portlet:resourceURL var="usersObjectArrayURL" id="usersObjects">
@@ -488,6 +493,7 @@ function approvalStatusChange(){
 		var str2="";
 		var str3="";
 		var str4="";
+		var str5="";
 		$('input[type=checkbox]').each(function (){
 			if(value1==""){
 				
@@ -497,6 +503,7 @@ function approvalStatusChange(){
 					str2=str.split(",");
 					str3=str2[0];
 					str4=str2[1];
+					str5=str2[2];
 				}	
 			}
 		});
@@ -506,9 +513,14 @@ function approvalStatusChange(){
 			alert("Kindly select a record with approval number");
 		}
 		else{
-			var renderUrl="<%=approvalChange%>";
-			renderUrl+="&chngSeqNo="+str3;
-			window.location.href=renderUrl;	
+			if(str5=="from-itemapproval-yes"){
+				alert('Record already approved !');
+			}else{
+				var renderUrl="<%=approvalChange%>";
+				renderUrl+="&chngSeqNo="+str3;
+				window.location.href=renderUrl;
+			}
+				
 		}
 		//var renderUrl="< %=approvalChange%>";
 		//render
@@ -518,8 +530,8 @@ function approvalStatusChange(){
 	}
 }
 AUI().ready('aui-module', function(A){
-	document.getElementById('<portlet:namespace />dcrFromDate').valueAsDate = "";
-	document.getElementById('<portlet:namespace />dcrToDate').valueAsDate = "";
+	//document.getElementById('<portlet:namespace />dcrFromDate').valueAsDate = "";
+	//document.getElementById('<portlet:namespace />dcrToDate').valueAsDate = "";
 	document.getElementById('<portlet:namespace/>Rangeofdisclosure').value="";
 	document.getElementById('<portlet:namespace />ExpensePayment').value = "";
 	document.getElementById('<portlet:namespace />Approval').value = "";
@@ -527,6 +539,21 @@ AUI().ready('aui-module', function(A){
 	document.getElementById("<portlet:namespace/>ReasonforChange").value;
 	document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
 	document.getElementById('<portlet:namespace/>Issuer').value="";
+});
+AUI().use('aui-base',function(A){
+	
+	A.one('#<portlet:namespace/>Reset').on('click',function(){
+		//document.getElementById('<portlet:namespace />dcrFromDate').valueAsDate = "";
+		//document.getElementById('<portlet:namespace />dcrToDate').valueAsDate = "";
+		document.getElementById('<portlet:namespace/>Rangeofdisclosure').value="";
+		document.getElementById('<portlet:namespace />ExpensePayment').value = "";
+		document.getElementById('<portlet:namespace />Approval').value = "";
+		document.getElementById('<portlet:namespace />ConstructionStatus').value = "";
+		document.getElementById("<portlet:namespace/>ReasonforChange").value;
+		document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
+		document.getElementById('<portlet:namespace/>Issuer').value="";
+	});
+	
 });
 
 </script>
@@ -540,6 +567,6 @@ value="View"></aui:button>
 </aui:button>
 <aui:button onClick="approvalStatusChange();" value="Approval Status Change">
 </aui:button>
-<aui:button onClick="init();"
+<aui:button id="Reset"
 value="Reset"></aui:button>
 </aui:button-row>

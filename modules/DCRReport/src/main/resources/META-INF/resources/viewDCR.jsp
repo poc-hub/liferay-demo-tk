@@ -1,3 +1,7 @@
+<%@page import="com.liferay.document.library.kernel.util.DLUtil"%>
+<%@page import="java.util.List"%>
+<%@page import="com.liferay.portal.kernel.repository.model.Folder"%>
+<%@page import="com.liferay.document.library.kernel.model.DLFolderConstants"%>
 <%@page import="javax.portlet.PortletSession"%>
 <%@page import="com.liferay.document.library.kernel.service.DLFileEntryLocalServiceUtil"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,11 +15,54 @@
 <%@page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%>
 
 <%
+String ROOT_FOLDER_NAME = "File_Upload";
+String ROOT_FOLDER_DESCRIPTION = "Test Descprition";
+long PARENT_FOLDER_ID = DLFolderConstants.DEFAULT_PARENT_FOLDER_ID;
 long receivedData=Long.parseLong(request.getParameter("recordId"));
 String sreceivedData=Long.toString(receivedData);
 System.out.println(receivedData);
 DesignChangeDetails designChangeDetails=DesignChangeDetailsLocalServiceUtil.fetchDesignChangeDetails(receivedData);
 System.out.println(designChangeDetails);
+String Urls[]={"","","",""};
+String filenames[]={"","","",""};
+
+try{
+	Folder folder=DLAppServiceUtil.getFolder(themeDisplay.getScopeGroupId(), PARENT_FOLDER_ID, ROOT_FOLDER_NAME);
+	long array[]=new long[4];
+	
+	array[0]=designChangeDetails.getAttachmentId1();
+	array[1]=designChangeDetails.getAttachmentId2();
+	array[2]=designChangeDetails.getAttachmentId3();
+	array[3]=designChangeDetails.getAttachmentId4();
+	
+	int i=0;
+	//try{
+		List<FileEntry> fileEntry=DLAppServiceUtil.getFileEntries(themeDisplay.getScopeGroupId(), folder.getFolderId());
+
+
+
+		for(FileEntry file:fileEntry){
+			//if(file.getFileEntryId()==arra){
+				//Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
+				//i++;
+			//}
+			for(int j=0;j<array.length;j++){
+				if(file.getFileEntryId()==array[j]){
+					String temp=file.getFileName();
+					String[] temp2=temp.split("_");
+					filenames[i]=temp2[1];
+					System.out.println(filenames[i]);
+					Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
+					i++;
+				}
+			}
+		}
+	//}catch(Exception e){
+		//System.out.println("FOlder not found");
+	
+	}catch(Exception e){
+		System.out.println("File not found");
+	}
 %>
 <portlet:actionURL name="dcrViewAction" var="submitDCRView">
 	<portlet:param name="ID" value="<%=sreceivedData%>"/>
@@ -151,7 +198,25 @@ System.out.println(designChangeDetails);
 		</aui:select>
 		</div>
     </div>
-
+ <label>Attached Files</label>
+	<div class="row">
+ 
+       <div class="col-sm">
+     	<a href="<%=Urls[0] %>"><%=filenames[0] %></a>
+     </div>
+       <div class="col-sm">
+     <a href="<%=Urls[1] %>"><%=filenames[1] %></a>
+     </div>
+     
+      
+      <div class="col-sm">
+      <a href="<%=Urls[2] %>"><%=filenames[2] %></a>
+     </div>
+       <div class="col-sm">
+     <a href="<%=Urls[3] %>"><%=filenames[3] %></a>
+     </div>
+     
+	</div>
     <div class="row">
         <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment1" name="Attachment1" id="Attachment1"  /></div>
         <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment3" name="Attachment3" id="Attachment3"  /></div>
@@ -194,9 +259,9 @@ System.out.println(designChangeDetails);
 function ReasonforChange(){
 	var valuea =document.getElementById('<portlet:namespace />ReasonforChange').value;
 	if(valuea == "from-dcrNew-others"){
-		document.getElementById('<portlet:namespace />Others').disabled = true;
-	}else{
 		document.getElementById('<portlet:namespace />Others').disabled = false;
+	}else{
+		document.getElementById('<portlet:namespace />Others').disabled = true;
 	}
 	
 }
