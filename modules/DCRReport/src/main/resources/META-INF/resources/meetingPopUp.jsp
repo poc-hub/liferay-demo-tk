@@ -93,7 +93,6 @@
         });
 } --%>
 
-
 function save(){
 
 			 $("#getPopUpdata").hide();
@@ -155,7 +154,7 @@ function save(){
 }
 }
 </aui:script>
-<aui:form>
+<aui:form name="meetingPopup">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">
@@ -190,7 +189,7 @@ function save(){
 			<div class="col-sm">
 				<div class="form-group">
 					<aui:input label="from-meetingIndex-meetingdatefrom" type="date"
-						name="Meeting From Date" id="meetingFrmDate" />
+						name="Meeting_From_Date" id="meetingFrmDate" onchange="valStartDate()" />
 					<!-- <input
 						class="form-control" type="date" value="" id="meetingFrmDate"
 						name="MeetingFromDate"> -->
@@ -199,7 +198,7 @@ function save(){
 			<div class="col-sm">
 				<div class="form-group">
 					<aui:input label="from-meetingIndex-meetingdateto" type="date"
-						name="Meeting To Date" id="meetingToDate" />
+						name="Meeting_To_Date" id="meetingToDate" onchange="valEndDate()"/>
 					<!-- <input
 						class="form-control" type="date" value="" id="meetingToDate"
 						name="MeetingToDate"> -->
@@ -471,3 +470,115 @@ function getAjaxPopUpdata() {
 		window.close();
 	}
 </script>
+<aui:script>
+
+var valuer;
+function valStartDate(){
+	console.log("Insiade start");
+    AUI().use('aui-base','aui-io-request', function(A){
+       
+        var MeetingFromDate=A.one("#<portlet:namespace/>meetingFrmDate").get('value');
+        console.log(MeetingFromDate);
+        valuer = new Date(Date.parse(MeetingFromDate,"MMM dd yyyy"));
+        console.log(new Date());
+        console.log(valuer);
+        });
+        
+        
+        AUI().use('aui-form-validator',
+  function(A) {
+  var DEFAULTS_FORM_VALIDATOR = A.config.FormValidator;
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.RULES,
+                                    {
+                                    customRuleForEndDate:function (val, fieldNode, ruleValue) {
+                                    	$(".customRuleForEndDate").closest("div").remove();
+                                  		value = new Date(Date.parse(val,"MMM dd yyyy"));
+                                  		if(value > new Date()) {
+                                  			return false;
+                                  		}
+                                  		else {
+                                  			return true;
+                                  		}
+                                       }, 
+                                    },
+                                    true
+                        );
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.STRINGS,
+                                    {
+                                                customRuleForEndDate:"Meeting date should be today or day before",
+                                    },
+                                    true
+                        );
+    var rules = {
+      <portlet:namespace/>Meeting_From_Date: {
+      	customRuleForEndDate: true
+      },
+    };
+
+    var fieldStrings = {};
+    new A.FormValidator(
+      {
+        boundingBox: '#<portlet:namespace/>meetingPopup',
+        fieldStrings: fieldStrings,
+        rules: rules,
+        showAllMessages: true
+      }
+    );
+  }
+);
+        
+}
+
+function valEndDate() {
+	console.log("Insiade end");
+AUI().use('aui-form-validator',
+  function(A) {
+  var DEFAULTS_FORM_VALIDATOR = A.config.FormValidator;
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.RULES,
+                                    {
+                                    customRuleForEndDate:function (val, fieldNode, ruleValue) {
+                                    	$(".customRuleForEndDate").closest("div").remove();
+                                  		value = new Date(Date.parse(val,"MMM dd yyyy"));
+                                  		if(value < valuer) {
+                                  			console.log(value);
+                                  			console.log(valuer);
+                                  			return false;
+                                  		}
+                                  		else {
+                                  			return true;
+                                  		}
+                                       }, 
+                                    },
+                                    true
+                        );
+                         A.mix(
+                                    DEFAULTS_FORM_VALIDATOR.STRINGS,
+                                    {
+                                                customRuleForEndDate:"Meeting end date should be on or after start date",
+                                    },
+                                    true
+                        );
+    var rules = {
+     <portlet:namespace/>Meeting_To_Date: {
+      	customRuleForEndDate: true
+      },
+    };
+
+    var fieldStrings = {};
+    new A.FormValidator(
+      {
+        boundingBox: '#<portlet:namespace/>meetingPopup',
+        fieldStrings: fieldStrings,
+        rules: rules,
+        showAllMessages: true
+      }
+    );
+  }
+);
+ 
+}
+
+</aui:script>

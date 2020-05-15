@@ -75,15 +75,15 @@ try{
     <div class="row">
         <div class="col-sm">
         
-        <aui:input type="text" label="from-dcrNew-project" name="Project" value="Traditional Architecture" id="Project" readonly="readonly" />
+        <aui:input type="text" label="from-dcrNew-project" name="Project" value="Traditional Architecture" id="Project" readonly="readonly" style="background-color: #f1f2f5;"/>
         
         </div>
         <div class="col-sm">
-        <aui:input type="text" label="from-dcrNew-issuer" name="IssuerNew" value="<%=themeDisplay.getUser().getFullName() %>" id="IssuerNew" readonly="readonly" />
+        <aui:input type="text" label="from-dcrNew-issuer" name="IssuerNew" value="<%=themeDisplay.getUser().getFullName() %>" id="IssuerNew" readonly="readonly" style="background-color: #f1f2f5;"/>
         </div>
         <div class="col-sm">
         
-        <aui:input type="text" label="from-dcrNew-createdon" name="Created On" value="<%= formatDate%>" id="Created On" readonly="readonly" />
+        <aui:input type="text" label="from-dcrNew-createdon" name="Created On" value="<%= formatDate%>" id="Created On" readonly="readonly" style="background-color: #f1f2f5;" />
         
         </div>
         <div class="col-sm">&nbsp;</div>
@@ -142,7 +142,7 @@ try{
                     
                 </div>
                 <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
-                    <input type="text" class="form-control" id="meetingId" name="meetingId" readonly="readonly" value="<%=designChangeDetails.getMeetingId()%>"></div>
+                    <input type="text" class="form-control" id="meetingId" name="meetingId" readonly="readonly" value="<%=designChangeDetails.getMeetingId()%>" style="background-color: #f1f2f5;"></div>
                 <div class="col-sm pl-2 pr-2">
                 <label><liferay-ui:message key="from-dcrNew-floor" /></label>
                     <input type="text" class="form-control" id="Floor" name="Floor" value="<%=designChangeDetails.getFloor()%>"></div>

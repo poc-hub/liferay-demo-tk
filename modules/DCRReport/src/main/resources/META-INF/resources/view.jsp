@@ -351,6 +351,7 @@ function valStartDate(){
                                     DEFAULTS_FORM_VALIDATOR.RULES,
                                     {
                                     customRuleForEndDate:function (val, fieldNode, ruleValue) {
+                                    	$(".customRuleForEndDate").closest("div").remove();
                                   		value = new Date(Date.parse(val,"MMM dd yyyy"));
                                   		if(value > new Date()) {
                                   			return false;
@@ -399,6 +400,7 @@ AUI().use('aui-form-validator',
                                     DEFAULTS_FORM_VALIDATOR.RULES,
                                     {
                                     customRuleForEndDate:function (val, fieldNode, ruleValue) {
+                                    	$(".customRuleForEndDate").closest("div").remove();
                                   		value = new Date(Date.parse(val,"MMM dd yyyy"));
                                   		if(value < valuer) {
                                   			console.log(value);
