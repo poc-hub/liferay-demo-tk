@@ -70,7 +70,7 @@ try{
 <portlet:renderURL var="dcrIndexURL">
 	<portlet:param name="mvcPath" value="/view.jsp"/>
 </portlet:renderURL>
-<aui:form name="meetingIndexForm" method="POST" action="${submitDCRView}" >
+<aui:form name="meetingIndexForm" method="POST" enctype="multipart/form-data" action="${submitDCRView}" >
    <fieldset disabled="disabled" id="fieldSet">
     <div class="row">
         <div class="col-sm">

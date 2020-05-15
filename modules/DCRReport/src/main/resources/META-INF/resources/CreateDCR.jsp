@@ -22,7 +22,7 @@
 <portlet:param name=”mvcPath” value=”/meetingPopUp.jsp”/>
 </portlet:renderURL>  --%>
 
-<aui:form name="meetingIndexForm" method="POST" action="${submitDCR}" >
+<aui:form name="meetingIndexForm" enctype="multipart/form-data" method="POST" action="${submitDCR}" >
     <div class="row">
         <div class="col-sm">
         
@@ -164,15 +164,14 @@
 
     <div class="row">
         <div class="col-sm"><div class="form-group">
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <aui:button  type="submit" value="Save"></aui:button>
+            <aui:button type="button" onClick="<%=cancelSubmit.toString() %>" value="Cancel"/>
         </div></div>
         
     </div>
 
 </aui:form>
-<div style="margin-left: 110px;margin-top: -61px;">
-<aui:button onClick="<%=cancelSubmit.toString() %>" value="Cancel"/>
-</div>
+
 
 <script type="text/javascript">
 
