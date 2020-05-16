@@ -141,7 +141,11 @@ border-bottom: 1px solid #111 ;
 					<div class="form-group">
 						<!-- value="from-dcrIndex-search" -->
 						<aui:button class="btn  btn-secondary" type="button" id="approveButton" onclick="serch();" style="
-						    margin-bottom: -64px;" value="from-dcrIndex-search"></aui:button>					
+						    margin-bottom: -64px;" value="from-dcrIndex-search"></aui:button>	
+						 <div>
+							<aui:button class="btn  btn-secondary" type="reset"  value="from-meetingpopup-reset" style="margin-left: 110px;margin-top: 2px;"></aui:button>
+						</div>	
+						    				
 					</div>
 					</div>
 					<div class="col-sm">
@@ -542,21 +546,21 @@ AUI().ready('aui-module', function(A){
 	document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
 	document.getElementById('<portlet:namespace/>Issuer').value="";
 });
-AUI().use('aui-base',function(A){
+/* AUI().use('aui-base',function(A){
 	
 	A.one('#<portlet:namespace/>Reset').on('click',function(){
-		document.getElementById('<portlet:namespace />dcrFromDate').value = "";
-		document.getElementById('<portlet:namespace />dcrToDate').value = "";
+		//document.getElementById('<portlet:namespace />dcrFromDate').valueAsDate = "";
+		//document.getElementById('<portlet:namespace />dcrToDate').valueAsDate = "";
 		document.getElementById('<portlet:namespace/>Rangeofdisclosure').value="";
 		document.getElementById('<portlet:namespace />ExpensePayment').value = "";
 		document.getElementById('<portlet:namespace />Approval').value = "";
 		document.getElementById('<portlet:namespace />ConstructionStatus').value = "";
-		document.getElementById("<portlet:namespace/>ReasonforChange").value="";
+		document.getElementById("<portlet:namespace/>ReasonforChange").value;
 		document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
 		document.getElementById('<portlet:namespace/>Issuer').value="";
 	});
 	
-});
+}); */
 
 </script>
 
@@ -569,6 +573,5 @@ value="from-dcrIndex-view"></aui:button>
 </aui:button>
 <aui:button onClick="approvalStatusChange();" value="from-dcrIndex-approvalstatuschange">
 </aui:button>
-<aui:button id="Reset"
-value="from-dcrIndex-reset"></aui:button>
+
 </aui:button-row>

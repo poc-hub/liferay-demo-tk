@@ -311,8 +311,8 @@ function save(){
 				<div class="form-group">
 <input type="button" class="btn  btn-secondary" id="getPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>" onclick="getPopUpdata();" />
 
-<input type="button" class="btn  btn-secondary"  id="getAjaxPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>"value="Select" onclick="getAjaxPopUpdata();"  style="display:none;" />
-<input type="button" class="btn  btn-secondary"  value="<%=LanguageUtil.get(request, "from-meetingpopup-reset") %>" value="Reset" onclick="resetValues();" />
+<input type="button" class="btn  btn-secondary"  id="getAjaxPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>" onclick="getAjaxPopUpdata();"  style="display:none;" />
+<input type="button" class="btn  btn-secondary"  value="<%=LanguageUtil.get(request, "from-meetingpopup-reset") %>"  onclick="resetValues();" />
 
 </div>
 </div>
