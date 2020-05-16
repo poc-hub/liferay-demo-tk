@@ -141,20 +141,19 @@ border-bottom: 1px solid #111 ;
 					<div class="form-group">
 						<!-- value="from-dcrIndex-search" -->
 						<aui:button class="btn  btn-secondary" type="button" id="approveButton" onclick="serch();" style="
-						    margin-bottom: -64px;" value="from-dcrIndex-search"></aui:button>	
-						 <div>
-							<aui:button class="btn  btn-secondary" type="reset"  value="from-meetingpopup-reset" style="margin-left: 110px;margin-top: 2px;"></aui:button>
-						</div>	
-						    				
-					</div>
-					</div>
-					<div class="col-sm">
-					&nbsp;
-					</div>
-					<div class="col-sm">
-					&nbsp;
+						    margin-bottom: -64px;" value="from-dcrIndex-search"></aui:button>					
 					</div>
 					
+					
+					</div>
+					<div class="col-sm">
+					<div class="form-group">
+					<aui:button class="btn  btn-secondary"  style="margin-left: -110px;margin-top: 25px;" type="reset" value="from-meetingpopup-reset"></aui:button>
+					<!-- &nbsp; -->
+					</div>
+					</div>
+					<div class="col-sm">
+					&nbsp;
 					</div>
 					
 </aui:form>
@@ -546,7 +545,7 @@ AUI().ready('aui-module', function(A){
 	document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
 	document.getElementById('<portlet:namespace/>Issuer').value="";
 });
-/* AUI().use('aui-base',function(A){
+AUI().use('aui-base',function(A){
 	
 	A.one('#<portlet:namespace/>Reset').on('click',function(){
 		//document.getElementById('<portlet:namespace />dcrFromDate').valueAsDate = "";
@@ -560,7 +559,7 @@ AUI().ready('aui-module', function(A){
 		document.getElementById('<portlet:namespace/>Issuer').value="";
 	});
 	
-}); */
+});
 
 </script>
 
