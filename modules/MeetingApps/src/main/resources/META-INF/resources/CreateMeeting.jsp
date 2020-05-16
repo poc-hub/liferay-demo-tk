@@ -3,27 +3,22 @@
  <%-- <script type="text/javascript" src="<%request.getContextPath();%>/js/main.js"></script> --%>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+.form-control{
+background-color: #FFFFFF;
+}
+.custom-select{
+background-color: #FFFFFF;
+}
+</style>
 <script>
 $(document).ready(function(){
 	
 	document.getElementById('meetingDate').valueAsDate = new Date();
 	document.getElementById('expectedDueDate').valueAsDate = new Date();
-	/* var header = document.getElementById("myDIV");
-	var btns = header.getElementsByClassName("step");
-	for (var i = 0; i < btns.length; i++) {
-	  btns[i].addEventListener("click", function() {
-	  var current = document.getElementsByClassName("active");
-	  current[0].className = current[0].className.replace(" active", "step");
-	  this.className += " active";
-	  });
-	}
-	 */
 	
   });
 
-</script>
-
-<aui:script>
 function dateChange(){
 	console.log("inside method");
 	var val=document.getElementById("meetingDate").value;
@@ -34,10 +29,15 @@ function dateChange(){
     	//document.getElementById("meetingDate").value("");
     	
         alert("Meeting Date should be today or before");
-        $("#meetingDate").val("");
-        document.getElementById("validationspan").innerHTML("Please fill date field");
+        document.getElementById('meetingDate').valueAsDate = new Date();
+       //$("#meetingDate").val("");
+        //document.getElementById("validationspan").innerHTML("Please fill date field");
          }
 }
+</script>
+
+<aui:script>
+
 function resetInfo() {
             document.getElementById("meetingType").value="";
 			document.getElementById("meetingSummary").value="";
@@ -45,6 +45,7 @@ function resetInfo() {
 			document.getElementById("meetingParticipants").value="";
 			document.getElementById("meetingPlace").value="";
 			document.getElementById("meetingTitle").value="";
+			document.getElementById('meetingDate').valueAsDate = new Date();
             
          }
 function resetDetails(){
@@ -55,21 +56,9 @@ function resetDetails(){
 
 }
 
-</aui:script>
- 
-<!-- <script>
-var header = document.getElementById("myDIV");
-var btns = header.getElementsByClassName("step");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-  var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "step");
-  this.className += " active";
-  });
-}
 
-</script>
- --><style>
+</aui:script>
+ <style>
 body {
 	margin-top: 20px;
 }
@@ -163,31 +152,16 @@ background-color: #15A3E6 ;
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container">
-
-<!-- 	<div class="stepwizard col-md-offset-3">
-		<div class="stepwizard-row setup-panel">
-			<div class="stepwizard-step">
-				<a href="#step-1" type="button" class="btn btn-primary">
-				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
-				<p></p>
-			</div>
-			<div class="stepwizard-step">
-				<a href="#step-2" type="button" class="btn btn-default"
-					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
-				<p></p>
-			</div>
-		</div>
-	</div> -->
+<div class="container">	
 		<div class="stepwizard col-md-offset-3" >
 		<div class="stepwizard-row setup-panel" id="myDIV" >
 			<div class="stepwizard-step">
-				<a href="#step-1" type="button" class="btn btn-primary active">
+				<a href="#step-1" type="button" class="btn btn-primary mt-1 active">
 				<label style="color:white"><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
 				<p></p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="#step-2" type="button"  class="btn btn-default active"
+				<a href="#step-2" type="button"  class="btn btn-default mt-1 active"
 					disabled="disabled"><label style="color:white"><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
 				<p></p>
 			</div>
@@ -200,9 +174,9 @@ background-color: #15A3E6 ;
 				<div class="row">
 					<div class="col-sm">
 						<div class="form-group">
-							<label for="usr">Project</label> <input type="text"
+							<label><liferay-ui:message key="from-createmeeting-project" /></label> <input type="text"
 								class="form-control" id="project" name="Project"
-								value="Takenaka" readonly="readonly">
+								value="<liferay-ui:message key="from-createmeeting-projectName" />" disabled>
 						</div>
 					</div>
 
@@ -210,7 +184,7 @@ background-color: #15A3E6 ;
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingid" /></label> <input type="text"
 								class="form-control" id="meetingId" name="MeetingId" value=""
-								readonly="readonly">
+								disabled>
 						</div>
 					</div>
 
@@ -225,8 +199,8 @@ background-color: #15A3E6 ;
 					<div class="col-sm">
 						<div class="form-group">
 							<label class="mandatory"><liferay-ui:message key="from-createmeeting-meetingtype" /></label> <select
-								class="custom-select" id="meetingType" name="MeetingType">
-								<option selected>Choose...</option>
+								class="custom-select" id="meetingType" name="MeetingType" required>
+								<option value="Choose"><label><liferay-ui:message key="from-choose" /></label></option>
 								<option value="from-internal"><label><liferay-ui:message key="from-internal" /></label></option>
 								<option value="from-external"><label><liferay-ui:message key="from-external" /></label></option>
 							</select>
@@ -275,29 +249,6 @@ background-color: #15A3E6 ;
 					</div>
 				</div>
 				
-				<!-- added by <div class="row">
-					<div class="col-sm">
-						<div class="form-group">
-							<button class="btn btn-primary type=" button" onclick="#">Draft</button>
-						</div>
-					</div>
-					<div class="col-sm">
-						<div class="form-group">
-							<button class="btn btn-primary type=" button" onclick="#">Reset</button>
-						</div>
-					</div>
-					<div class="col-sm">
-						<div class="form-group">
-							<button class="btn btn-primary type="button">Cancel</button>
-						</div>
-					</div>
-					<div class="col-sm">
-						<div class="form-group">
-							<button class="btn btn-primary nextBtn btn-lg pull-right"
-								type="button">Next</button>
-						</div>
-					</div>
-				</div> -->
 				</div>
 				<div class="container">
 				<div class="row">
@@ -319,8 +270,8 @@ background-color: #15A3E6 ;
 					</div>
 					 <div class="col-sm-4">
 						<div class="form-group">
-							<button style="margin:50px 0px 0px 0px;width:100%;color:black;background-color:#F0F0F0;" class="btn aui-button btn-secondary mt-10 nextBtn"
-								type="button" value="from-createmeeting-next"><label><b><liferay-ui:message key="from-createmeeting-save" /></b></label></button>
+							<button style="margin:50px 0px 0px 0px;width:100%;color:black;background-color:#F0F0F0;" class="btn btn-secondary mt-10 nextBtn"
+								type="button"><label><b><liferay-ui:message key="from-createmeeting-next" /></b></label></button>
 						</div>
 					</div> 
 									</div>
@@ -370,7 +321,7 @@ background-color: #15A3E6 ;
 					<div class="col-sm">
 					<!-- <liferay-ui:message key="from-createmeeting-additems" /> -->
 						<button type="button"
-							style="float: right;background-color:#F0F0F0; " onclick="addRow()" class="btn btn-secondary mt-2 add_btn"><label><liferay-ui:message key="from-createmeeting-additems" /></label>
+							style="float: right;background-color:#F0F0F0; " onclick="addRow()" class="btn btn-secondary mb-1 mt-2 add_btn"><label><liferay-ui:message key="from-createmeeting-additems" /></label>
 							</button></div>
 							
 					

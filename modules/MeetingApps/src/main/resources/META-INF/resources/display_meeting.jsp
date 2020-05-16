@@ -148,13 +148,13 @@ else{
 	<div class="stepwizard col-md-offset-3" id="myDIV">
 		<div class="stepwizard-row setup-panel">
 			<div class="stepwizard-step">
-				<a href="#step-1" type="button" class="btn btn-primary active">
-				<label><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
+				<a href="#step-1" type="button" class="btn btn-primary mt-1 active">
+				<label style="color:white"><liferay-ui:message key="from-createmeeting-meetinginformation" /></label></a>
 				<p></p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="#step-2" type="button" class="btn btn-default active"
-					disabled="disabled"><label><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
+				<a href="#step-2" type="button" class="btn btn-default mt-1 active"
+					disabled="disabled"><label style="color:white"><liferay-ui:message key="from-createmeeting-meetingdetails" /></label></a>
 				<p></p>
 			</div>
 		</div>
@@ -168,9 +168,9 @@ else{
 				<div class="row">
 					<div class="col-sm">
 						<div class="form-group">
-							<label for="usr">Project</label> <input type="text"
+							<label><liferay-ui:message key="from-createmeeting-project" /></label> <input type="text"
 								class="form-control" id="project" name="Project"
-								value="Takenaka" readonly="readonly">
+								value="<liferay-ui:message key="from-createmeeting-projectName" />" disabled>
 						</div>
 					</div>
 
@@ -178,14 +178,14 @@ else{
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingid" /></label> <input type="text"
 								class="form-control" id="meetingId" name="MeetingId" value="<%=MeetinInfo.getMeetingId() %>"
-								 readonly="readonly">
+								 readonly="readonly" disabled="true">
 						</div>
 					</div>
 
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-issuer" /></label> <input type="text"
-								class="form-control" id="issuer" name="Issuer" value="<%=MeetinInfo.getIssuer() %>" readonly="readonly"
+								class="form-control" id="issuer" name="Issuer" disabled="true" value="<%=MeetinInfo.getIssuer() %>" readonly="readonly"
 								>
 						</div>
 					</div>
@@ -194,7 +194,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label for="usr"><liferay-ui:message key="from-createmeeting-meetingtype" /></label> <select
-								class="custom-select" id="meetingType" name="MeetingType" >
+								class="custom-select" id="meetingType" name="MeetingType" disabled="true">
 								
 								<%
 								if(MeetinInfo.getMeetingType().equalsIgnoreCase("from-internal")){
@@ -211,7 +211,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingdate" /></label> <input type="text"
-								class="form-control" id="meetingDate" name="MeetingDate" value="<%=formatDate %>" readonly="readonly"
+								class="form-control" id="meetingDate" name="MeetingDate" value="<%=formatDate %>" disabled="true" readonly="readonly"
 								>
 						</div>
 					</div>
@@ -219,7 +219,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingplace" /></label> <input type="text"
-								class="form-control" id="meetingPlace" name="MeetingPlace" value="<%=MeetinInfo.getMeetingPlace() %>" readonly="readonly"
+								class="form-control" id="meetingPlace" name="MeetingPlace" value="<%=MeetinInfo.getMeetingPlace() %>" disabled="true" readonly="readonly"
 								>
 						</div>
 					</div>
@@ -228,7 +228,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingtitle" /></label> <input type="text"
-								class="form-control" id="meetingTitle" name="MeetingTitle" value="<%=MeetinInfo.getMeetingTitle() %>" readonly="readonly">
+								class="form-control" id="meetingTitle" name="MeetingTitle" value="<%=MeetinInfo.getMeetingTitle() %>" disabled="true" readonly="readonly">
 						</div>
 					</div>
 				</div>
@@ -236,7 +236,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingparticipants" /></label><input type="text"
-								class="form-control" id="meetingParticipants" 
+								class="form-control" id="meetingParticipants" disabled="true" 
 								name="MeetingParticipants" value="<%=MeetinInfo.getParticipant() %>" readonly="readonly">
 						</div>
 					</div>
@@ -246,8 +246,7 @@ else{
 					<div class="col-sm">
 						<div class="form-group">
 							<label><liferay-ui:message key="from-createmeeting-meetingsummary" /></label>
-							 <textarea class="form-control" id="meetingSummary" name="MeetingSummary" value="<%=MeetinInfo.getMeetingSummary() %>" readonly="readonly">
-							 </textarea>
+							 <textarea class="form-control" id="meetingSummary" name="MeetingSummary" disabled="true" readonly="readonly"><%=MeetinInfo.getMeetingSummary() %></textarea>
 						</div>
 					</div>
 				</div>
@@ -269,8 +268,8 @@ else{
 					</div>
 					<div class="col-sm">
 						<div class="form-group">
-							<aui:button style="width:100%;color:black;background-color:#F0F0F0;" class="btn btn-secondary nextBtn btn-lg pull-right"
-								type="button" value="from-createmeeting-next"></aui:button>
+							<button style="width:100%;color:black;background-color:#F0F0F0;" class="btn mb-1 btn-secondary nextBtn btn-lg pull-right"
+								type="button"><label><b><liferay-ui:message key="from-createmeeting-next" /></b></label></button>
 						</div>
 					</div>
 				</div>
@@ -302,7 +301,7 @@ else{
 		%>
 							<tr>
 								<td><label><liferay-ui:message key="from-createmeeting-category" /></label> <select
-									id="category" name="Category" readonly>
+									id="category" name="Category" disabled="true">
 										<%-- <option value="DCR"><%=tm.getCategory() %></option> --%>
 										
 								<%
@@ -323,17 +322,21 @@ else{
 										
 										<!-- <option value="Other">Other</option> -->
 								</select></td>
-								<td><label><liferay-ui:message key="from-createmeeting-floor" /></label> <input type="text" id="floor"
+								<td><label><liferay-ui:message key="from-createmeeting-floor" /></label> <input type="text" id="floor" disabled="true"
 									name="Floor" value="<%=tm.getFloor() %>" readonly="readonly"></td>
-								<td><label><liferay-ui:message key="from-createmeeting-items" /></label> <input type="text" id="items"
+								<td><label><liferay-ui:message key="from-createmeeting-items" /></label> 
+								<input type="text" id="items" disabled="true"
 									name="Items" value="<%=tm.getItem() %>" readonly="readonly"></td>
-								<td><label><liferay-ui:message key="from-createmeeting-action" /></label> <input type="text" id="action"
+								<td><label><liferay-ui:message key="from-createmeeting-action" /></label> 
+								<input type="text" id="action" disabled="true"
 									name="Action" value="<%=tm.getActions() %>" readonly="readonly"></td>
 								<%-- <td><label>Expected Due Date</label> <input type="text"
 									value="" id="expectedDueDate" name="ExpectedDueDate" value="<%=formatExpDate %>" readonly="readonly"></td> --%>
-									<td><label><liferay-ui:message key="from-createmeeting-duedate" /></label> <input type="text"
+									<td><label><liferay-ui:message key="from-createmeeting-duedate" /></label>
+									 <input type="text" disabled="true"
 									id="expectedDueDate" name="expectedDueDate" value="<%=formatExpDate %>" readonly="readonly"></td>
-								<td><label><liferay-ui:message key="from-createmeeting-personIncharge" /></label> <input type="text"
+								<td><label><liferay-ui:message key="from-createmeeting-personIncharge" /></label> 
+								<input type="text" disabled="true"
 									id="persionInCharge" name="PersionInCharge" value="<%=tm.getPersonInCharge() %>" readonly="readonly"></td>
 									<!-- <td><input type="button" value="Remove"></td> -->
 

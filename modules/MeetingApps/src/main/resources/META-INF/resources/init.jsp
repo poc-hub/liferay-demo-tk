@@ -26,7 +26,14 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
   -->
-
+<style>
+.form-control{
+background-color: #FFFFFF;
+}
+.custom-select{
+background-color: #FFFFFF;
+}
+</style>
  
 <%
 int totalMeetings = TriggerMeetingLocalServiceUtil.getTriggerMeetingsCount();

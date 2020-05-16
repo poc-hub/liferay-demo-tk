@@ -28,7 +28,14 @@ $(document)
 					
 					allNextBtn
 							.click(function() {
-								
+								console.log("Inside check input");
+								var meetingtype=$("#meetingType").val();
+								console.log(meetingtype);
+								if(meetingtype=="Choose"){
+								alert("Please specify the meeting type");
+								return false;
+								}
+								else{
 								var curStep = $(this).closest(".setup-content"), curStepBtn = curStep
 										.attr("id"), nextStepWizard = $(
 										'div.setup-panel div a[href="#'
@@ -51,7 +58,7 @@ $(document)
 								}
 						
 									
-								});
+								}});
 								
 
 					
@@ -279,7 +286,7 @@ function addRow() {
         	PersionInCharge.setAttribute('value', '');
         	PersionInCharge.setAttribute('required', '');
         	var label = document.createElement("label");
-			label.innerHTML = "Persion In Charge";
+			label.innerHTML = "Person In Charge";
 			label.classList.add("mandatory");
 			
 			td.appendChild(label);

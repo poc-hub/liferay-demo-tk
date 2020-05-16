@@ -213,7 +213,8 @@ public class MeetingControllerPortlet extends MVCPortlet {
 		// Start Feaching form data from JSP to Controller
 
 		// Meeting Information Pages
-		String Project = ParamUtil.getString(actionRequest, "Project");
+		//String Project = ParamUtil.getString(actionRequest, "Project");
+		String Project ="Traditional Architecture";
 		// System.out.println("Project" + Project);
 		// String MeetingId = ParamUtil.getString(actionRequest, "MeetingId");
 		// System.out.println("MeetingId" + MeetingId);
