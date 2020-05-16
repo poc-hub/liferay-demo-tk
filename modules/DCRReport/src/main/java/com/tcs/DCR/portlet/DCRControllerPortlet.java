@@ -149,6 +149,20 @@ public class DCRControllerPortlet extends MVCPortlet {
 		String ConstructionCostType = ParamUtil.getString(actionRequest, "ConstructionCostType");
 		long ConstructionCost = ParamUtil.getLong(actionRequest, "ConstructionCost");
 		String ExpensePayment = ParamUtil.getString(actionRequest, "ExpensePayment");
+		String constructionStatus=ParamUtil.getString(actionRequest, "Construction");
+		String constructionDate=ParamUtil.getString(actionRequest, "constructiondate");
+		if(constructionStatus ==""||constructionStatus==null) {
+			dcd.setConstructionStatus("");
+		}else {
+			dcd.setConstructionStatus(constructionStatus);
+		}
+		if("" == constructionDate|| null == constructionDate) {
+			
+			dcd.setConstructionDate(null);
+		}else {
+			dcd.setConstructionDate(StringtoDate(constructionDate));
+		}
+		
 		//Date date=StringtoDate(ExpectedDueDate);
 		dcd.setRfcId(ReasonforChange);
 		dcd.setChangeRequestby(ChangeRequestedBy);
@@ -284,6 +298,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 		for(int i=0;i<noOfRecords;i++) {
 			DesignChangeDetails dcd=DesignChangeDetailsLocalServiceUtil.fetchDesignChangeDetails(idArray[i]);
 			if(dcd.getApprovalNo()==0) {
+				dcd.setApprovalStatus("Awaiting-Approval-key");
 				dcd.setApprovalNo(approvalNumber);
 				DesignChangeDetailsLocalServiceUtil.updateDesignChangeDetails(dcd);
 			}

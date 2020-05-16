@@ -518,7 +518,7 @@ function approvalStatusChange(){
 			alert("Kindly select a record with approval number");
 		}
 		else{
-			if(str5=="from-itemapproval-yes"){
+			if(str5=="Approved-key"){
 				alert('Record already approved !');
 			}else{
 				var renderUrl="<%=approvalChange%>";

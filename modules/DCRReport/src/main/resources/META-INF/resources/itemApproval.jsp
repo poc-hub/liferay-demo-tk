@@ -221,11 +221,11 @@ AUI().ready('aui-module', function(A){
 		<div class="col-sm">
 			<aui:select label="from-itemapproval-approval" name="Approval"
 				id="Approval">
-				<aui:option value="from-itemapproval-yes">
-					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				<aui:option value="Approved-key">
+					<label><liferay-ui:message key="Approved-key" /></label>
 				</aui:option>
-				<aui:option value="from-itemapproval-no">
-					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				<aui:option value="Cancel-key">
+					<label><liferay-ui:message key="Cancel-key" /></label>
 				</aui:option>
 			</aui:select>
 		</div>
@@ -235,11 +235,11 @@ AUI().ready('aui-module', function(A){
 		<div class="col-sm">
 			<aui:select label="from-itemapproval-approval" name="Approval"
 				id="Approval" value="<%=dcd.getApprovalStatus()%>">
-				<aui:option value="from-itemapproval-yes">
-					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				<aui:option value="Approved-key">
+					<label><liferay-ui:message key="Approved-key" /></label>
 				</aui:option>
-				<aui:option value="from-itemapproval-no">
-					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				<aui:option value="Cancel-key">
+					<label><liferay-ui:message key="Cancel-key" /></label>
 				</aui:option>
 			</aui:select>
 		</div>
@@ -259,11 +259,11 @@ AUI().ready('aui-module', function(A){
 		<div class="col-sm">
 			<aui:select label="from-itemapproval-custapproval"
 				name="CustomerApproval" id="CustomerApproval">
-				<aui:option value="from-itemapproval-yes">
-					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				<aui:option value="Approved-key">
+					<label><liferay-ui:message key="Approved-key" /></label>
 				</aui:option>
-				<aui:option value="from-itemapproval-no">
-					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				<aui:option value="Cancel-key">
+					<label><liferay-ui:message key="Cancel-key" /></label>
 				</aui:option>
 			</aui:select>
 		</div>
@@ -276,11 +276,11 @@ AUI().ready('aui-module', function(A){
 			<aui:select label="from-itemapproval-custapproval"
 				name="CustomerApproval" id="CustomerApproval"
 				value="<%=dcd.getClientApprovalStatus()%>">
-				<aui:option value="from-itemapproval-yes">
-					<label><liferay-ui:message key="from-itemapproval-yes" /></label>
+				<aui:option value="Approved-key">
+					<label><liferay-ui:message key="Approved-key" /></label>
 				</aui:option>
-				<aui:option value="from-itemapproval-no">
-					<label><liferay-ui:message key="from-itemapproval-no" /></label>
+				<aui:option value="Cancel-key">
+					<label><liferay-ui:message key="Cancel-key" /></label>
 				</aui:option>
 			</aui:select>
 		</div>

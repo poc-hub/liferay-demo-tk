@@ -126,7 +126,7 @@
     <div class="row">
         <div class="col-sm">
   <!--       <label><liferay-ui:message key="from-dcrNew-changetype" /></label> -->
-        <aui:select  label="from-dcrNew-changetype" name="DesignCostType" id="DesignCostType">
+        <aui:select  label="from-dcrNew-designcosttype" name="DesignCostType" id="DesignCostType">
 						<aui:option value="from-dcrNew-increase"><label><liferay-ui:message key="from-dcrNew-increase" /></label></aui:option>
 						<aui:option value="from-dcrNew-decrease"><label><liferay-ui:message key="from-dcrNew-decrease" /></label></aui:option>
 						<aui:option value="from-dcrNew-none"><label><liferay-ui:message key="from-dcrNew-none" /></label></aui:option>
