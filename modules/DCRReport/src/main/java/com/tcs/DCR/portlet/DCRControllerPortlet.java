@@ -768,13 +768,13 @@ public class DCRControllerPortlet extends MVCPortlet {
 			if (null == Issuer || Issuer.isEmpty()) {
 				Issuer = serveletRequest.getParameter("Issuer");
 			}
-			if (null == MeetingFrmDate || MeetingFrmDate.isEmpty()) {
-				MeetingFrmDate = serveletRequest.getParameter("MeetingFrmDate");
-
-			}
-			if (null == MeetingToDate || MeetingToDate.isEmpty()) {
-				MeetingToDate = serveletRequest.getParameter("MeetingToDate");
-			}
+//			if (null == MeetingFrmDate || MeetingFrmDate.isEmpty()) {
+//				MeetingFrmDate = serveletRequest.getParameter("MeetingFrmDate");
+//
+//			}
+//			if (null == MeetingToDate || MeetingToDate.isEmpty()) {
+//				MeetingToDate = serveletRequest.getParameter("MeetingToDate");
+//			}
 			if (null == MeetingTitle || MeetingTitle.isEmpty()) {
 				MeetingTitle = serveletRequest.getParameter("MeetingTitle");
 			}
@@ -826,8 +826,12 @@ public class DCRControllerPortlet extends MVCPortlet {
 				
 				JSONArray allUsersJsonArray = JSONFactoryUtil.createJSONArray();
 				JSONArray jsonUserArray = null;
-				for (int i = 0; i < Meetins.size(); i++) {
-					TriggerMeeting tm = Meetins.get(i);
+				int i=0;
+				for (TriggerMeeting tm : Meetins) {
+					List<TriggerMeetingDetails> MeetinsDetails = new ArrayList<TriggerMeetingDetails>();
+					MeetinsDetails.addAll(TriggerMeetingDetailsLocalServiceUtil.findByMeetingSeqnoList(tm.getMeetingSeqno()));
+					
+					for (TriggerMeetingDetails tmd : MeetinsDetails) {
 					jsonUserArray = JSONFactoryUtil.createJSONArray();
 					jsonUserArray.put(tm.getMeetingSeqno());
 					jsonUserArray.put(i + 1);
@@ -844,8 +848,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 					
 					
 					//add by sanjay
-					List<TriggerMeetingDetails> MeetinsDetails =TriggerMeetingDetailsLocalServiceUtil.findByMeetingSeqnoList(tm.getMeetingSeqno());
-					for (TriggerMeetingDetails tmd : MeetinsDetails) {
+					
 						//Date resDate;
 						if (tmd.getRESPONSE_DUEDATE() != null) {
 							//SimpleDateFormat rddate = new SimpleDateFormat("yyyy-MM-dd");
@@ -865,15 +868,21 @@ public class DCRControllerPortlet extends MVCPortlet {
 						} else {
 							jsonUserArray.put("");
 						}
+						System.out.println("jsonsize"+jsonUserArray.length());
 					
 					allUsersJsonArray.put(jsonUserArray);
-
+					
+					i++;
 				}
 
-				JSONObject tableData = JSONFactoryUtil.createJSONObject();
-				tableData.put("data", allUsersJsonArray);
-				System.out.println(allUsersJsonArray);
-				ServletResponseUtil.write(PortalUtil.getHttpServletResponse(resourceResponse), tableData.toString());
+					/*
+					 * JSONObject tableData = JSONFactoryUtil.createJSONObject();
+					 * System.out.println("allUsersJsonArray----->"+allUsersJsonArray.length());
+					 * tableData.put("data", allUsersJsonArray);
+					 * System.out.println(allUsersJsonArray);
+					 * ServletResponseUtil.write(PortalUtil.getHttpServletResponse(resourceResponse)
+					 * , tableData.toString());
+					 */
 
 				/*
 				 * for (TriggerMeeting tm : Meetins) {
@@ -890,8 +899,15 @@ public class DCRControllerPortlet extends MVCPortlet {
 					 * jsonobj.put("MeetingTitle", arr.get(i + 4)); searchData.put(jsonobj); }
 					 */
 				/* System.out.println("Size of  search data-->"+searchData); */
+					
+					
 
 		}
+				JSONObject tableData = JSONFactoryUtil.createJSONObject();
+				System.out.println("allUsersJsonArray----->"+allUsersJsonArray.length());
+				tableData.put("data", allUsersJsonArray);
+				System.out.println(allUsersJsonArray);
+				ServletResponseUtil.write(PortalUtil.getHttpServletResponse(resourceResponse), tableData.toString());
 			}
 			catch (Exception e) {
 				e.printStackTrace();

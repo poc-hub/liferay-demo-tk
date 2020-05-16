@@ -79,7 +79,7 @@ border-bottom: 1px solid #111 ;
 					
 					<!-- <aui:input type="text" label="from-dcrNew-changerequestedby" name="ChangeRequestedBy" id="ChangeRequestedBy"/> -->
 					
-					 <aui:select label="Change Requested By" name="ChangeRequestedBy" id="ChangeRequestedBy">
+					 <aui:select label="from-dcrNew-changerequestedby" name="ChangeRequestedBy" id="ChangeRequestedBy">
 					 <aui:option value=""></aui:option>
 						<aui:option value="from-customer"><label><liferay-ui:message key="from-customer" /></label></aui:option>
 						<aui:option value="from-partner"><label><liferay-ui:message  key="from-partner" /></label></aui:option>
@@ -114,7 +114,7 @@ border-bottom: 1px solid #111 ;
 					</div>
 					<div class="col-sm">
 					<div class="form-group">
-					<aui:input type="text" label="Construction Status" name="ConstructionStatus" id="ConstructionStatus"  />
+					<aui:input type="text" label="from-dcrview-constructionstatus" name="ConstructionStatus" id="ConstructionStatus"  />
 					
 					
 					<!-- <aui:select label="Construction Status" name="CustomerApproval" id="CustomerApproval">
@@ -140,8 +140,8 @@ border-bottom: 1px solid #111 ;
 					<div class="col-sm">
 					<div class="form-group">
 						<!-- value="from-dcrIndex-search" -->
-						<button class="btn  btn-secondary" type="button" id="approveButton" onclick="serch();" style="
-						    margin-bottom: -64px;" >Search</button>					
+						<aui:button class="btn  btn-secondary" type="button" id="approveButton" onclick="serch();" style="
+						    margin-bottom: -64px;" value="from-dcrIndex-search"></aui:button>					
 					</div>
 					</div>
 					<div class="col-sm">
@@ -162,7 +162,7 @@ border-bottom: 1px solid #111 ;
 <table id="userTable" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
-<th><label><liferay-ui:message key="from-dcrIndex-srno" /></label></th>
+<th><!-- <label><liferay-ui:message key="from-dcrIndex-srno" /></label> --></th>
 <th><label><liferay-ui:message key="from-dcrIndex-changerequestedby"/></label></th>
 <th><label><liferay-ui:message key="from-dcrIndex-dcrid" /></label></th>
 <th><label><liferay-ui:message key="from-dcrIndex-items" /></label></th>
@@ -545,13 +545,13 @@ AUI().ready('aui-module', function(A){
 AUI().use('aui-base',function(A){
 	
 	A.one('#<portlet:namespace/>Reset').on('click',function(){
-		//document.getElementById('<portlet:namespace />dcrFromDate').valueAsDate = "";
-		//document.getElementById('<portlet:namespace />dcrToDate').valueAsDate = "";
+		document.getElementById('<portlet:namespace />dcrFromDate').value = "";
+		document.getElementById('<portlet:namespace />dcrToDate').value = "";
 		document.getElementById('<portlet:namespace/>Rangeofdisclosure').value="";
 		document.getElementById('<portlet:namespace />ExpensePayment').value = "";
 		document.getElementById('<portlet:namespace />Approval').value = "";
 		document.getElementById('<portlet:namespace />ConstructionStatus').value = "";
-		document.getElementById("<portlet:namespace/>ReasonforChange").value;
+		document.getElementById("<portlet:namespace/>ReasonforChange").value="";
 		document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
 		document.getElementById('<portlet:namespace/>Issuer').value="";
 	});
@@ -562,13 +562,13 @@ AUI().use('aui-base',function(A){
 
 <aui:button-row>
 <aui:button onClick="<%=createDCR.toString()%>"
-value="Create"></aui:button>
+value="from-dcrIndex-create"></aui:button>
 <aui:button onClick="myFunction();"
-value="View"></aui:button>
-<aui:button onCLick="approvalFucntion();" value="Request Approval">
+value="from-dcrIndex-view"></aui:button>
+<aui:button onCLick="approvalFucntion();" value="from-dcrIndex-reqapproval">
 </aui:button>
-<aui:button onClick="approvalStatusChange();" value="Approval Status Change">
+<aui:button onClick="approvalStatusChange();" value="from-dcrIndex-approvalstatuschange">
 </aui:button>
 <aui:button id="Reset"
-value="Reset"></aui:button>
+value="from-dcrIndex-reset"></aui:button>
 </aui:button-row>

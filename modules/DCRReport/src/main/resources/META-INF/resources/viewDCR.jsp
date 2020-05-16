@@ -1,3 +1,4 @@
+<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@page import="com.liferay.document.library.kernel.util.DLUtil"%>
 <%@page import="java.util.List"%>
 <%@page import="com.liferay.portal.kernel.repository.model.Folder"%>
@@ -41,27 +42,27 @@ try{
 
 
 
-		for(FileEntry file:fileEntry){
-			//if(file.getFileEntryId()==arra){
-				//Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
-				//i++;
-			//}
+for(FileEntry file:fileEntry){
+			
 			for(int j=0;j<array.length;j++){
 				if(file.getFileEntryId()==array[j]){
 					String temp=file.getFileName();
-					String[] temp2=temp.split("_");
-					filenames[i]=temp2[1];
-					System.out.println(filenames[i]);
+					int index=temp.indexOf('_');
+					filenames[i]=temp.substring(index+1);
 					Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
 					i++;
 				}
-			}
-		}
-	//}catch(Exception e){
-		//System.out.println("FOlder not found");
+					
+					//System.out.println(filenames[i]);
+					
+				}
+			
+		
 	
+	
+	}
 	}catch(Exception e){
-		System.out.println("File not found");
+		System.out.println(e);
 	}
 %>
 <portlet:actionURL name="dcrViewAction" var="submitDCRView">
@@ -75,7 +76,7 @@ try{
     <div class="row">
         <div class="col-sm">
         
-        <aui:input type="text" label="from-dcrNew-project" name="Project" value="Traditional Architecture" id="Project" readonly="readonly" style="background-color: #f1f2f5;"/>
+        <aui:input type="text" label="from-dcrNew-project" name="Project" value="<%=LanguageUtil.get(request, "Traditional-Architecture") %>" id="Project" readonly="readonly" style="background-color: #f1f2f5;"/>
         
         </div>
         <div class="col-sm">
@@ -138,7 +139,7 @@ try{
                     <%-- <aui:button href="${meetingPopUp}" value="Get Meeting" /> --%>
                    <!--  <input type="button" class="btn btn-secondary" value="Get Meeting" onclick="getMeetingData()" /> -->
                     
-              <input type="button" class="btn btn-secondary" value="Get Meeting Item" onclick="javascript:getMeetingData();" /><br>
+              <input type="button" class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
                     
                 </div>
                 <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
@@ -180,7 +181,7 @@ try{
         	<aui:input type="number" label="from-dcrNew-designcost	" name="DesignCost" id="DesignCost" value="<%=designChangeDetails.getEstdesignCost() %>"/>
         </div>
         <div class="col-sm">
-        <aui:select label="Construction Cost Type" name="ConstructionCostType" id="ConstructionCostType" value="<%=designChangeDetails.getEstconstructionCosttype() %>">
+        <aui:select label="from-dcrNew-constructioncostType" name="ConstructionCostType" id="ConstructionCostType" value="<%=designChangeDetails.getEstconstructionCosttype() %>">
         
 			<aui:option value="from-dcrNew-increase"><label><liferay-ui:message key="from-dcrNew-increase" /></label></aui:option>
 			<aui:option value="from-dcrNew-decrease"><label><liferay-ui:message key="from-dcrNew-decrease" /></label></aui:option>
@@ -198,7 +199,7 @@ try{
 		</aui:select>
 		</div>
     </div>
- <label>Attached Files</label>
+ <label><liferay-ui:message key="from-itemapproval-attachedFiles" /></label>
 	<div class="row">
  
        <div class="col-sm">
@@ -228,7 +229,7 @@ try{
 
     <div class="row">
         <div class="col-sm"><div class="form-group">
-            <button class="btn btn-primary" type="submit" id="btn_submit" >Submit</button>
+            <aui:button class="btn btn-primary" type="submit" id="btn_submit" value="from-dcrNew-save"></aui:button>
         </div></div>
     </div>
 </fieldset>
@@ -237,12 +238,12 @@ try{
 
 	 <!--<button class="btn btn-primary type="button"  id="btn_edit">Edit</button>  onclick="saveEnable()" -->
 	  
-	 	<aui:button  onclick="editEnable();" value="Edit">
+	 	<aui:button  onclick="editEnable();" value="from-dcrview-edit">
 	 	</aui:button>
 
 	 <!--<button class="btn btn-primary type="button"id="btn_cancel" onClick="< %=dcrIndexURL.toString()%>" >Cancel</button>  -->
 	 
-	 	<aui:button  onClick="<%=dcrIndexURL.toString()%>" value="Cancel">
+	 	<aui:button  onClick="<%=dcrIndexURL.toString()%>" value="from-dcrNew-cancel">
 	 	</aui:button>
 
 

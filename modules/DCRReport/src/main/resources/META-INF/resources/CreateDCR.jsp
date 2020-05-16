@@ -1,3 +1,4 @@
+<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@ include file="/init.jsp" %>
 <%@page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%>
 
@@ -26,7 +27,7 @@
     <div class="row">
         <div class="col-sm">
         
-        <aui:input type="text" label="from-dcrNew-project" name="Project" value="Traditional Architecture" id="Project" readonly="readonly" style="background-color: #f1f2f5;" />
+        <aui:input type="text" label="from-dcrNew-project" name="Project" value="<%=LanguageUtil.get(request, "Traditional-Architecture") %>" id="Project" readonly="readonly" style="background-color: #f1f2f5;" />
         
         </div>
         <div class="col-sm">
@@ -90,7 +91,7 @@
                     <%-- <aui:button href="${meetingPopUp}" value="Get Meeting" /> --%>
                    <!--  <input type="button" class="btn btn-secondary" value="Get Meeting" onclick="getMeetingData()" /> -->
                     
-              <input type="button" class="btn btn-secondary" value="Get Meeting Item" onclick="javascript:getMeetingData();" /><br>
+              <input type="button" class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
                     
                 </div>
                 <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
@@ -134,7 +135,7 @@
         	<aui:input type="number" label="from-dcrNew-designcost	" name="DesignCost" id="DesignCost" />
         </div>
         <div class="col-sm">
-        <aui:select label="Construction Cost Type" name="ConstructionCostType" id="ConstructionCostType">
+        <aui:select label="from-dcrNew-constructioncostType" name="ConstructionCostType" id="ConstructionCostType">
         
 			<aui:option value="from-dcrNew-increase"><label><liferay-ui:message key="from-dcrNew-increase" /></label></aui:option>
 			<aui:option value="from-dcrNew-decrease"><label><liferay-ui:message key="from-dcrNew-decrease" /></label></aui:option>
@@ -164,8 +165,8 @@
 
     <div class="row">
         <div class="col-sm"><div class="form-group">
-            <aui:button  type="submit" value="Save"></aui:button>
-            <aui:button type="button" onClick="<%=cancelSubmit.toString() %>" value="Cancel"/>
+            <aui:button  type="submit" value="from-dcrNew-save"></aui:button>
+            <aui:button type="button" onClick="<%=cancelSubmit.toString() %>" value="from-dcrNew-cancel"/>
         </div></div>
         
     </div>

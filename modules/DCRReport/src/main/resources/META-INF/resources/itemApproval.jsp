@@ -49,8 +49,8 @@ try{
 		for(int j=0;j<array.length;j++){
 			if(file.getFileEntryId()==array[j]){
 				String temp=file.getFileName();
-				String[] temp2=temp.split("_");
-				filenames[i]=temp2[1];
+				int index=temp.indexOf('_');
+				filenames[i]=temp.substring(index+1);
 				Urls[i]=DLUtil.getPreviewURL(file, file.getFileVersion(), themeDisplay, "");
 				i++;
 			}
@@ -59,7 +59,6 @@ try{
 }catch(Exception e){
 	System.out.println("FOlder not found");
 }
-
 //DLUtil.getPreviewURL(fileEntry, fileVersion, themeDisplay, queryString);
 
 
@@ -172,7 +171,7 @@ AUI().ready('aui-module', function(A){
         	<aui:input type="number" label="from-dcrNew-designcost	" name="DesignCost" id="DesignCost" value="<%=dcd.getEstdesignCost() %>"/>
         </div>
         <div class="col-sm">
-        <aui:select label="Construction Cost Type" name="ConstructionCostType" id="ConstructionCostType" value="<%=dcd.getEstconstructionCosttype() %>">
+        <aui:select label="from-dcrNew-constructioncostType" name="ConstructionCostType" id="ConstructionCostType" value="<%=dcd.getEstconstructionCosttype() %>">
         
 			<aui:option value="from-dcrNew-increase"><label><liferay-ui:message key="from-dcrNew-increase" /></label></aui:option>
 			<aui:option value="from-dcrNew-decrease"><label><liferay-ui:message key="from-dcrNew-decrease" /></label></aui:option>
@@ -191,7 +190,7 @@ AUI().ready('aui-module', function(A){
 		</div>
     </div>
     </fieldset>
-      <label>Attached Files</label>
+      <label><liferay-ui:message key="from-itemapproval-attachedFiles" /></label>
 	<div class="row">
  
        <div class="col-sm">
@@ -212,7 +211,7 @@ AUI().ready('aui-module', function(A){
 	</div>
      <div class="row">
       <div class="col-sm">
-     <aui:input type="number" name="Approval number" label="from-itemapproval-approvalno" readonly="readonly" value="<%=dcd.getApprovalNo() %>"></aui:input>
+     <aui:input type="number" name="Approval number" label="from-itemapproval-approvalno" readonly="readonly" value="<%=dcd.getApprovalNo() %>" style="background-color: #f1f2f5;"></aui:input>
      </div>
 
 
@@ -249,8 +248,8 @@ AUI().ready('aui-module', function(A){
 		%>
 
 		<div class="col-sm">
-			<aui:input type="date" name="ApprovalDate" id="ApprovalDate"
-				label="Approval Date">
+			<aui:input type="date" label="from-itemapproval-ApprovalDate" name="ApprovalDate" id="ApprovalDate"
+				>
 			</aui:input>
 		</div>
 
@@ -290,7 +289,7 @@ AUI().ready('aui-module', function(A){
 		%>
 
 		<div class="col-sm">
-      <aui:input type="date" name="CustomerDate" id="CustomerDate" label="Customer Date"  >
+      <aui:input type="date" name="CustomerDate" id="CustomerDate" label="from-itemapproval-CustomerDate"  >
       </aui:input>
 	  </div>
       
@@ -298,8 +297,8 @@ AUI().ready('aui-module', function(A){
       
       <aui:button-row>
       
-      <aui:button  type="submit"  value="Save"></aui:button>
-      <aui:button onClick="<%=viewDCR.toString() %>" value="Cancel"/>
+      <aui:button  type="submit"  value="from-dcrNew-save"></aui:button>
+      <aui:button onClick="<%=viewDCR.toString() %>" value="from-dcrNew-cancel"/>
      </aui:button-row>
      
        </aui:form>

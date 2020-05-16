@@ -1,3 +1,4 @@
+<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@ include file="/init.jsp"%>
 <%@page import="java.util.*"%>
 <%@page import="com.takenaka.model.TriggerMeeting"%>
@@ -101,7 +102,7 @@ function save(){
 	        var MeetingId=$("#<portlet:namespace />meetingId").val();
 	        var MeetingType=$("#<portlet:namespace />meetingType").val();
 	        var Issuer=$("#<portlet:namespace />issuer").val();
-	        var MeetingFromDate=$("#<portlet:namespace />meetingFromDate").val();
+	        var MeetingFromDate=$("#<portlet:namespace />meetingFrmDate").val();
 	        var MeetingToDate=$("#<portlet:namespace />meetingToDate").val();
 	        var MeetingTitle=$("#<portlet:namespace />meetingTitle").val();
 	        console.log(MeetingId);
@@ -161,7 +162,7 @@ function save(){
 				<div class="form-group">
 					<aui:select label="from-meetingIndex-meetingtype" name="Meeting Type"
 						id="meetingType">
-						<aui:option value="">Choose...</aui:option>
+						<aui:option value=""></aui:option>
 						<aui:option value="from-internal"><label><liferay-ui:message key="from-internal" /></label></aui:option>
 						<aui:option value="from-external"><label><liferay-ui:message key="from-external" /></label></aui:option>
 					</aui:select>
@@ -213,7 +214,7 @@ function save(){
 				</div>
 			</div>
 		</div>
-		<aui:button type="button" name="saveButton" value="Search"
+		<aui:button type="button" name="saveButton" value="from-meetingpopup-search"
 			onclick="save();" />
 	</div>
 </aui:form>
@@ -308,10 +309,10 @@ function save(){
 <div class="row" style="margin-left: 30px;">
 			<div class="col-sm">
 				<div class="form-group">
-<input type="button" class="btn  btn-secondary" id="getPopUpdata" value="Select" onclick="getPopUpdata();" />
+<input type="button" class="btn  btn-secondary" id="getPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>" onclick="getPopUpdata();" />
 
-<input type="button" class="btn  btn-secondary"  id="getAjaxPopUpdata" value="Select" onclick="getAjaxPopUpdata();"  style="display:none;" />
-<input type="button" class="btn  btn-secondary" value="Reset" onclick="" />
+<input type="button" class="btn  btn-secondary"  id="getAjaxPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>"value="Select" onclick="getAjaxPopUpdata();"  style="display:none;" />
+<input type="button" class="btn  btn-secondary"  value="<%=LanguageUtil.get(request, "from-meetingpopup-reset") %>" value="Reset" onclick="resetValues();" />
 
 </div>
 </div>
@@ -580,5 +581,13 @@ AUI().use('aui-form-validator',
 );
  
 }
-
+function resetValues(){
+	document.getElementById('<portlet:namespace/>meetingType').value="";
+	document.getElementById('<portlet:namespace/>meetingId').value="";
+	document.getElementById('<portlet:namespace/>issuer').value="";
+	document.getElementById('<portlet:namespace/>meetingFrmDate').value="";
+	document.getElementById('<portlet:namespace/>meetingToDate').value="";
+	document.getElementById('<portlet:namespace/>meetingTitle').value="";
+	
+}
 </aui:script>

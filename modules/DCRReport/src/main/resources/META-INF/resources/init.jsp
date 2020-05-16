@@ -20,6 +20,11 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
 	
+<style>
+.form-control{
+background-color: #FFFFFF;
+}
+</style>
 	
 <portlet:defineObjects />
 <portlet:resourceURL var="saveDataUrl" id="searchPopUpData"/>
