@@ -204,7 +204,7 @@ document.getElementById("<portlet:namespace/>meetingTitle").value="";
 			<div class="col-sm">
 				<div class="form-group">
 					<aui:select name="Meeting Type" id="meetingType" label="from-meetingIndex-meetingtype">
-						<aui:option value="">Choose...</aui:option>
+						<aui:option value=""><label><liferay-ui:message key="from-choose" /></label></aui:option>
 						<aui:option value="from-internal"><label><liferay-ui:message key="from-internal" /></label></aui:option>
 						<aui:option value="from-external"><label><liferay-ui:message key="from-external" /></label></aui:option>
 					</aui:select>
@@ -313,14 +313,14 @@ document.getElementById("<portlet:namespace/>meetingTitle").value="";
 			<td><%=formatDate%></td>
 			<td>
 				<%
-								if(tm.getMeetingType().equalsIgnoreCase("from-internal")){
-									%>
-									<label><liferay-ui:message key="from-internal" /></label><%-- <%=MeetinInfo.getMeetingType() %> --%></option>
-								<%}else{%>
-									<label><liferay-ui:message key="from-external" /></label><%-- <%=MeetinInfo.getMeetingType() %> --%></option>
-								<%}%>
-			
-			<%-- <%=tm.getMeetingType()%> --%></td>
+					if(tm.getMeetingType().equalsIgnoreCase("from-internal")){
+				%>
+				<label><liferay-ui:message key="from-internal" /></label><%-- <%=MeetinInfo.getMeetingType() %> --%></option>
+					<%}else if(tm.getMeetingType().equalsIgnoreCase("from-external")){%>
+				<label><liferay-ui:message key="from-external" /></label><%-- <%=MeetinInfo.getMeetingType() %> --%></option>
+				<%}else{%>
+			<%=tm.getMeetingType()%>
+			<%} %></td>
 			<td><%=tm.getMeetingTitle()%></td>
 		</tr>
 		<%
