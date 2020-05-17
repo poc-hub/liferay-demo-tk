@@ -75,6 +75,22 @@ public class DCRControllerPortlet extends MVCPortlet {
 	private static long PARENT_FOLDER_ID = DLFolderConstants.DEFAULT_PARENT_FOLDER_ID;
 	long[] longArray = new long[4];
 	ArrayList<Long> array=new ArrayList<Long>();
+	
+	@ProcessAction(name = "dcrConstruction")
+	public void dcrConstructionURL(ActionRequest actionRequest,ActionResponse actionResponse) {
+		
+		long rId = Long.parseLong(actionRequest.getParameter("ID"));
+		DesignChangeDetails dcd=DesignChangeDetailsLocalServiceUtil.fetchDesignChangeDetails(rId);
+		if(ParamUtil.getString(actionRequest, "constructiondate") == null||ParamUtil.getString(actionRequest, "constructiondate") == "") {
+			dcd.setConstructionDate(null);
+		}else {
+			dcd.setConstructionDate(StringtoDate(ParamUtil.getString(actionRequest, "constructiondate")));	
+		}
+		dcd.setConstructionStatus(ParamUtil.getString(actionRequest, "Construction"));
+		DesignChangeDetailsLocalServiceUtil.updateDesignChangeDetails(dcd);
+	}
+	
+	
 
 	@ProcessAction(name = "dcrViewAction")
 	public void submitDCRView(ActionRequest actionRequest, ActionResponse actionResponse)
@@ -149,19 +165,7 @@ public class DCRControllerPortlet extends MVCPortlet {
 		String ConstructionCostType = ParamUtil.getString(actionRequest, "ConstructionCostType");
 		long ConstructionCost = ParamUtil.getLong(actionRequest, "ConstructionCost");
 		String ExpensePayment = ParamUtil.getString(actionRequest, "ExpensePayment");
-		String constructionStatus=ParamUtil.getString(actionRequest, "Construction");
-		String constructionDate=ParamUtil.getString(actionRequest, "constructiondate");
-		if(constructionStatus ==""||constructionStatus==null) {
-			dcd.setConstructionStatus("");
-		}else {
-			dcd.setConstructionStatus(constructionStatus);
-		}
-		if("" == constructionDate|| null == constructionDate) {
-			
-			dcd.setConstructionDate(null);
-		}else {
-			dcd.setConstructionDate(StringtoDate(constructionDate));
-		}
+		
 		
 		//Date date=StringtoDate(ExpectedDueDate);
 		dcd.setRfcId(ReasonforChange);

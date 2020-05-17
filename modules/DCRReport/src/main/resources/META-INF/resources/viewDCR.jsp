@@ -1,3 +1,7 @@
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Locale"%>
 <%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@page import="com.liferay.document.library.kernel.util.DLUtil"%>
 <%@page import="java.util.List"%>
@@ -23,7 +27,10 @@ long receivedData=Long.parseLong(request.getParameter("recordId"));
 String sreceivedData=Long.toString(receivedData);
 System.out.println(receivedData);
 DesignChangeDetails designChangeDetails=DesignChangeDetailsLocalServiceUtil.fetchDesignChangeDetails(receivedData);
+
 System.out.println(designChangeDetails);
+
+
 String Urls[]={"","","",""};
 String filenames[]={"","","",""};
 
@@ -71,17 +78,14 @@ for(FileEntry file:fileEntry){
 <portlet:renderURL var="dcrIndexURL">
 	<portlet:param name="mvcPath" value="/view.jsp"/>
 </portlet:renderURL>
-
+<portlet:actionURL name="dcrConstruction" var="dcrConstructionURL">
+	<portlet:param name="ID" value="<%=sreceivedData%>"/>
+</portlet:actionURL>
 
 
 <%if(designChangeDetails.getApprovalStatus().equalsIgnoreCase("Approved-key")){%>
 
-
-
-
-
-
-<aui:form name="meetingIndexForm" method="POST" enctype="multipart/form-data" action="${submitDCRView}" >
+<aui:form name="meetingIndexForm" method="POST" enctype="multipart/form-data" action="${dcrConstructionURL}" >
    <fieldset disabled="disabled" id="fieldSet">
     <div class="row">
         <div class="col-sm">
@@ -239,19 +243,39 @@ for(FileEntry file:fileEntry){
     </fieldset>
 	
 	<div class="row">
-		 <div class="col-sm"><aui:select label="from-dcrview-constructionstatus" class="form-control" name="Construction" id="Construction">
+	
+	
+		 <div class="col-sm"><aui:select label="from-dcrview-constructionstatus" class="form-control" name="Construction" id="Construction" value="<%=designChangeDetails.getConstructionStatus() %>">
 		 	<aui:option value=""></aui:option>
 		 	<aui:option value="from-dcrview-beforeconstruction"><label><liferay-ui:message key="from-dcrview-beforeconstruction" /></label></aui:option>
 		 	<aui:option value="from-dcrview-underconstruction"><label><liferay-ui:message key="from-dcrview-underconstruction" /></label></aui:option>
 		 	<aui:option value="from-dcrview-complete"><label><liferay-ui:message key="from-dcrview-complete" /></label></aui:option>
 		 </aui:select>
 		 </div>
+		 
+	
+	<%if(null == designChangeDetails.getConstructionDate()){%>
 	
 	<div class="col-sm">
-		<aui:input type="date" class="form-control" label="from-dcrview-constructionstatusdate" name="constructiondate" id="constructiondate"/>
-	</div>
+		<aui:input type="date" class="form-control" label="from-dcrview-constructionstatusdate" name="constructiondate" id="constructiondate" value=""/>
 	</div>
 	
+	<% }else{%>
+		<%
+		Date a = designChangeDetails.getConstructionDate(); 
+	// MM/dd/yyyy
+		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
+		String strDate= formatter.format(a);
+		System.out.print("sanjay"+ strDate );
+		%>
+	
+	<div class="col-sm">
+		<aui:input type="date" class="form-control" label="from-dcrview-constructionstatusdate" name="constructiondate" id="constructiondate" value="<%=strDate %>"/>
+	</div>
+	<%} %> 
+	
+	
+	</div>
 	
     <div class="row">
         <div class="col-sm"><div class="form-group">
@@ -476,6 +500,7 @@ for(FileEntry file:fileEntry){
 	 bt_submit.disabled=false;
 	 
   }
+  
 </aui:script>
 <script type="text/javascript">
 

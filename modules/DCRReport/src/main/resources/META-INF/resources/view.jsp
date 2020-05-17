@@ -114,7 +114,14 @@ border-bottom: 1px solid #111 ;
 					</div>
 					<div class="col-sm">
 					<div class="form-group">
-					<aui:input type="text" label="from-dcrview-constructionstatus" name="ConstructionStatus" id="ConstructionStatus"  />
+					<!-- <aui:input type="text" label="from-dcrview-constructionstatus" name="ConstructionStatus" id="ConstructionStatus"  /> -->
+					
+					<aui:select label="from-dcrview-constructionstatus" class="form-control" name="ConstructionStatus" id="ConstructionStatus">
+		 				<aui:option value=""></aui:option>
+		 				<aui:option value="from-dcrview-beforeconstruction"><label><liferay-ui:message key="from-dcrview-beforeconstruction" /></label></aui:option>
+		 				<aui:option value="from-dcrview-underconstruction"><label><liferay-ui:message key="from-dcrview-underconstruction" /></label></aui:option>
+		 				<aui:option value="from-dcrview-complete"><label><liferay-ui:message key="from-dcrview-complete" /></label></aui:option>
+		 			</aui:select>
 					
 					
 					<!-- <aui:select label="Construction Status" name="CustomerApproval" id="CustomerApproval">
