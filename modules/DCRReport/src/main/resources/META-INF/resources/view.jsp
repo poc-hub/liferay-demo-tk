@@ -148,15 +148,14 @@ border-bottom: 1px solid #111 ;
 					<div class="col-sm">
 					<div class="form-group">
 						<!-- value="from-dcrIndex-search" -->
-						<aui:button class="btn  btn-secondary" type="button" id="approveButton" onclick="serch();" style="
-						    margin-bottom: -64px;" value="from-dcrIndex-search"></aui:button>					
+						<aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;margin-bottom: -64px;" type="button" id="approveButton" onclick="serch();" value="from-dcrIndex-search"></aui:button>					
 					</div>
 					
 					
 					</div>
 					<div class="col-sm">
 					<div class="form-group">
-					<aui:button class="btn  btn-secondary"  style="margin-left: -110px;margin-top: 25px;" type="reset" value="from-meetingpopup-reset"></aui:button>
+					<aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;margin-left: -110px;margin-top: 25px;" type="reset" value="from-meetingpopup-reset"></aui:button>
 					<!-- &nbsp; -->
 					</div>
 					</div>
@@ -573,12 +572,12 @@ AUI().use('aui-base',function(A){
 
 <aui:button-row>
 <aui:button onClick="<%=createDCR.toString()%>"
-value="from-dcrIndex-create"></aui:button>
+value="from-dcrIndex-create"  style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;"></aui:button>
 <aui:button onClick="myFunction();"
-value="from-dcrIndex-view"></aui:button>
-<aui:button onCLick="approvalFucntion();" value="from-dcrIndex-reqapproval">
+value="from-dcrIndex-view"  style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;"></aui:button>
+<aui:button onCLick="approvalFucntion();" value="from-dcrIndex-reqapproval" style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;">
 </aui:button>
-<aui:button onClick="approvalStatusChange();" value="from-dcrIndex-approvalstatuschange">
+<aui:button onClick="approvalStatusChange();" value="from-dcrIndex-approvalstatuschange" style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;">
 </aui:button>
 
 </aui:button-row>

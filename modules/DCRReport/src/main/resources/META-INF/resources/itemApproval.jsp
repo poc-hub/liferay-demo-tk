@@ -162,7 +162,7 @@ AUI().ready('aui-module', function(A){
          <div class="row">
         <div class="col-sm">
   <!--       <label><liferay-ui:message key="from-dcrNew-changetype" /></label> -->
-        <aui:select  label="from-dcrNew-changetype" name="DesignCostType" id="DesignCostType" value="<%=dcd.getEstdesignCosttype() %>">
+        <aui:select  label="from-dcrNew-designcosttype" name="DesignCostType" id="DesignCostType" value="<%=dcd.getEstdesignCosttype() %>">
 						<aui:option value="from-dcrNew-increase"><label><liferay-ui:message key="from-dcrNew-increase" /></label></aui:option>
 						<aui:option value="from-dcrNew-decrease"><label><liferay-ui:message key="from-dcrNew-decrease" /></label></aui:option>
 						<aui:option value="from-dcrNew-none"><label><liferay-ui:message key="from-dcrNew-none" /></label></aui:option>
@@ -297,8 +297,8 @@ AUI().ready('aui-module', function(A){
       
       <aui:button-row>
       
-      <aui:button  type="submit"  value="from-dcrNew-save"></aui:button>
-      <aui:button onClick="<%=viewDCR.toString() %>" value="from-dcrNew-cancel"/>
+      <aui:button type="submit"  value="from-dcrNew-save"></aui:button>
+      <aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" onClick="<%=viewDCR.toString() %>" value="from-dcrNew-cancel"/>
      </aui:button-row>
      
        </aui:form>

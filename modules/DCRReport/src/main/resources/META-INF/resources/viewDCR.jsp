@@ -133,7 +133,7 @@ for(FileEntry file:fileEntry){
 						<aui:option value="from-dcrNew-consImprov"><label><liferay-ui:message key="from-dcrNew-consImprov" /></aui:option>
 						<aui:option value="from-dcrNew-others"><label><liferay-ui:message key="from-dcrNew-others" /></aui:option>
 					</aui:select></div>
-        <div class="col-sm"><aui:input type="text" label="from-dcrNew-others" name="Others" value="<%=designChangeDetails.getRfcOthers() %>" id="Others "/></div>
+        <div class="col-sm"><aui:input type="text" label="from-dcrNew-others" name="Others" value="<%=designChangeDetails.getRfcOthers() %>" id="Others" disabled="disabled"/></div>
         <div class="col-sm">
         <!-- <label><liferay-ui:message key="from-dcrNew-rangeofdisclosure"/></label> -->
         <aui:select label="from-dcrNew-rangeofdisclosure" name="Rangeofdisclosure" id="Rangeofdisclosure" value="<%=designChangeDetails.getRangeOfDisclosure() %>">
@@ -153,7 +153,7 @@ for(FileEntry file:fileEntry){
                     <%-- <aui:button href="${meetingPopUp}" value="Get Meeting" /> --%>
                    <!--  <input type="button" class="btn btn-secondary" value="Get Meeting" onclick="getMeetingData()" /> -->
                     
-              <input type="button" class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
+              <input type="button" style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;"  class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
                     
                 </div>
                 <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
@@ -186,7 +186,7 @@ for(FileEntry file:fileEntry){
     <div class="row">
         <div class="col-sm">
   <!--       <label><liferay-ui:message key="from-dcrNew-changetype" /></label> -->
-        <aui:select  label="from-dcrNew-changetype" name="DesignCostType" id="DesignCostType" value="<%=designChangeDetails.getEstdesignCosttype() %>">
+        <aui:select  label="from-dcrNew-designcosttype" name="DesignCostType" id="DesignCostType" value="<%=designChangeDetails.getEstdesignCosttype() %>">
 						<aui:option value="from-dcrNew-increase"><label><liferay-ui:message key="from-dcrNew-increase" /></label></aui:option>
 						<aui:option value="from-dcrNew-decrease"><label><liferay-ui:message key="from-dcrNew-decrease" /></label></aui:option>
 						<aui:option value="from-dcrNew-none"><label><liferay-ui:message key="from-dcrNew-none" /></label></aui:option>
@@ -280,8 +280,8 @@ for(FileEntry file:fileEntry){
     <div class="row">
         <div class="col-sm"><div class="form-group">
         <aui:button-row>
-            <aui:button class="btn btn-primary" type="submit" id="btn_submit" value="from-dcrNew-save" ></aui:button>
-            <aui:button  onClick="<%=dcrIndexURL.toString()%>" value="from-dcrNew-cancel"></aui:button>
+            <aui:button type="submit" id="btn_submit" value="from-dcrNew-save" ></aui:button>
+            <aui:button type="button" style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" onClick="<%=dcrIndexURL.toString()%>" value="from-dcrNew-cancel"></aui:button>
             
         </aui:button-row>
             
@@ -361,7 +361,7 @@ for(FileEntry file:fileEntry){
                     <%-- <aui:button href="${meetingPopUp}" value="Get Meeting" /> --%>
                    <!--  <input type="button" class="btn btn-secondary" value="Get Meeting" onclick="getMeetingData()" /> -->
                     
-              <input type="button" class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
+              <input type="button" style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
                     
                 </div>
                 <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
@@ -394,7 +394,7 @@ for(FileEntry file:fileEntry){
     <div class="row">
         <div class="col-sm">
   <!--       <label><liferay-ui:message key="from-dcrNew-changetype" /></label> -->
-        <aui:select  label="from-dcrNew-changetype" name="DesignCostType" id="DesignCostType" value="<%=designChangeDetails.getEstdesignCosttype() %>">
+        <aui:select  label="from-dcrNew-designcosttype" name="DesignCostType" id="DesignCostType" value="<%=designChangeDetails.getEstdesignCosttype() %>">
 						<aui:option value="from-dcrNew-increase"><label><liferay-ui:message key="from-dcrNew-increase" /></label></aui:option>
 						<aui:option value="from-dcrNew-decrease"><label><liferay-ui:message key="from-dcrNew-decrease" /></label></aui:option>
 						<aui:option value="from-dcrNew-none"><label><liferay-ui:message key="from-dcrNew-none" /></label></aui:option>
@@ -458,14 +458,14 @@ for(FileEntry file:fileEntry){
             <aui:button-row>
 
 	 <!--<button class="btn btn-primary type="button"  id="btn_edit">Edit</button>  onclick="saveEnable()" -->
-	   <aui:button class="btn btn-primary" type="submit" id="btn_submit" value="from-dcrNew-save" ></aui:button>
+	   <aui:button  type="submit" id="btn_submit" value="from-dcrNew-save" ></aui:button>
 		</fieldset>	   
-	 	<aui:button  onclick="editEnable();" value="from-dcrview-edit">
+	 	<aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" onclick="editEnable();" value="from-dcrview-edit">
 	 	</aui:button>
 
 	 <!--<button class="btn btn-primary type="button"id="btn_cancel" onClick="< %=dcrIndexURL.toString()%>" >Cancel</button>  -->
 	 
-	 	<aui:button  onClick="<%=dcrIndexURL.toString()%>" value="from-dcrNew-cancel">
+	 	<aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;"  onClick="<%=dcrIndexURL.toString()%>" value="from-dcrNew-cancel">
 	 	</aui:button>
 
 

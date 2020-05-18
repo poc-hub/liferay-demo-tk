@@ -91,7 +91,7 @@
                     <%-- <aui:button href="${meetingPopUp}" value="Get Meeting" /> --%>
                    <!--  <input type="button" class="btn btn-secondary" value="Get Meeting" onclick="getMeetingData()" /> -->
                     
-              <input type="button" class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
+              <input type="button" style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" class="btn btn-secondary" onclick="javascript:getMeetingData();" value="<%=LanguageUtil.get(request, "from-dcrNew-getmeetingitem") %>" ><!-- <liferay-ui:message key="from-dcrNew-getmeetingitem" /> --></input><br>
                     
                 </div>
                 <div class="col-sm pl-2 pr-2"><label><liferay-ui:message key="from-dcrNew-meetid" /></label>
@@ -165,8 +165,8 @@
 
     <div class="row">
         <div class="col-sm"><div class="form-group">
-            <aui:button  type="submit" value="from-dcrNew-save"></aui:button>
-            <aui:button type="button" onClick="<%=cancelSubmit.toString() %>" value="from-dcrNew-cancel"/>
+            <aui:button type="submit" value="from-dcrNew-save" ></aui:button>
+            <aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" type="button" onClick="<%=cancelSubmit.toString() %>" value="from-dcrNew-cancel"/>
         </div></div>
         
     </div>
