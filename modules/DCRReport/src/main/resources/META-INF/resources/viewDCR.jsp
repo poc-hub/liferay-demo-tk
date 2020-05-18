@@ -86,7 +86,15 @@ for(FileEntry file:fileEntry){
 <%if(designChangeDetails.getApprovalStatus().equalsIgnoreCase("Approved-key")){%>
 
 <aui:form name="meetingIndexForm" method="POST" enctype="multipart/form-data" action="${dcrConstructionURL}" >
+
+<div style="/* border: blue; */border-color: #0b5fff;border-style: solid;padding: 15px;border-width: thin;">
    <fieldset disabled="disabled" id="fieldSet">
+   <div class="row">
+        	<div class="col-sm">
+        	<center><legend style="background-color: #f1f2f5;background-color: gray;color: white;"><liferay-ui:message key="from-dcrview-designchange" /></legend></center>
+        	</div>
+   </div>
+   
     <div class="row">
         <div class="col-sm">
         
@@ -106,7 +114,7 @@ for(FileEntry file:fileEntry){
     <div class="row">
         <div class="col-sm">
          <!-- <p>DESIGN CHANGE RECORD CREATION</p> -->
-        <legend><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend>
+        <center><legend style="background-color: #f1f2f5;"><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend></center>
         </div>
     </div>
     <div class="row">
@@ -287,6 +295,7 @@ for(FileEntry file:fileEntry){
             
         </div></div>
     </div>
+    </div>
 
 	
 </aui:form>
@@ -294,7 +303,17 @@ for(FileEntry file:fileEntry){
 
 <%}else{%>
 <aui:form name="meetingIndexForm" method="POST" enctype="multipart/form-data" action="${submitDCRView}" >
+
+<div style="/* border: blue; */border-color: #0b5fff;border-style: solid;padding: 15px;border-width: thin;">
+
    <fieldset disabled="disabled" id="fieldSet">
+   
+   <div class="row">
+        	<div class="col-sm">
+        	<center><legend style="background-color: #f1f2f5;background-color: gray;color: white;"><liferay-ui:message key="from-dcrview-designchange" /></legend></center>
+        	</div>
+        </div>
+   
     <div class="row">
         <div class="col-sm">
         
@@ -314,7 +333,7 @@ for(FileEntry file:fileEntry){
     <div class="row">
         <div class="col-sm">
          <!-- <p>DESIGN CHANGE RECORD CREATION</p> -->
-        <legend><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend>
+        <center><legend style="background-color: #f1f2f5;"><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend></center>
         </div>
     </div>
     <div class="row">
@@ -452,8 +471,7 @@ for(FileEntry file:fileEntry){
     
 	
 	
-    <div class="row">
-        <div class="col-sm"><div class="form-group">
+   
            
             <aui:button-row>
 
@@ -470,8 +488,9 @@ for(FileEntry file:fileEntry){
 
 
 </aui:button-row>
-        </div></div>
+        
     </div>
+    
 
 	
 </aui:form>

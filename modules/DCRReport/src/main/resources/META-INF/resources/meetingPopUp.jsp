@@ -155,7 +155,11 @@ function save(){
 }
 }
 </aui:script>
+<div style="/* border: blue; */border-color: #0b5fff;border-style: solid;padding: 15px;border-width: thin;">
 <aui:form name="meetingPopup">
+
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">
@@ -215,10 +219,10 @@ function save(){
 			</div>
 		</div>
 		<aui:button type="button" name="saveButton" value="from-meetingpopup-search"
-			onclick="save();" />
+			style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" onclick="save();" />
 	</div>
 </aui:form>
-</form>
+
 
 <div style="margin-top: 30px;margin-left: 50px;">
 <table class="table" id="default">
@@ -309,15 +313,17 @@ function save(){
 <div class="row" style="margin-left: 30px;">
 			<div class="col-sm">
 				<div class="form-group">
-<input type="button" class="btn  btn-secondary" id="getPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>" onclick="getPopUpdata();" />
+<input type="button"  style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" class="btn  btn-secondary" id="getPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>" onclick="getPopUpdata();" />
 
-<input type="button" class="btn  btn-secondary"  id="getAjaxPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>" onclick="getAjaxPopUpdata();"  style="display:none;" />
-<input type="button" class="btn  btn-secondary"  value="<%=LanguageUtil.get(request, "from-meetingpopup-reset") %>"  onclick="resetValues();" />
+<input type="button" style="display:none; color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" class="btn  btn-secondary"  id="getAjaxPopUpdata" value="<%=LanguageUtil.get(request, "from-meetingpopup-select") %>" onclick="getAjaxPopUpdata();"/>
+<input type="button" style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" class="btn  btn-secondary"  value="<%=LanguageUtil.get(request, "from-meetingpopup-reset") %>"  onclick="resetValues();" />
 
 </div>
 </div>
 </div>
-</
+
+</div>
+
 </div>
 <script type="text/javascript">
 

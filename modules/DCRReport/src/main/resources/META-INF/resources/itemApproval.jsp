@@ -85,10 +85,20 @@ AUI().ready('aui-module', function(A){
 </script>
 
 <aui:form name="meetingIndexForm" method="POST" action="${submitApprovallURL}" >
+
+<div style="/* border: blue; */border-color: #0b5fff;border-style: solid;padding: 15px;border-width: thin;">
+
    <fieldset disabled="disabled" id="fieldSet">
+   
+   <div class="row">
+        	<div class="col-sm">
+        	<center><legend style="background-color: #f1f2f5;background-color: gray;color: white;"><liferay-ui:message key="from-dcrview-designchange" /></legend></center>
+        	</div>
+        </div>
+   
     <div class="row">
         <div class="col-sm">
-          <label><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></label>
+           <center><legend style="background-color: #f1f2f5;"><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend></center>
           </div>
           </div>
           <div class="row">
@@ -300,6 +310,7 @@ AUI().ready('aui-module', function(A){
       <aui:button type="submit"  value="from-dcrNew-save"></aui:button>
       <aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;" onClick="<%=viewDCR.toString() %>" value="from-dcrNew-cancel"/>
      </aui:button-row>
+     </div>
      
        </aui:form>
      

@@ -36,8 +36,17 @@ border-bottom: 1px solid #111 ;
 <portlet:param name="cmd" value="jsonUserObjectArray"/>
 </portlet:resourceURL>
 
+
+<div style="/* border: blue; */border-color: #0b5fff;border-style: solid;padding: 15px;border-width: thin;">
 <aui:form name="dcrIndexSearch">
 	<div class="container">
+	
+	<div class="row">
+        	<div class="col-sm">
+        	<center><legend style="background-color: #f1f2f5;background-color: gray;color: white;"><liferay-ui:message key="from-dcrview-designchange" /></legend></center>
+        	</div>
+        </div>
+	
 		<div class="row">
 			<div class="col-sm">
 				<div class="form-group">
@@ -186,6 +195,7 @@ border-bottom: 1px solid #111 ;
 </tr>
 </thead>
 </table>
+</div>
 </div>
 </div>
 </div>

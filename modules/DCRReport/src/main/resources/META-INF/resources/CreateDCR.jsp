@@ -24,6 +24,15 @@
 </portlet:renderURL>  --%>
 
 <aui:form name="meetingIndexForm" enctype="multipart/form-data" method="POST" action="${submitDCR}" >
+
+<div style="/* border: blue; */border-color: #0b5fff;border-style: solid;padding: 15px;border-width: thin;">
+
+		<div class="row">
+        	<div class="col-sm">
+        	<center><legend style="background-color: #f1f2f5;background-color: gray;color: white;"><liferay-ui:message key="from-dcrview-designchange" /></legend></center>
+        	</div>
+        </div>
+ 
     <div class="row">
         <div class="col-sm">
         
@@ -43,7 +52,7 @@
     <div class="row">
         <div class="col-sm">
          <!-- <p>DESIGN CHANGE RECORD CREATION</p> -->
-         <legend><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend>
+       <center><legend style="background-color: #f1f2f5;"><liferay-ui:message key="from-dcrNew-designchangerecordcreation" /></legend></center>
         </div>
     </div>
     <div class="row">
@@ -162,6 +171,8 @@
         <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment2" name="Attachment2" id="Attachment2 " /></div>
         <div class="col-sm"><aui:input type="file" label="from-dcrNew-attachment4" name="Attachment4" id="Attachment4" /></div>
     </div>
+    
+    
 
     <div class="row">
         <div class="col-sm"><div class="form-group">
@@ -170,7 +181,7 @@
         </div></div>
         
     </div>
-
+</div>
 </aui:form>
 
 
