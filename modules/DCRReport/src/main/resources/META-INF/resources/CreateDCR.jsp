@@ -52,7 +52,7 @@
         <aui:select  label="from-dcrNew-changetype"  name="ChangeType" id="ChangeType">
 						<aui:option value="from-dcrNew-design"><label><liferay-ui:message key="from-dcrNew-design" /></label></aui:option>
 						<aui:option value="from-dcrNew-construction"><label><liferay-ui:message key="from-dcrNew-construction" /></label></aui:option>
-						<aui:option value="from-dcrNew-facility"><label><liferay-ui:message key="from-dcrIndex-reasonforchange" /></label></aui:option>
+						<aui:option value="from-dcrNew-facility"><label><liferay-ui:message key="from-dcrNew-facility" /></label></aui:option>
 					</aui:select></div>
         <div class="col-sm">
         <!-- <label><liferay-ui:message key="from-dcrIndex-changerequestedby" /></label> -->

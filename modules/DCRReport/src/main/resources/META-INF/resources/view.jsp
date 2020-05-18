@@ -106,8 +106,9 @@ border-bottom: 1px solid #111 ;
 					
 					<aui:select label="from-dcrIndex-approvalstatus" name="Approval" id="Approval">
 						<aui:option value=""></aui:option>
-      					<aui:option value="from-itemapproval-yes"><label><liferay-ui:message key="from-itemapproval-yes" /></label></aui:option>
-      					<aui:option value="from-itemapproval-no"><label><liferay-ui:message key="from-itemapproval-no" /></label></aui:option>
+						<aui:option value="Awaiting-Approval-key"><label><liferay-ui:message key="Awaiting-Approval-key" /></label></aui:option>
+      					<aui:option value="Approved-key"><label><liferay-ui:message key="Approved-key" /></label></aui:option>
+      					<aui:option value="Cancel-key"><label><liferay-ui:message key="Cancel-key" /></label></aui:option>
       				</aui:select>
       				
 					</div>

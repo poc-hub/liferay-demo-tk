@@ -196,6 +196,11 @@
 		<column name="isActive" 				db-name="IS_ACTIVE" 						type="boolean" />
 		
 		
+		<order by="desc">
+			<order-column name="createdOn" />
+		</order>
+		
+		
 	</entity> 
 	
 	

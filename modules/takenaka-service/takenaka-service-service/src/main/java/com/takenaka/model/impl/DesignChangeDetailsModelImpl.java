@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 
 import com.takenaka.model.DesignChangeDetails;
@@ -154,10 +155,10 @@ public class DesignChangeDetailsModelImpl
 		"drop table DESIGN_CHANGE_DETAILS";
 
 	public static final String ORDER_BY_JPQL =
-		" ORDER BY designChangeDetails.dcrChangeSeqno ASC";
+		" ORDER BY designChangeDetails.createdOn DESC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY DESIGN_CHANGE_DETAILS.DCR_CHANGE_SEQNO ASC";
+		" ORDER BY DESIGN_CHANGE_DETAILS.CREATED_ON DESC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -1354,17 +1355,18 @@ public class DesignChangeDetailsModelImpl
 
 	@Override
 	public int compareTo(DesignChangeDetails designChangeDetails) {
-		long primaryKey = designChangeDetails.getPrimaryKey();
+		int value = 0;
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
+		value = DateUtil.compareTo(
+			getCreatedOn(), designChangeDetails.getCreatedOn());
+
+		value = value * -1;
+
+		if (value != 0) {
+			return value;
 		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+
+		return 0;
 	}
 
 	@Override

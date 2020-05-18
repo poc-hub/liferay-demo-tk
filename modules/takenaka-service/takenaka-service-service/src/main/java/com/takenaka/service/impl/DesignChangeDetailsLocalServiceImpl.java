@@ -132,9 +132,9 @@ public class DesignChangeDetailsLocalServiceImpl
 		
 		if(Validator.isNotNull(expensePayment)) {
 			if(null == criterion) {
-				criterion = RestrictionsFactoryUtil.like("expensePayment", "%"+expensePayment+"%");
+				criterion = RestrictionsFactoryUtil.like("expenseAjustmentDivision", "%"+expensePayment+"%");
 			} else {
-				criterion = RestrictionsFactoryUtil.and(criterion, RestrictionsFactoryUtil.like("expensePayment", "%"+expensePayment+"%")); 
+				criterion = RestrictionsFactoryUtil.and(criterion, RestrictionsFactoryUtil.like("expenseAjustmentDivision", "%"+expensePayment+"%")); 
 			}
 			
 		}
