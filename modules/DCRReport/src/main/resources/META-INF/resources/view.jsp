@@ -11,6 +11,12 @@
 
 <portlet:actionURL name="reqApproval" var="submitApproval"/>
 
+<portlet:renderURL var="refresh">
+	<portlet:param name="mvcPath" value="/view.jsp"/>
+</portlet:renderURL>
+
+
+
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
@@ -164,7 +170,7 @@ border-bottom: 1px solid #111 ;
 					</div>
 					<div class="col-sm">
 					<div class="form-group">
-					<aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;margin-left: -110px;margin-top: 25px;" type="reset" value="from-meetingpopup-reset"></aui:button>
+					<aui:button style="color: #FFF;background-color: #0b5fff;border-color: #0b5fff;box-shadow: none;margin-left: -110px;margin-top: 25px;" type="reset" value="from-meetingpopup-reset" id="Reset"></aui:button>
 					<!-- &nbsp; -->
 					</div>
 					</div>
@@ -254,7 +260,9 @@ var expensePayment=document.getElementById('<portlet:namespace/>ExpensePayment')
 if(reasonForChange=="" && issuer=="" && rangeOfDisclosure=="" && 
 		changeReqBy=="" && dcrFromDate=="" && dcrToDate=="" && approval=="" && 
 		construction=="" && expensePayment==""){
-	alert("Please enter atleast one field");
+	//alert("Please enter atleast one field");
+	var render="<%=refresh%>";
+	window.location.href=render;
 }
 else{
 	console.log('before printing elements');
@@ -558,7 +566,7 @@ AUI().ready('aui-module', function(A){
 	document.getElementById('<portlet:namespace />ExpensePayment').value = "";
 	document.getElementById('<portlet:namespace />Approval').value = "";
 	document.getElementById('<portlet:namespace />ConstructionStatus').value = "";
-	document.getElementById("<portlet:namespace/>ReasonforChange").value;
+	document.getElementById("<portlet:namespace/>ReasonforChange").value="";
 	document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
 	document.getElementById('<portlet:namespace/>Issuer').value="";
 });
@@ -571,7 +579,7 @@ AUI().use('aui-base',function(A){
 		document.getElementById('<portlet:namespace />ExpensePayment').value = "";
 		document.getElementById('<portlet:namespace />Approval').value = "";
 		document.getElementById('<portlet:namespace />ConstructionStatus').value = "";
-		document.getElementById("<portlet:namespace/>ReasonforChange").value;
+		document.getElementById("<portlet:namespace/>ReasonforChange").value="";
 		document.getElementById('<portlet:namespace/>ChangeRequestedBy').value="";
 		document.getElementById('<portlet:namespace/>Issuer').value="";
 	});

@@ -103,7 +103,7 @@ AUI().ready('aui-module', function(A){
           </div>
           <div class="row">
         <div class="col-sm">
-         <aui:select  label="from-dcrview-changetype"  name="ChangeType" id="ChangeType" value="<%=dcd.getChangeType() %>"> <!-- value="< %=designChangeDetails.getChangeType() %>" -->
+         <aui:select  label="from-dcrNew-changetype"  name="ChangeType" id="ChangeType" value="<%=dcd.getChangeType() %>"> <!-- value="< %=designChangeDetails.getChangeType() %>" -->
 						<aui:option value="from-dcrNew-design"><label><liferay-ui:message key="from-dcrNew-design" /></label></aui:option>
 						<aui:option value="from-dcrNew-construction"><label><liferay-ui:message key="from-dcrNew-construction" /></label></aui:option>
 						<aui:option value="from-dcrNew-facility"><label><liferay-ui:message key="from-dcrNew-facility" /></label></aui:option>

@@ -92,7 +92,7 @@ public class DesignChangeDetailsLocalServiceImpl
 			if(null == criterion) {
 				criterion = RestrictionsFactoryUtil.like("rangeOfDisclosure", "%"+rangeOfDisclosure+"%");
 			} else {
-				criterion = RestrictionsFactoryUtil.and(criterion, RestrictionsFactoryUtil.like("meetingId", "%"+rangeOfDisclosure+"%")); 
+				criterion = RestrictionsFactoryUtil.and(criterion, RestrictionsFactoryUtil.like("rangeOfDisclosure", "%"+rangeOfDisclosure+"%")); 
 			}
 			
 		}
